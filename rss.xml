@@ -1,0 +1,962 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[MyWeblog]]></title><description><![CDATA[MyWeblog]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 29 Apr 2023 08:05:13 GMT</lastBuildDate><item><title><![CDATA[AtCoderにおける標準入力の受け取り方 (Python ver.)]]></title><description><![CDATA[AtCoderにおける標準入力の受け取り方について，過去に出題された問題を例にまとめました．]]></description><link>https://fumiyanll23.com/posts/Atcoder-Input-Python</link><guid isPermaLink="false">https://fumiyanll23.com/posts/Atcoder-Input-Python</guid><content:encoded>&lt;h2 id=&quot;はじめに&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&quot; aria-label=&quot;はじめに permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;はじめに&lt;/h2&gt;
+&lt;p&gt;AtCoderにおける標準入力の受け取り方について，過去に出題された問題を例にまとめました．&lt;/p&gt;
+&lt;h2 id=&quot;実行環境&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E5%AE%9F%E8%A1%8C%E7%92%B0%E5%A2%83&quot; aria-label=&quot;実行環境 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;実行環境&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Python 3.9.2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;1行に1個の値が入力されるとき&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1%E8%A1%8C%E3%81%AB1%E5%80%8B%E3%81%AE%E5%80%A4%E3%81%8C%E5%85%A5%E5%8A%9B%E3%81%95%E3%82%8C%E3%82%8B%E3%81%A8%E3%81%8D&quot; aria-label=&quot;1行に1個の値が入力されるとき permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1行に1個の値が入力されるとき&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;input()&lt;/code&gt; を使うと，行ごとに入力を受け取ることができます．&lt;/p&gt;
+&lt;p&gt;例) &lt;a href=&quot;https://atcoder.jp/contests/abc197/tasks/abc197_a&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;ABC197A - Rotate&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;入力&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$S$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;入力例&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$\mathrm{abc}$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;サンプルコード&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python:sample.py&quot;&gt;&lt;pre class=&quot;language-python:sample.py&quot;&gt;&lt;code class=&quot;language-python:sample.py&quot;&gt;S = input()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;確認&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python:result.py&quot;&gt;&lt;pre class=&quot;language-python:result.py&quot;&gt;&lt;code class=&quot;language-python:result.py&quot;&gt;print(S, type(S))
+# &amp;#39;abc&amp;#39; &amp;lt;class &amp;#39;str&amp;#39;&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;ただし，デフォルトでは &lt;code class=&quot;language-text&quot;&gt;str&lt;/code&gt; で受け取るので，適宜キャスト (型変換) を行う必要があります．&lt;/p&gt;
+&lt;p&gt;例) &lt;a href=&quot;https://atcoder.jp/contests/abc192/tasks/abc192_a&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;ABC192A - Star&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;入力&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$X$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;入力例&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$140$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;サンプルコード&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python:sample.py&quot;&gt;&lt;pre class=&quot;language-python:sample.py&quot;&gt;&lt;code class=&quot;language-python:sample.py&quot;&gt;X = int(input())&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;確認&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python:result.py&quot;&gt;&lt;pre class=&quot;language-python:result.py&quot;&gt;&lt;code class=&quot;language-python:result.py&quot;&gt;print(X, type(X))
+# 140 &amp;lt;class &amp;#39;int&amp;#39;&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&quot;1行に複数の値が入力されるとき&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1%E8%A1%8C%E3%81%AB%E8%A4%87%E6%95%B0%E3%81%AE%E5%80%A4%E3%81%8C%E5%85%A5%E5%8A%9B%E3%81%95%E3%82%8C%E3%82%8B%E3%81%A8%E3%81%8D&quot; aria-label=&quot;1行に複数の値が入力されるとき permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1行に複数の値が入力されるとき&lt;/h2&gt;
+&lt;p&gt;Pythonではアンパック代入が可能です．&lt;/p&gt;
+&lt;p&gt;例) &lt;a href=&quot;https://atcoder.jp/contests/abc195/tasks/abc195_a&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;ABC195A - Health M Death&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;入力&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$M\ H$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;入力例&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$10\ 120$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;サンプルコード&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python:sample.py&quot;&gt;&lt;pre class=&quot;language-python:sample.py&quot;&gt;&lt;code class=&quot;language-python:sample.py&quot;&gt;M, H = map(int, input().split())&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;確認&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python:result.py&quot;&gt;&lt;pre class=&quot;language-python:result.py&quot;&gt;&lt;code class=&quot;language-python:result.py&quot;&gt;print(M, type(M))
+# 10 &amp;lt;class &amp;#39;int&amp;#39;&amp;gt;
+print(H, type(H))
+# 120 &amp;lt;class &amp;#39;int&amp;#39;&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;map()&lt;/code&gt; を使うと，まとめてキャストを行うことができます．
+また，リストの変数名の末尾を ‘s’ にしておくと，変数名だけでリストだと判別できるようになります．&lt;/p&gt;
+&lt;p&gt;例) &lt;a href=&quot;https://atcoder.jp/contests/abc197/tasks/abc197_c&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;ABC197C - ORXOR&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;入力&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$N$
+$A_1\ A_2\ A_3\ \ldots\ A_N$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;入力例&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$3$
+$1\ 5\ 7$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;サンプルコード&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python:sample.py&quot;&gt;&lt;pre class=&quot;language-python:sample.py&quot;&gt;&lt;code class=&quot;language-python:sample.py&quot;&gt;N = int(input())
+As = list(map(int, input().split()))&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;確認&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python:result.py&quot;&gt;&lt;pre class=&quot;language-python:result.py&quot;&gt;&lt;code class=&quot;language-python:result.py&quot;&gt;print(As, type(As))
+# [1, 5, 7] &amp;lt;class &amp;#39;list&amp;#39;&amp;gt;
+print(As[0], type(As[0]))
+# 1 &amp;lt;class &amp;#39;int&amp;#39;&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&quot;複数行に1個ずつ値が入力されるとき&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E8%A4%87%E6%95%B0%E8%A1%8C%E3%81%AB1%E5%80%8B%E3%81%9A%E3%81%A4%E5%80%A4%E3%81%8C%E5%85%A5%E5%8A%9B%E3%81%95%E3%82%8C%E3%82%8B%E3%81%A8%E3%81%8D&quot; aria-label=&quot;複数行に1個ずつ値が入力されるとき permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;複数行に1個ずつ値が入力されるとき&lt;/h2&gt;
+&lt;p&gt;for文とリスト内包表記を組み合わせることで，リストに格納することができます．&lt;/p&gt;
+&lt;p&gt;例) &lt;a href=&quot;https://atcoder.jp/contests/abc197/tasks/abc197_b&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;ABC197B - Visibility&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;入力&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$H\ W\ X\ Y$
+$S_1$
+$S_2$
+$S_3$
+$\vdots$
+$S_H$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;入力例&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$4\ 4\ 2\ 2$
+$##..$
+$…#$
+$#.#.$
+$.#.#$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;サンプルコード&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python:sample.py&quot;&gt;&lt;pre class=&quot;language-python:sample.py&quot;&gt;&lt;code class=&quot;language-python:sample.py&quot;&gt;H, W, X, Y = map(int, input().split())
+Ss = [input() for _ in range(H)]&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;確認&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python:result.py&quot;&gt;&lt;pre class=&quot;language-python:result.py&quot;&gt;&lt;code class=&quot;language-python:result.py&quot;&gt;print(Ss, type(Ss))
+# [&amp;#39;##..&amp;#39;, &amp;#39;...#&amp;#39;, &amp;#39;#.#.&amp;#39;, &amp;#39;.#.#&amp;#39;] &amp;lt;class &amp;#39;list&amp;#39;&amp;gt;
+print(Ss[0], type(Ss[0]))
+# ##.. &amp;lt;class &amp;#39;str&amp;#39;&amp;gt;
+print(Ss[0][0], type(Ss[0][0]))
+# # &amp;lt;class &amp;#39;str&amp;#39;&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&quot;複数行に複数の値が入力されるとき&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E8%A4%87%E6%95%B0%E8%A1%8C%E3%81%AB%E8%A4%87%E6%95%B0%E3%81%AE%E5%80%A4%E3%81%8C%E5%85%A5%E5%8A%9B%E3%81%95%E3%82%8C%E3%82%8B%E3%81%A8%E3%81%8D&quot; aria-label=&quot;複数行に複数の値が入力されるとき permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;複数行に複数の値が入力されるとき&lt;/h2&gt;
+&lt;p&gt;例) &lt;a href=&quot;https://atcoder.jp/contests/cf16-exhibition-final-open/tasks/cf16_exhibition_final_h&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;CODE FESTIVAL 2016 Grand Final(Parallel)H - AB=C Problem&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;2次元配列を使うとよい．
+また，リストの変数名の末尾を ‘ss’ にしておくと，変数名だけで2次元配列だと判別できるようになります．&lt;/p&gt;
+&lt;p&gt;入力&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$N$
+$c_{1,1}\ \ldots\ c_{1,N}$
+$\vdots$
+$c_{N,1}\ \ldots\ c_{N,N}$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;入力例&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$2$
+$0\ 1$
+$1\ 0$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;サンプルコード&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python:sample.py&quot;&gt;&lt;pre class=&quot;language-python:sample.py&quot;&gt;&lt;code class=&quot;language-python:sample.py&quot;&gt;N = int(input())
+css = [list(map(int, input().split())) for _ in range(N)]&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;確認&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python:result.py&quot;&gt;&lt;pre class=&quot;language-python:result.py&quot;&gt;&lt;code class=&quot;language-python:result.py&quot;&gt;print(css, type(css))
+# [[0, 1], [1, 0]] &amp;lt;class &amp;#39;list&amp;#39;&amp;gt;
+print(css[0], type(css[0]))
+# [0, 1] &amp;lt;class &amp;#39;list&amp;#39;&amp;gt;
+print(css[0][0], type(css[0][0]))
+# 0 &amp;lt;class &amp;#39;int&amp;#39;&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[「初めてのハッカソン」に初めて参加した話]]></title><description><![CDATA[先週末 (2021/05/08--2021/05/09) の2日間でハッカソンに参加したので，感想などをまとめておきます．]]></description><link>https://fumiyanll23.com/posts/Hackathon2021-Vol3</link><guid isPermaLink="false">https://fumiyanll23.com/posts/Hackathon2021-Vol3</guid><content:encoded>&lt;h2 id=&quot;はじめに&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&quot; aria-label=&quot;はじめに permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;はじめに&lt;/h2&gt;
+&lt;p&gt;先週末 (2021/05/08—2021/05/09) の2日間でハッカソンに参加したので，感想などをまとめておきます．&lt;/p&gt;
+&lt;h3 id=&quot;ハッカソンとは&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%8F%E3%83%83%E3%82%AB%E3%82%BD%E3%83%B3%E3%81%A8%E3%81%AF&quot; aria-label=&quot;ハッカソンとは permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;ハッカソンとは?&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ハッカソン (英語: hackathon, 別名:hack day, hackfest, codefest) とは、ソフトウェア開発分野のプログラマやグラフィックデザイナー、ユーザインタフェース設計者、プロジェクトマネージャらが集中的に作業をするソフトウェア関連プロジェクトのイベントである。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;(出典：&lt;a href=&quot;https://ja.wikipedia.org/wiki/%E3%83%8F%E3%83%83%E3%82%AB%E3%82%BD%E3%83%B3&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Wikipedia&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;要は，&lt;strong&gt;チーム (または個人) が短期間 (1日～1週間ほど) で開発をするイベント&lt;/strong&gt;です．
+今回は，株式会社サポーターズ主催 &lt;a href=&quot;https://talent.supporterz.jp/events/d1a92db9-5a22-4e3b-a441-ae9669fe79c4/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;初めてのハッカソン～オンライン開発合宿vol.3～&lt;/a&gt; に参加しました．&lt;/p&gt;
+&lt;h2 id=&quot;きっかけ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%8D%E3%81%A3%E3%81%8B%E3%81%91&quot; aria-label=&quot;きっかけ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;きっかけ&lt;/h2&gt;
+&lt;p&gt;修士課程へ進学し，ぼちぼち就活のことを考えなきゃな～などと思っていたところへサポーターズからハッカソンの案内が…．
+テーマが「初めてのハッカソン」ということもあって，善は急げと参加した次第です．&lt;/p&gt;
+&lt;h2 id=&quot;チームとメンバーの紹介&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%81%E3%83%BC%E3%83%A0%E3%81%A8%E3%83%A1%E3%83%B3%E3%83%90%E3%83%BC%E3%81%AE%E7%B4%B9%E4%BB%8B&quot; aria-label=&quot;チームとメンバーの紹介 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;チームとメンバーの紹介&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;チーム名：&lt;strong&gt;math-eng (マス・エング)&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;メンバー全員が所属している (していた) &lt;strong&gt;数理工学科 (mathematical engineering)&lt;/strong&gt; が由来&lt;/li&gt;
+&lt;li&gt;&lt;del&gt;#数理工学しか勝たん&lt;/del&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/fumiyanll23&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;成田史弥&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;バックエンド担当&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;この記事を書いている人&lt;/li&gt;
+&lt;li&gt;詳しくは &lt;a href=&quot;https://fumiyanll23.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;こちら&lt;/a&gt; をご覧ください&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/sako_data&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;迫田拓弥&lt;/a&gt; a.k.a. syakoo&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;フロントエンドおよび全体の構成担当&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;研究室の先輩 (M2)&lt;/li&gt;
+&lt;li&gt;高専出身の (つよつよ) エンジニア&lt;/li&gt;
+&lt;li&gt;詳しくは &lt;a href=&quot;https://syakoo-lab.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;こちら&lt;/a&gt; をご覧ください&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;川渕晋哉&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;バックエンド担当&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;学科の後輩 (B3)&lt;/li&gt;
+&lt;li&gt;春休みにPythonを教えていたこともあってスカウトした&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;何を作ったのか&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E4%BD%95%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%9F%E3%81%AE%E3%81%8B&quot; aria-label=&quot;何を作ったのか permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;何を作ったのか?&lt;/h2&gt;
+&lt;p&gt;文字を暗号化したり，逆に暗号化された文字を解読する &lt;del&gt;オモチャ&lt;/del&gt; Webアプリ ”&lt;strong&gt;EncDec Generator&lt;/strong&gt;” です．
+暗号化された文字の入力を&lt;strong&gt;画像認識&lt;/strong&gt;で行うところが推しポイントです．&lt;/p&gt;
+&lt;p&gt;アプリの構成など詳しくは &lt;a href=&quot;https://docs.google.com/presentation/d/1CKRrlkGav6xN9OxInnmkdS5sXe-mJ2uoGt8bvq-Z3Dc/edit?usp=sharing&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;発表用スライド&lt;/a&gt; や &lt;a href=&quot;https://github.com/fumiyanll23/hackathon2021-vol3_math-eng&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;GitHubのレポジトリ&lt;/a&gt; をご覧ください．&lt;/p&gt;
+&lt;h2 id=&quot;やったこと&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%84%E3%81%A3%E3%81%9F%E3%81%93%E3%81%A8&quot; aria-label=&quot;やったこと permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;やったこと&lt;/h2&gt;
+&lt;p&gt;先に書いてある通り，私はバックエンドを担当しました．
+その中でも&lt;strong&gt;文字の暗号化および復号の機能&lt;/strong&gt;を実装しました．
+暗号化には (みんな大好き) &lt;strong&gt;RSA暗号&lt;/strong&gt;を利用しました．
+これは&lt;strong&gt;素因数分解の困難性&lt;/strong&gt;により安全性が保障されている暗号です．&lt;/p&gt;
+&lt;p&gt;RSA暗号を採用した理由としては，&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;学部の講義で学んだ&lt;/li&gt;
+&lt;li&gt;仕組みが &lt;del&gt;簡単&lt;/del&gt; シンプル&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;が挙げられます．
+鍵対 (公開鍵と秘密鍵のペア) を生成して暗号化する (または復号する) という操作を，Pythonのコードに落とし込んでいく作業に苦労しました．&lt;/p&gt;
+&lt;h2 id=&quot;結果と感想&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E7%B5%90%E6%9E%9C%E3%81%A8%E6%84%9F%E6%83%B3&quot; aria-label=&quot;結果と感想 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;結果と感想&lt;/h2&gt;
+&lt;p&gt;結果としては&lt;strong&gt;努力賞&lt;/strong&gt;を受賞しました!
+全部で26チームが参加し&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;最優秀賞 × 1チーム&lt;/li&gt;
+&lt;li&gt;努力賞 × 6チーム&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;だったので，&lt;strong&gt;TOP7&lt;/strong&gt;に入ったことになります．
+努力が報われ，非常に嬉しかったです．&lt;/p&gt;
+&lt;p&gt;最後に感想を残しておきます．&lt;/p&gt;
+&lt;h3 id=&quot;開発の感想&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E9%96%8B%E7%99%BA%E3%81%AE%E6%84%9F%E6%83%B3&quot; aria-label=&quot;開発の感想 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;開発の感想&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;初めてのチーム開発とはいえ，見知ったメンバーとの開発だったこともあってスムーズにコミュニケーションがとれた&lt;/li&gt;
+&lt;li&gt;他人のコードは (例え同じ言語を使用していたとしても) 全くの別物．それは相手にとっても同じこと．命名規則を定める，コメントを残すなど心がけたい&lt;/li&gt;
+&lt;li&gt;バックエンドを担当したと言いつつもPythonのコードしか書いていないので，フレームワークやデータベース周りまで含めて開発できるように勉強したい&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;イベントの感想&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E6%84%9F%E6%83%B3&quot; aria-label=&quot;イベントの感想 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;イベントの感想&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;初めてのハッカソンということもあり完成するか不安だったが，無事にデプロイまで持っていくことができて安心した (先輩には非常にお世話になりました!)&lt;/li&gt;
+&lt;li&gt;自身がもつ知識や経験をプロダクトという形でアウトプットできたのは非常に良い経験になった&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;やっぱり開発は楽しい!&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[TsukuCTF 2021 write-up]]></title><description><![CDATA[TsukuCTF 2021に1人チームfumyianll23で参加しました．公式write-upはこちらで公開されています．著者にとって初のwrite-upです．]]></description><link>https://fumiyanll23.com/posts/Tsukuctf-2021</link><guid isPermaLink="false">https://fumiyanll23.com/posts/Tsukuctf-2021</guid><content:encoded>&lt;h2 id=&quot;はじめに&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&quot; aria-label=&quot;はじめに permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;はじめに&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://tsukuctf.sechack365.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;TsukuCTF 2021&lt;/a&gt;に1人チーム&lt;code class=&quot;language-text&quot;&gt;fumyianll23&lt;/code&gt;で参加しました．公式write-upは&lt;a href=&quot;https://fans.sechack365.com/ctf/tsukuctf2021/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;こちら&lt;/a&gt;で公開されています．著者にとって初のwrite-upです．&lt;/p&gt;
+&lt;h2 id=&quot;コンテスト概要&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%B3%E3%83%B3%E3%83%86%E3%82%B9%E3%83%88%E6%A6%82%E8%A6%81&quot; aria-label=&quot;コンテスト概要 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;コンテスト概要&lt;/h2&gt;
+&lt;p&gt;開催期間は2021/09/11 12:00 (JST) - 2021/09/12 11:59 (JST) でした．その他のルールは以下の通りです (cf. &lt;a href=&quot;https://tsukuctf.sechack365.com/rules&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Rules&lt;/a&gt;)：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;TsukuCTF について&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;開催期間は 2021/09/11 12:00(JST) ~ 2021/09/12 11:59(JST)です。
+ジャンルは OSINT, Misc, Web, Crypto, Hardware, etc… を予定しています。
+問題の不具合や運営への質問は公式 Twitterへの ダイレクトメッセージ機能 をご利用ください。Twitter が使用できない方は&lt;a href=&quot;mailto:tsukuctf@gmail.com&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;tsukuctf@gmail.com&lt;/a&gt;宛にご連絡ください。ただし、メールアドレス宛の連絡は少々時間をいただく場合がございます。
+運営からの連絡は CTFd の Notifications 機能およびTwitterを用います。コンテスト中以外の連絡は基本的にTwitterを用います。
+フラグは何度でも入力することができます。ただし一部の問題は回数制限が設けられています。その場合は問題文に記載がございます。
+誤ったフラグを入力することによる減点はありません。
+問題の点数は解かれた人数に応じて減少します(一部を除く)。
+問題サーバへ大量アクセスすることでフラグを入手できる問題はございません。一部の問題を除いて 10 回以上アクセスする必要はありません。
+有償のツールや環境でしか解くことができない問題はありません。
+チームで参加する場合はアカウントを共有するのではなく、Team 機能をご利用ください。
+本 CTF の開催期間終了後であれば是非 Writeup を公開ください。
+本 CTF は NICT 主催の若手セキュリティイノベーター育成プログラムSecHack365の修了生イベントに際して開催されています。&lt;/p&gt;
+&lt;h2 id=&quot;結果&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E7%B5%90%E6%9E%9C&quot; aria-label=&quot;結果 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;結果&lt;/h2&gt;
+&lt;p&gt;正の得点を得ている182チーム中91位 (752 pts) でした．
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 360px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/17e5238542933c39b79b29006cf8b71a/f21e7/result.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 76.25%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAABJ0AAASdAHeZh94AAADMElEQVQ4y2WRS28bZRSG/Qf4BQiRFGjBie3Y4/HMeMYz47ETJ06Ttkns2E489Xg8iXMhaSAqiSKigMSKVblU1Cm0BSrBgiUSvUBKFyiAxJo1W/4AG/Sgb6I0rlgcffrO5T3ve96IlLVJ6w5x2WC24VH3AoqXKrh+l8qCR3XRo1C+gttZYaZ2FTcQeZfF9hKXq00mpudIKGaIIbAikmaT0QzkjML45CStjs/y+hp+u02j1mBr6xpLS0vsvLNN023RDjr4HZ+1tTXq9Tpuc5FkSkLRdCTNIpLOWgyZs7xqLnDOqDGgzzOYrfKyVmEgW+G8vUC0eJWXlFkG9WpYHzJneEWfI1kOiBZbDBh13rCqpAXDuJInuv8n1j3Qe2AdgtqDwh0wD8G4BfYhaCL3OZhfwAvbfzH44T/EPwLr9r/Yd+Hc+38T00pEkprNhfY91L0nZHceYu0+Rt15hHL9B0a2TsLYfYh6/QHSWw/Qdx/zYvNropvfk9j+ibGDRxQOjni9+x0JrXgiWZIzxJPpMIZHJJKyiuUUsZwC+WIJM++g6jlylo1mmOSdfHjzREoiFs6kSaVlBFZoSjqbD12SDQfxz41OsbO3j7+6id/dpNpo0u6u0llZp7X8Jq3ldZzSFEnVDmdk3TlxWbMFQ5v+EE6JBapZZDilMixpjCg5kkqOmJQlntbDXEo1+/rP5iPPA528ilmk7nbwghVqTY/y9Cx116dSa1JzPbygi54fewbaPx/p/8h6PmxScgXGp+doegHlS3OUJi8zU10I39HyNBdnqmhWEUncX7OeYxs5BRNJITFjFEJgkU/IehixtMbAhRhDKZWkaoZAol/IF8s1a5SU2scwpeTQnQm+vP8tX93/Bi3nsLv/ATdufML5mMTG1h6//f4HK911vGCDn49+YWJiitVrb/PxzVtcqcyH4LJ+CqiaaHaJm707fNa7jT1a5tPeXY6Pf2W+4dIKNjh68hTf79IONnn64zHj4xfZ3tvn3YP3UIz82Q37JUeTSkhdSBYyhNNy1g5lvzaUIi7rYU3JOaQ0i6w9Fvb0O/0/U07/YoGI01rGcJ7VJPWMRL8hwpT/AFzRQy4PtSDfAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/17e5238542933c39b79b29006cf8b71a/8ac56/result.webp 240w,
+/static/17e5238542933c39b79b29006cf8b71a/a3012/result.webp 360w&quot;
+              sizes=&quot;(max-width: 360px) 100vw, 360px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/17e5238542933c39b79b29006cf8b71a/8ff5a/result.png 240w,
+/static/17e5238542933c39b79b29006cf8b71a/f21e7/result.png 360w&quot;
+            sizes=&quot;(max-width: 360px) 100vw, 360px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/17e5238542933c39b79b29006cf8b71a/f21e7/result.png&quot;
+            alt=&quot;コンテストの結果&quot;
+            title=&quot;コンテストの結果&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&quot;実行環境&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E5%AE%9F%E8%A1%8C%E7%92%B0%E5%A2%83&quot; aria-label=&quot;実行環境 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;実行環境&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Windows10 バージョン21H1&lt;/li&gt;
+&lt;li&gt;WSL2 (Ubuntu20.04 LTS)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;tsukushi&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#tsukushi&quot; aria-label=&quot;tsukushi permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Tsukushi&lt;/h2&gt;
+&lt;h3 id=&quot;welcome-welcome-154-solves-100-pts&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#welcome-welcome-154-solves-100-pts&quot; aria-label=&quot;welcome welcome 154 solves 100 pts permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[welcome] Welcome (154 solves, 100 pts)&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;TsukuCTF 2021にご参加いただきありがとうございます。フラグの形式は全て&lt;code class=&quot;language-text&quot;&gt;TsukuCTF{}&lt;/code&gt;です。この問題のフラグは&lt;a href=&quot;https://twitter.com/tsukuctf&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Twitter&lt;/a&gt;のアカウント名です。質問などはTwitterのDMにお願い致します。&lt;/p&gt;
+&lt;p&gt;※トップページのロゴに何か隠れています… (競技には無関係です)
+※追記(12:28): アカウント名及びスクリーンネームどちらを入力してもAcceptされるよう変更いたしました。誤解を招く表記だったことお詫び申し上げます。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://twitter.com/tsukuctf&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Twitter&lt;/a&gt;のリンクを踏むとTsukuCTFのTwitterアカウントに飛びます．アカウント名がそのままフラグになっていました．&lt;/p&gt;
+&lt;p&gt;フラグ：&lt;code class=&quot;language-text&quot;&gt;TsukuCTF{2021}&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&quot;osint&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#osint&quot; aria-label=&quot;osint permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;OSINT&lt;/h2&gt;
+&lt;h3 id=&quot;easy-ramen-93-solves-100-pts&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#easy-ramen-93-solves-100-pts&quot; aria-label=&quot;easy ramen 93 solves 100 pts permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[easy] ramen (93 solves, 100 pts)&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ハッカーにとってラーメンは必須の飲み物だといわれています。写真のラーメン店の本店のインスタグラムIDを特定してください。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;以下の画像ファイルが配布されました：
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/c7968082e916090715da93ca70826578/bf6f8/ramen.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 76.25%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEUElEQVQ4yz3MSUxUdwDA4f+lSW9NWo1tUqvVSs2roG2pUuvCvlu0BTsgyCAjooDDKAoMIAxogLghiJARrbKLgCKgoCyFYYZhFlAYQqpNmhrjAija5fIO79e0Bw/f9RPnknxRe31CkLSCbR6ryUxIoMl4gbsdbQz39zA80MPoUB9jpiHMfT1YbjXQeyaNjgxfqhI34r1uJf6bviLsOw98PJYjDvp/zknVOoxJW6ktzcNm+QWndYApazsPBk/z3FnNI6uRaVM1k6Ot2KxDOO02bC0V6MMk1rt9RLDHUsLdl3A4RELovJdTHu2OrbaQmSkHNtNt/rBX89qWj61zD9WV33NQ+yWu7mP8NX6Sx9azOM3dTLtcVBoy2SYtImb9CvJ+8KT72I8IQ7gbVw74MjHSj3WknyeOKv4ZN/BsMA/NLjeWffMOQZ7vcSdNAw/v8aejgqeOMzywD+IYtRCzeQ2hqxeREy7RV7QTcSpS4nZpMveddlzWVt448pkdyeXpcC4VGZsJDvmYZJ+ldCX68cR+ljlbFQtjufzmbGbqwQTGo2rygldRpfaiK2cbojrek76ydCYcY8xYjLy25TI7nM3ToSxKz+8gSLOauO0fMt6hpaMlmod3dfxtz+F3xyUmJ8bpPJ5EneZb6vdvoUUXgLiVHc5A8W4mzP24rI28suUxZ8ri2VAOhjwv4tWfUnE6lIvFwVhqE5gzZ/PalsVDexMzE056DTHc1PlzPd2Pa1o/RG+hiv7CKBw9Lfw6M87j0RJmh7W8GNFjq4tlvDmRBXsxLyxFvLQU8Mp8mBfOM8zcN2Pp62G4pohbR4K5rQ/j5pFAxA19FNd0wTh6W7GO2XA5+pl3GZk1H2bOdIh50yGeD2iZN2WyYMtlYdrIo0kTZ0uLKNFrqUkO4po2gIY0f+pSfBA9J+K5nLSF4fpztLe3E//Tdtqa65kavcGzyQZeuoy8dNXw3NXMlKWNlrpLpCSoiI0M5Hp5EZc03lxO9qMmaSuX93n/F6qVOm2oUn9ouzLtsCt746OVL1YsViJCAxSNOk5JT9mnpKckKXtio5UQ342Kz3o3ZUegp1KSf1Spz4xVGlMDlZ/3+yu1KX5KfWqAIjrzd9GcEUGjNoT63CTudHaTvj+eDe5LWeu2BPdVS1izcjFrP3sfb89lxO3wJkurwaAO58rerVxN9qUuNYC6VD+uZ4Qgugpi5Ju5UXKbXiU36iLk43vC5fOnSuXyUyfklMQoOTpii7wzbKOcqAqWs9LUcn7GAVm/N1puPZEqmy/my0MX9HLLkXC54aCf3JQeJItuQ7TUXaCS2rIjpc4ijVQZ5yW9K4Rks45Lc/NvpLLifMmQmSp1tjdLA/cGpSifr6XRvm4JeOuKLlIqj/OSyuI2SaKrQPW/Nn2UuJEXKypjN4gPhBBjo04xO7cgykqOicKsVNHZ3iQG7w0KVcAGYR24I4C3ruoiRXmclzi3e5P4F9118LVP8QZyAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/c7968082e916090715da93ca70826578/8ac56/ramen.webp 240w,
+/static/c7968082e916090715da93ca70826578/d3be9/ramen.webp 480w,
+/static/c7968082e916090715da93ca70826578/e46b2/ramen.webp 960w,
+/static/c7968082e916090715da93ca70826578/f992d/ramen.webp 1440w,
+/static/c7968082e916090715da93ca70826578/882b9/ramen.webp 1920w,
+/static/c7968082e916090715da93ca70826578/2b8a8/ramen.webp 2047w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/c7968082e916090715da93ca70826578/8ff5a/ramen.png 240w,
+/static/c7968082e916090715da93ca70826578/e85cb/ramen.png 480w,
+/static/c7968082e916090715da93ca70826578/d9199/ramen.png 960w,
+/static/c7968082e916090715da93ca70826578/07a9c/ramen.png 1440w,
+/static/c7968082e916090715da93ca70826578/29114/ramen.png 1920w,
+/static/c7968082e916090715da93ca70826578/bf6f8/ramen.png 2047w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/c7968082e916090715da93ca70826578/d9199/ramen.png&quot;
+            alt=&quot;ramen&quot;
+            title=&quot;ramen&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;トッピングのヤングコーンが特徴的だったので「ラーメン ヤングコーン」でググったところ，&lt;a href=&quot;https://kikanbo.co.jp/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;鬼金棒&lt;/a&gt;というお店がヒットしました．メニューからラーメンの画像をいくつか見ていきましたが，どのラーメンも真っ赤で辛そうです (← 違う，そうじゃない)．残念ながら目当てのラーメンではないようです…．「ラーメン ベビーコーン」でググってみてもあまり変わりませんでした．
+いろいろ調べてみるとGoogle検索では画像から検索することができるようです．配布された画像で検索をかけてみると， “serveware” という英単語で検索されて画像もスープのようなものばかりがヒットしました．これも違う…．
+今度は「ベビーコーン ラーメン」でググってみると&lt;a href=&quot;https://tabelog.com/keywords/%E3%83%A4%E3%83%B3%E3%82%B0%E3%82%B3%E3%83%BC%E3%83%B3/tokyo/kwdLst/MC/4/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;東京でおすすめのラーメン(ヤングコーン)をご紹介！ (4ページ目)&lt;/a&gt;という記事を発見．記事を眺めていると配布された画像そっくりのラーメンが!!どうやら銀座篝 Echika池袋店というラーメン屋だそうです．店名さえ分かればこっちのもの．Instagramにて&lt;a href=&quot;https://www.instagram.com/kagari_honten/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;お店のアカウント&lt;/a&gt;を探し出して無事にフラグを入手できました．&lt;/p&gt;
+&lt;p&gt;フラグ：&lt;code class=&quot;language-text&quot;&gt;TsukuCTF{kagari_honten}&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&quot;misc&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#misc&quot; aria-label=&quot;misc permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Misc&lt;/h2&gt;
+&lt;h3 id=&quot;easy-toritsukushi-90-solves-100-pts&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#easy-toritsukushi-90-solves-100-pts&quot; aria-label=&quot;easy toritsukushi 90 solves 100 pts permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[easy] TORItsukushi (90 solves, 100 pts)&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;大文字文字列 &lt;code class=&quot;language-text&quot;&gt;TSUKUSHI&lt;/code&gt; を可能な限り何度も取りつくしてください。残った文字列がフラグです。フラグ内に大文字文字列 &lt;code class=&quot;language-text&quot;&gt;TSUKUSHI&lt;/code&gt; は含まれていません。&lt;/p&gt;
+&lt;p&gt;※追記(12:38): 文中に大文字を追加しました。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;長い長いテキストファイルが配布されました．エディタの置換機能などを利用してひたすら “TSUKUSHI” を削除していくと，フラグを入手できました．&lt;/p&gt;
+&lt;p&gt;フラグ：&lt;code class=&quot;language-text&quot;&gt;TsukuCTF{Would_you_like_some_fresh-baked_Tsukushi?}&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;easy-customization-98-solves-100-pts&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#easy-customization-98-solves-100-pts&quot; aria-label=&quot;easy customization 98 solves 100 pts permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[easy] Customization (98 solves, 100 pts)&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Tsukushiくんは自分を鍛えるために、毎日欠かさず活動を行う習慣化を行うことにしました。マンダラートを利用しますが、晒されるのが恥ずかしいので目標の部分を消してしまったようです。目標を見つけてください。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://docs.google.com/spreadsheets/d/1Q-3HaD9aIsjT6bDFSp3avXMbrHB6g0OsR3hfuB9MSvE/edit#gid=0&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;https://docs.google.com/spreadsheets/d/1Q-3HaD9aIsjT6bDFSp3avXMbrHB6g0OsR3hfuB9MSvE/edit#gid=0&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;※追記(12:45): フラグが想定とは別のものになっていましたので修正いたしました。以前のフラグでもAcceptされるよう変更しました。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;リンクを踏むと以下のようなGoogleスプレッドシートを見ることができました：
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 958px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/41636836fca204b1ccd806b305c5969d/b97f6/customization.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 63.74999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABJ0AAASdAHeZh94AAADVklEQVQ4y0WQb2iUBRzHf85F1uYMo7VyXoRKZaNcrRdRlGQQVG8yjDDINFNkact06w9EvogomqsEEQqdGLHCJiOH4tkfF2uDpdvu5u3+P3/vuee5u909c+e2u9vdpzShF5833xcf+H6kPD0D7gzMF2BhAYolKF2jcIMFKBTgyhVY4D9mgat5mJ+H2TzcmOYA+djJ8kYyxy5F5+14nHbHocMw6TBd9iVcWlWdnZEw2y9H6VC8fBDZwo7AYV71hdijJ9mRcBnoPw+d31A8cw7ZmMqyykjSktBYq0SQdAaJBxHlB8T4hUdjfu7RQ4hbRJTvkUADtcZHPK7q3G4PIrO/semrjfRurGagawsSNQKMhoZx014mrH7qc1kkMYSYS2mx1pE3f+ekPcaidIZbTAUxY2yzRsEa4z37dSQpVNk1SKGOZ+yXkKfSLdTawkrnJhqcRqpcGzGmkdhfSMJHjRJlsRZHYg4SOIL4b6bGbMMzBbXOfiQuiPEJkjV4Uh9F7kv8hCiHEOUYEj6ERNZzh/95uoMX6ImOcCx2ke7YMH2RS+yaaEfGBVE3IRaI9g4SErbrnZwvwmA+jzSl5pDkLG1mkv3GCFXaIjyhJbhqP+V4L8W/dzPn/xQSgxzVjiMzu3louptOx2B98jhibeaIfRYqQGUBuT9lI5bKafsSXus0S9w67jbrcZJ/MKP+zMzws+TGWsEd4VTgAqsGxtgXGEV3L7JzykQyJboyLpTLzJfLSLOqIqEgi2M6VaFhxFhGY2A5vmAfauRXLk+cYdLfz2Tcy9B3Bxh9cAV7DnQgcY2qaARRwhxMWlCpULwmjKXTTDo23vEAPRN/ssy/FBlpoNHwcZepcattcpuVpCGo0uCP4glo1MR0xFAQK4Pkyhx0slApUyxXkHdTKV62TK5aPqbNs9Q7tYjiQfQsHjNHX8LHh9YJJPIYom5A8i/wROZzhvQUm/VORHuAr62e6w2L5RJyp64j4RB7EwHet7xIqhpRqhGzlXrrM77Qx9maPIm4W/Gce4S33hT2Hm2kS93GBu01JPIcX1q9/wtf0TTWhsOs1m3u1Sd4OPo064JNNCsraNJfZGXKYU1iijV2gbZvf6RU18Th9maWT9XTZHSx2oATqdz1y6V/G/4DvGIANZCUtAAAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/41636836fca204b1ccd806b305c5969d/8ac56/customization.webp 240w,
+/static/41636836fca204b1ccd806b305c5969d/d3be9/customization.webp 480w,
+/static/41636836fca204b1ccd806b305c5969d/cb8de/customization.webp 958w&quot;
+              sizes=&quot;(max-width: 958px) 100vw, 958px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/41636836fca204b1ccd806b305c5969d/8ff5a/customization.png 240w,
+/static/41636836fca204b1ccd806b305c5969d/e85cb/customization.png 480w,
+/static/41636836fca204b1ccd806b305c5969d/b97f6/customization.png 958w&quot;
+            sizes=&quot;(max-width: 958px) 100vw, 958px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/41636836fca204b1ccd806b305c5969d/b97f6/customization.png&quot;
+            alt=&quot;Customization&quot;
+            title=&quot;Customization&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;一見するとマンダラートの中央のマスは何も書かれていないように思えますが，これは文字とマスの背景が同じ色になっています．マスをクリックすると文字が読めるようになり，フラグを入手できました．&lt;/p&gt;
+&lt;p&gt;フラグ：&lt;code class=&quot;language-text&quot;&gt;TsukuCTF{yak1n1ku_ta6eta1}&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&quot;hardware&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#hardware&quot; aria-label=&quot;hardware permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Hardware&lt;/h2&gt;
+&lt;h3 id=&quot;easy-cad-82-solves-100-pts&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#easy-cad-82-solves-100-pts&quot; aria-label=&quot;easy cad 82 solves 100 pts permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[easy] CAD (82 solves, 100 pts)&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;少し早いが筑紫くんと素日華ちゃんは少し早いが今年のクリスマスについて話をしていた。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;素日華ちゃん「クリスマス、キーホルダーが欲しいな～」
+筑紫くん「いいよ～素日華の好きな動物を模したものを作っちゃおうかな～」
+そして、筑紫くんは3Dプリンタで彼女の好きな動物をキーホルダーにして、メッセージも残したらしい。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;※この問題はCADソフトが手元にない場合でも解くことが可能です。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;STLファイルが配布されました．Windowsには「3Dビューアー」が標準インストールされているので，ファイルを開くことができます．3Dモデルをひっくり返すと，裏面にフラグが彫られていました：
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 862px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/12b6cab6cd620773cd3d1cc7777a7e14/f0551/cad.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 60%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABJ0AAASdAHeZh94AAACYUlEQVQoz1WTWVMaURCF5+dSFA9UGTRGxaDsFrsCmmFEBATC5DmipgzEvMSSACLMAsOOGit/4aS6lcQ8nFnu3Pn69HKF27su2h0Fna6KrqpD0XowhmO+n198wVHmGB9EkSUdplGtXWEwmkDvG9B6BlS9D0XV0VE05gh0UbUe+oMRjOEIo8kMP65vkMkc4+DgANls9j9JkoTrmzqG4ynDNAJqPXQVjaECuSKXoVAYGxt2diWKItLpNIrFIkqlEsrlMmRZRlmWUSgUeF3vGXh8+o3J7J5NUFYEFQi2t7eH95ubWFtbw+7uLlKpFDKZDHK5HE5OThhAIlg+n+d1UUzB4/FidfUd6+z8AsZgBKHVvoPH42G5XC5sb28jGAzC7/cjFArB5/MhEolgf38fiUQC0WiUQVtbWzCbzbBYLLBarVheXkbl/AICFbd29Z0jLoAkCkAwApDi8ThisRgH2dnZ4YBOpxMOh4PvNtsblOVPzzWkGjSat3C73QgEAgiHw5w6OUomk9wccrgQfaMs0ukjpFIS7HY7v7faHQiKpnO3esYAiUQS6+vr8Pm87IQ2UbqkhVNyRwEvqzWMpzOejNPKGeqNJk+KoLzM3mQ2R6FYRDQaQyAYxNLSEv9MaVN6JK/XC0k6RPO2jfvHJ55H6u54OmcYcQRqNT3o/QG6qsaibptMJi48qfbtCs1Wm11QeabzBwaRCPR3wAl49+qE0LDWfzZhs9nwdmWFC375tYr5wy+GkGjPaxiVioE03KpGJ6WLjvIMVdmpgc+nFXwsy2i02jy4fIoWGo5eQEPO6h9MB5n7A5Fy7Y5PiiX3AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/12b6cab6cd620773cd3d1cc7777a7e14/8ac56/cad.webp 240w,
+/static/12b6cab6cd620773cd3d1cc7777a7e14/d3be9/cad.webp 480w,
+/static/12b6cab6cd620773cd3d1cc7777a7e14/e32b8/cad.webp 862w&quot;
+              sizes=&quot;(max-width: 862px) 100vw, 862px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/12b6cab6cd620773cd3d1cc7777a7e14/8ff5a/cad.png 240w,
+/static/12b6cab6cd620773cd3d1cc7777a7e14/e85cb/cad.png 480w,
+/static/12b6cab6cd620773cd3d1cc7777a7e14/f0551/cad.png 862w&quot;
+            sizes=&quot;(max-width: 862px) 100vw, 862px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/12b6cab6cd620773cd3d1cc7777a7e14/f0551/cad.png&quot;
+            alt=&quot;CAD&quot;
+            title=&quot;CAD&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;フラグ：&lt;code class=&quot;language-text&quot;&gt;TsukuCTF{ILIK3B3ar}&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;easy-ltika-49-solves-100-pts&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#easy-ltika-49-solves-100-pts&quot; aria-label=&quot;easy ltika 49 solves 100 pts permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[easy] Ltika (49 solves, 100 pts)&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Tsukushiくんはシリアル通信等メッセージを送ることに飽きてしまったため、Lチカ（LEDを光らせること）でメッセージを伝える方法を考案した。メッセージを（ローマ字(大文字)、数字、記号を含む）フラグ形式で答えてください。例えばメッセージがTSUKUSHI123&amp;#x26;の場合、フラグはTsukuCTF{TSUKUSHI123&amp;#x26;}となります。&lt;/p&gt;
+&lt;p&gt;※この問題はマイコンが手元にない場合でも解くことが可能です。（Tinkercadを使ったardunioのシミュレータも使用可）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;以下のようなINOファイルが配布されました：&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ltika.ino&quot;&gt;&lt;pre class=&quot;language-ltika.ino&quot;&gt;&lt;code class=&quot;language-ltika.ino&quot;&gt;void setup() {
+  // initialize digital pin LED_BUILTIN as an output.
+  pinMode(LED_BUILTIN, OUTPUT);
+}
+
+void blinking(){
+  digitalWrite(LED_BUILTIN, HIGH);
+  delay(500);
+  digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
+  delay(300);                       // wait for a second
+}
+void lit(){
+  digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
+  delay(2000);                       // wait for a second
+  digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
+  delay(300);                       // wait for a second
+}
+
+void wait(){
+  digitalWrite(LED_BUILTIN, LOW);
+  delay(1200);
+}
+// the loop function runs over and over again forever
+void loop() {
+  blinking();
+  wait();
+
+  lit();
+  blinking();
+  wait();
+
+  blinking();
+  lit();
+  lit();
+  lit();
+  wait();
+
+  lit();
+  lit();
+  lit();
+  lit();
+  lit();
+  wait();
+
+  lit();
+  blinking();
+  lit();
+  lit();
+  wait();
+
+  blinking();
+  blinking();
+  blinking();
+  blinking();
+  wait();
+
+  blinking();
+  lit();
+  wait();
+
+  blinking();
+  lit();
+  blinking();
+  wait();
+
+  lit();
+  blinking();
+  blinking();
+  wait();
+
+  blinking();
+  lit();
+  lit();
+  wait();
+
+  blinking();
+  lit();
+  wait();
+
+  blinking();
+  lit();
+  blinking();
+  wait();
+
+  blinking();
+  wait();
+
+  lit();
+  blinking();
+  lit();
+  blinking();
+  lit();
+  lit();
+  wait();
+
+  delay(3000);
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;VS Codeで開くと，アイコンからArduinoのファイルであることが分かりました．コードを読み進めていくと，定義されている関数はそれぞれ&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;blinking関数：短音 (.)&lt;/li&gt;
+&lt;li&gt;lit関数：長音 (-)&lt;/li&gt;
+&lt;li&gt;wait関数：空白&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;に対応しているようです．loop関数内の処理をモールス信号に変換すると以下のようになりました：&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;. -. .--- ----- -.-- .... .- .-. -.. .-- .- .-. . -.-.--&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href=&quot;https://morsedecoder.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Morse Decoder&lt;/a&gt;で復号するとフラグを入手できました．&lt;/p&gt;
+&lt;p&gt;フラグ：&lt;code class=&quot;language-text&quot;&gt;TsukuCTF{ENJ0YHARDWARE!}&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;easy-pcb-29-solves-152-pts&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#easy-pcb-29-solves-152-pts&quot; aria-label=&quot;easy pcb 29 solves 152 pts permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[easy] PCB (29 solves, 152 pts)&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;筑紫くん「素日華の誕生日プレゼントに彼女の好きな星座を基板に入れたけど気づいてくれるかな～」&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;フラグは星座を表す英単語大文字で答えてください。例えば星座が仔犬座の場合はTsukuCTF{CANIS MINOR}、獅子座の場合はTsukuCTF{LEO}となります。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;※この問題は基盤設計ソフトが手元ない場合でも解くことが可能です。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;以下のようなファイルが圧縮されたZIPファイルが配布されました：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;TsukCTF.drl&lt;/li&gt;
+&lt;li&gt;TsukCTF-B_Cu.gbl&lt;/li&gt;
+&lt;li&gt;TsukCTF-B_Mask.gbs&lt;/li&gt;
+&lt;li&gt;TsukCTF-B_SilkS.gbo&lt;/li&gt;
+&lt;li&gt;TsukCTF-Edge_Cuts.gm1&lt;/li&gt;
+&lt;li&gt;TsukCTF-F_Cu.gtl&lt;/li&gt;
+&lt;li&gt;TsukCTF-F_Mask.gts&lt;/li&gt;
+&lt;li&gt;TsukCTF-F_SilkS.gto&lt;/li&gt;
+&lt;li&gt;TsukCTF-job.gbrjob&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;ブラウザで「pcb viewer online」と検索すると&lt;a href=&quot;https://www.altium.com/viewer/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;ALTIUM 365 VIEWER&lt;/a&gt;というサイトを発見．圧縮されていたファイルの全てを投げると以下のような画像が表示されました：
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 471px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 112.08333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWCAYAAADAQbwGAAAACXBIWXMAABJ0AAASdAHeZh94AAACxUlEQVQ4y5VVv08UQRid44CLKIVyNB6Eq4gYVAi/laBGDZU2xE5sFQsSEztb/wQTGy1NLPxRmWCiMRFJbAwa1GigoEAkeLezO3t76/6YeWZ3Z/dmvTvU4suX/WbmzZvvvZkl2owGv8OH0+3Azbtw8lF2u5Q4JOtqLV/LwVp/vw/trAbCBhlAANEiwhyHIAI8yyEyAryVJ7UgR/VoLP4Osj6lg9BxCm1SQ+l0CVbRAhtgoKMU5VNlaCc10AkKbVqDccJAtc9CpZ/BKtqoHgToiAE6RhFg6MM6di/tgrDjEUPeVmMTMsiKkHWcY5Yh0w4Lxs2XcIsUQq4N6saoUQOM6TeOaMy6+BXe4W14+S8wrq7C76qm2mWMqIABG9IsAlAf9NYT2MNvAMJSvU4AQ4axKH+ApEQ44ILefgjevSnriESJ56mAdFyHlwN4zk+Opm4QAnYaYHMr4J2eMobGgNr5HVRmNyQgwBaWYV3YkBOjmt8KcLKd6rVQeptmOLsFY+FtwsyeWoc18V5h6kC78wj29DcJWDtqMkcFDPwV7yyINHBmB4J8BogJQV6jOrkOv8tO9bUpIDumqhws8CFyAJt/Bj+/BBA71ddGtkoDKj4UmahnYt9PmNcewCusADFrwuvU3xtQCgBigeeWJRCF07MGZ2gLoiUSoRFoEx8CXsGC2/8CIBWItmjyr2IV2t178Ns3ZUu4YvYGKutjFMggZMTmnkJfXEkYqyz0649hXn4nx3jENiPqb8r3+0sw519BkFXwXBmiVcijIWVe90gZzuAH8HZ5WzJNeqjP7ALt1VDdejVF3cMhsp8AshZayuv7Aa9gyOPHPTxakbugwT1WvkNDS8VbApOvgt14DvPKx2SzyNhD0tjydf63iNrBZYis8h6aA+Ye7yD+8kam/WgOMZDSuVL4A7J7bdiF/4weGb023LyD7TMafgObSyhnINY6pgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/a9fff9219fd6ff096995fbf1017bcf24/8ac56/pcb.webp 240w,
+/static/a9fff9219fd6ff096995fbf1017bcf24/7e43b/pcb.webp 471w&quot;
+              sizes=&quot;(max-width: 471px) 100vw, 471px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/a9fff9219fd6ff096995fbf1017bcf24/8ff5a/pcb.png 240w,
+/static/a9fff9219fd6ff096995fbf1017bcf24/1f09d/pcb.png 471w&quot;
+            sizes=&quot;(max-width: 471px) 100vw, 471px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/a9fff9219fd6ff096995fbf1017bcf24/1f09d/pcb.png&quot;
+            alt=&quot;PCB&quot;
+            title=&quot;PCB&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;これは白鳥座です．白鳥座の英語名を調べるとフラグを入手できました．&lt;/p&gt;
+&lt;p&gt;フラグ：&lt;code class=&quot;language-text&quot;&gt;TsukuCTF{CYGNUS}&lt;/code&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[熊大の数理工を紹介する話]]></title><description><![CDATA[こんにちは．Fumiyanです．今回は私が所属している数理工学教育プログラム (旧・数理工学科) を紹介したいと思います．]]></description><link>https://fumiyanll23.com/posts/Introduction-to-Math-Eng</link><guid isPermaLink="false">https://fumiyanll23.com/posts/Introduction-to-Math-Eng</guid><content:encoded>&lt;h2 id=&quot;はじめに&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&quot; aria-label=&quot;はじめに permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;はじめに&lt;/h2&gt;
+&lt;p&gt;こんにちは．&lt;a href=&quot;htpps://fumiyanll23.com&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Fumiyan&lt;/a&gt;です．
+今回は私が所属している数理工学教育プログラム (旧・数理工学科) を紹介したいと思います．&lt;/p&gt;
+&lt;p&gt;YouTubeにいくつか紹介動画がアップされているので，まずはそちらをご覧ください&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=f2Jc-coXpVM&amp;#x26;list=PLGr7stfmmGK7Ey-t3BFDSusb6HhMTOkfB&amp;#x26;index=11&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;学部，学科，教育プログラムおよび研究室の紹介&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;前半は工学部機械数理工学科数理工学教育プログラムの紹介です&lt;/li&gt;
+&lt;li&gt;後半は私が所属している研究室の紹介です&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=WUMJwg6WhRI&amp;#x26;list=PLGr7stfmmGK7Ey-t3BFDSusb6HhMTOkfB&amp;#x26;index=7&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;研究内容の一例&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;データを安全に保管する技術である「秘密分散法」の紹介です&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://shiromol301.github.io/ssss-demo/sharing&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;動画内に登場したWebアプリケーションのURL&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;faq&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#faq&quot; aria-label=&quot;faq permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;FAQ&lt;/h2&gt;
+&lt;p&gt;※以下は「はじめに」で紹介した動画を視聴していることを前提に書いてあります&lt;/p&gt;
+&lt;h3 id=&quot;q-工学部の他学科と比較した数理工学教育プログラムの魅力は何ですか&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#q-%E5%B7%A5%E5%AD%A6%E9%83%A8%E3%81%AE%E4%BB%96%E5%AD%A6%E7%A7%91%E3%81%A8%E6%AF%94%E8%BC%83%E3%81%97%E3%81%9F%E6%95%B0%E7%90%86%E5%B7%A5%E5%AD%A6%E6%95%99%E8%82%B2%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%AE%E9%AD%85%E5%8A%9B%E3%81%AF%E4%BD%95%E3%81%A7%E3%81%99%E3%81%8B&quot; aria-label=&quot;q 工学部の他学科と比較した数理工学教育プログラムの魅力は何ですか permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Q. 工学部の他学科と比較した数理工学教育プログラムの魅力は何ですか?&lt;/h3&gt;
+&lt;p&gt;工学部の他学科の科目も履修できることです．私は&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;情報工学 (オペレーティングシステムやネットワーク，プログラミングなど)&lt;/li&gt;
+&lt;li&gt;機械工学 (熱力学や流体力学，数値解析など)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;に興味を持ったので，それらに関係する科目を履修しました．&lt;/p&gt;
+&lt;h3 id=&quot;q-どのような科目を履修しますか&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#q-%E3%81%A9%E3%81%AE%E3%82%88%E3%81%86%E3%81%AA%E7%A7%91%E7%9B%AE%E3%82%92%E5%B1%A5%E4%BF%AE%E3%81%97%E3%81%BE%E3%81%99%E3%81%8B&quot; aria-label=&quot;q どのような科目を履修しますか permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Q. どのような科目を履修しますか?&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.eng.kumamoto-u.ac.jp/department/dept2/dept2-2/#anchor3&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;こちら&lt;/a&gt;に掲載されています．&lt;/p&gt;
+&lt;p&gt;一般に，大学で開講されている講義は&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;開講時期 (前期 or 後期，曜日，時限)&lt;/li&gt;
+&lt;li&gt;取得単位数&lt;/li&gt;
+&lt;li&gt;学習する内容や講義の回数&lt;/li&gt;
+&lt;li&gt;成績のつけ方 (テストやレポートの有無とそれらの配点)&lt;/li&gt;
+&lt;li&gt;参考文献&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;などの情報 (シラバス) が公開されています．興味を持った講義は自分で調べてみましょう．
+熊本大学のシラバスは&lt;a href=&quot;http://syllabus.kumamoto-u.ac.jp/index.html?locale=ja&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;こちら&lt;/a&gt;です．&lt;/p&gt;
+&lt;h3 id=&quot;q-人数が少ないと聞きました&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#q-%E4%BA%BA%E6%95%B0%E3%81%8C%E5%B0%91%E3%81%AA%E3%81%84%E3%81%A8%E8%81%9E%E3%81%8D%E3%81%BE%E3%81%97%E3%81%9F&quot; aria-label=&quot;q 人数が少ないと聞きました permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Q. 人数が少ないと聞きました&lt;/h3&gt;
+&lt;p&gt;学年あたり約20人という少人数のプログラムです．
+そのため，学年を問わず学生同士の仲が良いです．
+また，先生方との距離が近いので気軽に質問や相談ができます．&lt;/p&gt;
+&lt;h3 id=&quot;q-卒業後の進路はどのようなものがありますか&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#q-%E5%8D%92%E6%A5%AD%E5%BE%8C%E3%81%AE%E9%80%B2%E8%B7%AF%E3%81%AF%E3%81%A9%E3%81%AE%E3%82%88%E3%81%86%E3%81%AA%E3%82%82%E3%81%AE%E3%81%8C%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99%E3%81%8B&quot; aria-label=&quot;q 卒業後の進路はどのようなものがありますか permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Q. 卒業後の進路はどのようなものがありますか?&lt;/h3&gt;
+&lt;p&gt;機械数理工学科の卒業後の進路は&lt;a href=&quot;https://www.eng.kumamoto-u.ac.jp/department/dept2/dept2-4/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;こちら&lt;/a&gt;に掲載されています．
+また，数理工学教育プログラムの卒業後の進路は&lt;a href=&quot;https://srik.kumamoto-u.ac.jp/course&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;こちら&lt;/a&gt;に掲載されています (動画内のものとほとんど同じです)．&lt;/p&gt;
+&lt;h3 id=&quot;q-具体的な時間割を教えてください&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#q-%E5%85%B7%E4%BD%93%E7%9A%84%E3%81%AA%E6%99%82%E9%96%93%E5%89%B2%E3%82%92%E6%95%99%E3%81%88%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84&quot; aria-label=&quot;q 具体的な時間割を教えてください permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Q. 具体的な時間割を教えてください&lt;/h3&gt;
+&lt;p&gt;画像はある学生が学部1，2年生のときに組んだ実際の時間割です．&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;学部1年生
+&lt;ul&gt;
+&lt;li&gt;前期&lt;/li&gt;
+&lt;/ul&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 750px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/468e9a7517355779257917d2f99c0ff7/1d69c/2019-spring.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 60%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAA7DAAAOwwHHb6hkAAACqUlEQVQoz12R3WscVRjG529QL7wRL73u/yF4G1IRocULb4y2Cm0xVtqCV0YTNxtTq4gaCiIUSmNRKNZuI7YJVGiI6drs96a7szM7X+dzZvYnM5N44YGH5znPeXl53vc4QljiKMWfSto9l+EoLLk38PACjesrvGmFSQG/Ym+qGY4idvd77DX7PP67y8SLcC6tP+LE/E3mzt5l/r0G8wv3eOP9u8wt/M7JdxucOtdg/kyjfDt9rsHrZxucPHOPty7c580PCm+Lty8+YG7hPj9uHuAs/rzD84sbfLP1BCFm9J9VCdojw7OxwZ0omgNNf6RpDhSPW5b+oSKMJUGoiSLJbith72lCFCU4Vzb/4JWLX3P1ziO63ZCDYtzhmIP+hO5wQqs15p+OS3fg0u6Pafc9DgcuneGYpx2P8chltyV40tZIKXC++ukmr71znguffMrS5+ssfVZndbXOSm2N5S/WWKlVular9NLyGssrder1NWqrdb68eo1Ob0wQaIRIcBZvb/Pixz/w/XabSMHhGJSFoQ+xhFDCcAqhgFEEbRem08prDsGLwSiJVgIpBM75W3/y3Iffcn27SWYgSTRSKfzIEiUW39f4oSERBqMUWWpJraY30nRcy8jVZaNjOJd/2eGlSxtsPNjHyJwgkCSJwAsVfqCJQok1Cq0kQgi00igpy08JY00YyKNmFTtXft3h5csb3PirSXG0MWityVNLnlmM0RhTcOWnaVpqazR5lmJtlVAdJ/zo9kNeWPyO6w/3ILPESUIcx2WaoqC4F1oc+YWXxPGRliRxUr79N/K1rV1eXd/kt/1umTC1KZlNmeU5sywnt4ZZljGbzcjzvKwpuEDhZVlWruAYTqYUeZKAMSAlM2NRkURFCfEkxLguZhpgtC7XUfLR6P8/WZryLx9lV6xHvy3rAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/468e9a7517355779257917d2f99c0ff7/8ac56/2019-spring.webp 240w,
+/static/468e9a7517355779257917d2f99c0ff7/d3be9/2019-spring.webp 480w,
+/static/468e9a7517355779257917d2f99c0ff7/08b4d/2019-spring.webp 750w&quot;
+              sizes=&quot;(max-width: 750px) 100vw, 750px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/468e9a7517355779257917d2f99c0ff7/8ff5a/2019-spring.png 240w,
+/static/468e9a7517355779257917d2f99c0ff7/e85cb/2019-spring.png 480w,
+/static/468e9a7517355779257917d2f99c0ff7/1d69c/2019-spring.png 750w&quot;
+            sizes=&quot;(max-width: 750px) 100vw, 750px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/468e9a7517355779257917d2f99c0ff7/1d69c/2019-spring.png&quot;
+            alt=&quot;2019年度前期&quot;
+            title=&quot;2019年度前期&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;ul&gt;
+&lt;li&gt;後期&lt;/li&gt;
+&lt;/ul&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 750px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/441c8aa0a4acd7073eed6bb3ed8db158/1d69c/2019-fall.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 60.416666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAA7DAAAOwwHHb6hkAAACjklEQVQoz22S204TURSG+wx64eHOd/AVfALvfAkTRKNgFE+oKDEmxsQb46Etp2k08dDiAWmtJTozKcgFBBFD6BCkpTCdPXsOneln9hRMPOxkZf1rH/79/2vv1MLSDqXKJh8qFhOvFnnx/gfa60VyhSUKpXUmP1rkixaFksXbssI13n6ymCxZFIo18sU13pTXeTlVY3G5Ser0gy/sP57lxPkS527NcmbI4PSQSc81k75bOhfu6PQP6/Td1um9adAzaNA/bNB7w+DkoEHPdYOr96r0XteZLK6SujRV5dDQGONfa6gRd6CtMv8Or93NUQTBHxvCJOK2R2r4xTRHz97lXq6Aoc9RKutMlQ2myyaViomuG+iGyecvJu+LBpXPJuUZnelPJjMVk7nZKs3mNq6QCCFI3X+W59ipK1y5/5BM9hnptEZmRCM7luPJSI7RcY1cLoemaTzOaDx6miOTmSA7qtY1suPP2Wo08D0fV7ik+vMm+y6P8ES3aMcgJPh71v6yXHeg5YOUEMbQ2d3jexLpukmkBvI6hy+lSc8sIB2f1ZrN/IrDN0uwsuawumbzvebQaLRY+2ljbQi2t3aQooXrOIiWjSsEnuySpi7mdQ4OpBk1lvBlh/qWZNnyseoBje0AITwC309CHQqDACklvpoLAjzP+60uIbyQ1zkwkEarriS2bKfN8nrEpt2h6XQIwjadTkwcx7TbCneSrGqFoyj6k/DypJFYnjAWIA6wlYWWgy8F0nVo2TZCWXO6WNnbm1PY2c2/LQ++q3JkcIzn812Fwd7tuw8R7eI9Nd1/GCX1fxXaOy02Nup4jgvSJfICpC2QtkOrvo2/+RO/2cT3vKRvKlTfwjBMyBVpIkC1JAz5BedPVFz7daKUAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/441c8aa0a4acd7073eed6bb3ed8db158/8ac56/2019-fall.webp 240w,
+/static/441c8aa0a4acd7073eed6bb3ed8db158/d3be9/2019-fall.webp 480w,
+/static/441c8aa0a4acd7073eed6bb3ed8db158/08b4d/2019-fall.webp 750w&quot;
+              sizes=&quot;(max-width: 750px) 100vw, 750px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/441c8aa0a4acd7073eed6bb3ed8db158/8ff5a/2019-fall.png 240w,
+/static/441c8aa0a4acd7073eed6bb3ed8db158/e85cb/2019-fall.png 480w,
+/static/441c8aa0a4acd7073eed6bb3ed8db158/1d69c/2019-fall.png 750w&quot;
+            sizes=&quot;(max-width: 750px) 100vw, 750px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/441c8aa0a4acd7073eed6bb3ed8db158/1d69c/2019-fall.png&quot;
+            alt=&quot;2019年度後期&quot;
+            title=&quot;2019年度後期&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;学部2年生
+&lt;ul&gt;
+&lt;li&gt;前期&lt;/li&gt;
+&lt;/ul&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 750px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/995c6b262e903901f29dc1104612c1f3/1d69c/2020-spring.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 54.58333333333334%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACY0lEQVQoz42QW08TQRiG+xu800TjX/DGv+CVV/4JvTExIYDKQcAQoOEgHoKJEA10Q1AJxtIGORVFgrJFoa0cTLjQUiDSdtvd2e7O7vYxu0DECxO/ZPLOvPPlmfeb0Pq3AvOL+8wt7vIqvsWb6R3GJjd5GdsmltglvpBlcj7LZCIb7KNzRzr1wdefxBI/iL/PEp3P8fHzDqHrfUucuaZwtXaG2s51atpVWvtV7vUlaexZoblPpaFHpaFbpeWBSmOPSlOvys32VW40qdwNJ2l7tEp9eJWR118J1U2tcD48RngxQ0WCbfFf5beZ8vSpSjF/QKj19RyX7jymVYmSWt8kuZrmUzJFdCHDbCLD2lqadDpDKpVmdilNfCZDUk3zfSvD5kaa7e1tyiWdimmR280R6lbGuXKrmZquh7wYHmVwKMLQ8wgDgwrPBhUikQiK4quCokQYHVUYHokwMKTQ/2SYiYkopjCwLZu9XI5QXWyFc+1jdCUyQXjHBd2CbBF0/d8j58qwXwBH8ge4t0fodnSZC20KHVMq0rTRNAOtpJMvCkqawNB1TCEQhkFe08kXfF9HVgS2JRDCCO6kfQysjy5z8b5C18wXpA2GLtkv2mxkHQ4OnKDRcRwcKSkJG63sYopjz3GxbftvYO3bZc62ROh8twKejWH4L+rYFYFpGui6jhBHSYVepmL6+3IAMU/808CO6SSXe8d5upgK/kZKP42D53p4rosrJVXPw/M8XNelWq0G6h17UsoghG1ZR0CzbFAuaFjChIqJZ0mssqCiC4zDEvLwF7amBaOdXv7IJ+WD/Srk8/wGXl8HkiypPPwAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/995c6b262e903901f29dc1104612c1f3/8ac56/2020-spring.webp 240w,
+/static/995c6b262e903901f29dc1104612c1f3/d3be9/2020-spring.webp 480w,
+/static/995c6b262e903901f29dc1104612c1f3/08b4d/2020-spring.webp 750w&quot;
+              sizes=&quot;(max-width: 750px) 100vw, 750px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/995c6b262e903901f29dc1104612c1f3/8ff5a/2020-spring.png 240w,
+/static/995c6b262e903901f29dc1104612c1f3/e85cb/2020-spring.png 480w,
+/static/995c6b262e903901f29dc1104612c1f3/1d69c/2020-spring.png 750w&quot;
+            sizes=&quot;(max-width: 750px) 100vw, 750px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/995c6b262e903901f29dc1104612c1f3/1d69c/2020-spring.png&quot;
+            alt=&quot;2020年度前期&quot;
+            title=&quot;2020年度前期&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+&lt;ul&gt;
+&lt;li&gt;後期&lt;/li&gt;
+&lt;/ul&gt;
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 746px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/91a4bc592325169efb01d7738f3e2c67/62de4/2020-fall.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 53.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAA7DAAAOwwHHb6hkAAACTUlEQVQoz2WSS08TURiG52e4ILp27Z9wa+JaoyYmKpTEqIiaaCGS6IaNifECtkCnQYgsWKjRGJXLTEuBzjRgosDKhNpKL3Ptmc70MWeKEPQkX75n5su85zmTo2ztWJQ26hSMCu+/bPNZ/8nHxR0+fN0mZ1TJGRW09W7JZz3uFfKSixWW136RK3ZnhdJvlPMPFzh2Zpqztz5xc2SFvqRG/5DGlfs6l25rJJJa/K73wTKJIZ2LgxqX72hcTea4MKDRd1+jdzjPuYEcieQKSt+8Ts+jGaaKP/i7Oh1ohRAI/luRnIcgIvCDLrt+i7otcB2BMph9y6m7Txidfcd6cZOFZRMtZ7Cgm6wWTIpGEdMsUSwamKbB5kaJUsmgsGaQXy2h6Sb1Wg3he3iugzKSnuH09ST3Rp+SnpwmlVKZnFJ5mcryKpUlk8mgZrOoqsr4hMrz8SzpdJefjWWZnMhS3t1FtKShg3JtTqNn5DVj+a34SCKAVhuqNtjO0eOKEFoBRGGXXQHtAHxP2rlxKYk3i5wYVhlbMiEUuK7DXt2ivOdSq7k0mxb1pku9ZuM6Ni3fxXH+ZecgVOmfW+L4sEpK/7ZvGBAIQRS26URtHK9FuR7SaAQEQUAYhgTikIUI4qCDQGnYM6TyYtGEtsC2bWzLineVZVtNWp4TG8mZ/Eh2Z59lP2J4Y17n5ONZMoXvsWEYdYii6OC/hfscRR068j7F1+qQpaXneYeBbsPC2qsjHBdch8gXuA0Hr2HRqDTwy2X8ahVfWvj+kZIby2DZY44i/gANyQligA0JlgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/91a4bc592325169efb01d7738f3e2c67/8ac56/2020-fall.webp 240w,
+/static/91a4bc592325169efb01d7738f3e2c67/d3be9/2020-fall.webp 480w,
+/static/91a4bc592325169efb01d7738f3e2c67/f7ebd/2020-fall.webp 746w&quot;
+              sizes=&quot;(max-width: 746px) 100vw, 746px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/91a4bc592325169efb01d7738f3e2c67/8ff5a/2020-fall.png 240w,
+/static/91a4bc592325169efb01d7738f3e2c67/e85cb/2020-fall.png 480w,
+/static/91a4bc592325169efb01d7738f3e2c67/62de4/2020-fall.png 746w&quot;
+            sizes=&quot;(max-width: 746px) 100vw, 746px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/91a4bc592325169efb01d7738f3e2c67/62de4/2020-fall.png&quot;
+            alt=&quot;2020年度後期&quot;
+            title=&quot;2020年度後期&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;おわりに&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB&quot; aria-label=&quot;おわりに permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;おわりに&lt;/h2&gt;
+&lt;p&gt;質問がありましたら&lt;a href=&quot;mailto:fumiyanll23.public@gmail.com&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;メール&lt;/a&gt;や&lt;a href=&quot;https://twitter.com/fumiyanll23/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Twitter&lt;/a&gt;のDMで連絡をください．&lt;/p&gt;
+&lt;h2 id=&quot;関連するリンク&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E9%96%A2%E9%80%A3%E3%81%99%E3%82%8B%E3%83%AA%E3%83%B3%E3%82%AF&quot; aria-label=&quot;関連するリンク permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;関連するリンク&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.kumamoto-u.ac.jp/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;熊本大学&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.eng.kumamoto-u.ac.jp/department/dept2/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;工学部機械数理工学科&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://srik.kumamoto-u.ac.jp/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;数理工学教育プログラム&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.kumamoto-u.ac.jp/opencampus/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;熊本大学WEBオープンキャンパス2021&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[マネーフォワードのサマーインターンシップに参加した話]]></title><description><![CDATA[今月 (2021/10) のうち9日間で株式会社マネーフォワードのサマーインターンシップに参加したので，感想などをまとめておきます．]]></description><link>https://fumiyanll23.com/posts/Internship-MoneyForward</link><guid isPermaLink="false">https://fumiyanll23.com/posts/Internship-MoneyForward</guid><content:encoded>&lt;h2 id=&quot;はじめに&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&quot; aria-label=&quot;はじめに permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;はじめに&lt;/h2&gt;
+&lt;p&gt;今月 (2021/10) のうち9日間で株式会社マネーフォワードのサマーインターンシップに参加したので，感想などをまとめておきます．&lt;/p&gt;
+&lt;h2 id=&quot;株式会社マネーフォワードとは&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE%E3%83%9E%E3%83%8D%E3%83%BC%E3%83%95%E3%82%A9%E3%83%AF%E3%83%BC%E3%83%89%E3%81%A8%E3%81%AF&quot; aria-label=&quot;株式会社マネーフォワードとは permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;株式会社マネーフォワードとは?&lt;/h2&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 577px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/d0f67d1a63d7deb041de52c42428ce88/065e2/corporate_logo_S.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 29.583333333333332%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAABYlAAAWJQFJUiTwAAABPElEQVQY01VRTS8DURQ9b9rqh/bdscRe7LUJEg2xYIVFsaoNaULShc67UkFIu+En+B9WdhYSP4JM5674BxYYuVOj6U1O7kdezjvnXkRMUMgfwsBCo5iFAUYoT8DE8SHil2l940XOGmEFQRx5w2yREuWE6VSYDsLALihhIYuxyHnDHN9OJZ9GbiTiH0oYOavNpTA9hYENfvp+FcC6Ac4B1AAs57NYATD30Jysv3fpKAxsVZhqwrQlTLvCVNdaVafsLWG6Hjj7+NXzlwAs5jI4AdAEsO8ZtAEc32+X5j+6tDdwtiFsN8VRW5ga6ixydidKFUbO5oWpJ0xndxtFM1MxY3azHlDJo3SxWsDnjY+3TuIqdac7HPasO9ShGw2fWxVUZzPpMTSM7q88AVytFcx338drJxFhxNn0GFonhL9gL4KPW0/OtAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/d0f67d1a63d7deb041de52c42428ce88/8ac56/corporate_logo_S.webp 240w,
+/static/d0f67d1a63d7deb041de52c42428ce88/d3be9/corporate_logo_S.webp 480w,
+/static/d0f67d1a63d7deb041de52c42428ce88/d261b/corporate_logo_S.webp 577w&quot;
+              sizes=&quot;(max-width: 577px) 100vw, 577px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/d0f67d1a63d7deb041de52c42428ce88/8ff5a/corporate_logo_S.png 240w,
+/static/d0f67d1a63d7deb041de52c42428ce88/e85cb/corporate_logo_S.png 480w,
+/static/d0f67d1a63d7deb041de52c42428ce88/065e2/corporate_logo_S.png 577w&quot;
+            sizes=&quot;(max-width: 577px) 100vw, 577px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/d0f67d1a63d7deb041de52c42428ce88/065e2/corporate_logo_S.png&quot;
+            alt=&quot;マネーフォワード 企業ロゴ&quot;
+            title=&quot;マネーフォワード 企業ロゴ&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;会社HPは &lt;a href=&quot;https://corp.moneyforward.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;こちら&lt;/a&gt; です．
+&lt;a href=&quot;https://moneyforward.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;マネーフォワード ME&lt;/a&gt; というto Cサービス (家計簿) と &lt;a href=&quot;https://biz.moneyforward.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;マネーフォワード クラウド&lt;/a&gt; というto Bサービス (確定申告や給与・勤怠管理) があります．
+また，&lt;a href=&quot;https://moneyforward.com/engineers_blog/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;エンジニアブログ&lt;/a&gt; も公開されています．
+今回のインターンシップではCTO室マイクロサービス推進部に配属されました．&lt;/p&gt;
+&lt;h2 id=&quot;きっかけ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%8D%E3%81%A3%E3%81%8B%E3%81%91&quot; aria-label=&quot;きっかけ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;きっかけ&lt;/h2&gt;
+&lt;p&gt;athletixで存在を知り，コーディングテストを受けてみたら落ちました()．
+その後，再チャレンジの連絡があって挑戦してみた (コーディングテストと面談) 結果通りました (なんで通ったんだろう…)．&lt;/p&gt;
+&lt;h2 id=&quot;やったこと&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%84%E3%81%A3%E3%81%9F%E3%81%93%E3%81%A8&quot; aria-label=&quot;やったこと permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;やったこと&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://moneyforward.com/engineers_blog/2021/09/28/mail-capture/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;メール取込&lt;/a&gt; の開発に携わりました．
+より具体的にはParserの開発をしました．
+Parserとは&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;メール(本文，添付ファイル)を解析し，データとして保存するためのプロセス&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;(出典：&lt;a href=&quot;https://moneyforward.com/engineers_blog/2021/09/28/mail-capture/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;同記事&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;です．
+今回のインターンシップでは&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;解析対象となる領収書モデルの作成&lt;/li&gt;
+&lt;li&gt;パースに必要な正規表現の作成&lt;/li&gt;
+&lt;li&gt;Parserの実装&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;をやりました．
+1.では，領収書のどこにどんなデータが記載されているかをモデリングしました．
+2.では，1.で作成したモデルを基にデータを読み取るために必要な正規表現を作りました．
+3.では，2.で作成した正規表現を使い，実際に領収書データをパースするParserを実装しました．&lt;/p&gt;
+&lt;h2 id=&quot;インターンシップで得た学び&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%83%E3%83%97%E3%81%A7%E5%BE%97%E3%81%9F%E5%AD%A6%E3%81%B3&quot; aria-label=&quot;インターンシップで得た学び permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;インターンシップで得た学び&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;Go&lt;/code&gt;の基本文法 (初めて触った)&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;EML&lt;/code&gt;ファイル (メールファイル) をエディタで初めて見たが，ヘッダーに様々な情報 (送信アドレスや受信日など) が記載されていたり，ちゃんと符号化，暗号化されていたりして (それはそう) 面白かった (小並感)&lt;/li&gt;
+&lt;li&gt;関数を作る際に処理を詰め込みすぎないようにする&lt;/li&gt;
+&lt;li&gt;GitHubにおいて，タスクをissueとして起票し，各issueに対応していくという開発方法は勉強になった (&lt;a href=&quot;https://ja.wikipedia.org/wiki/%E3%83%81%E3%82%B1%E3%83%83%E3%83%88%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;チケット駆動開発 (TiDD)&lt;/a&gt; がそれに当たるらしい)&lt;/li&gt;
+&lt;li&gt;10人前後の規模のチームでエンジニアとして働くイメージを持てた&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;インターンシップに参加した感想&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%83%E3%83%97%E3%81%AB%E5%8F%82%E5%8A%A0%E3%81%97%E3%81%9F%E6%84%9F%E6%83%B3&quot; aria-label=&quot;インターンシップに参加した感想 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;インターンシップに参加した感想&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;プルリクエストの出し方を始め，チーム開発ならではのルールを把握するのに時間がかかった&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;Go&lt;/code&gt;を書くならVSCodeよりもGoLandの方が書きやすい…かも (特に，コード補完機能が優秀だった)&lt;/li&gt;
+&lt;li&gt;開発チームだけではなく，会社全体がチャットツールや社内ブログに頻繁に投稿していてリモートながらも活気を感じた&lt;/li&gt;
+&lt;li&gt;テストまで終えてプルリクエストを出すところまで到達したかった!!!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;おわりに&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB&quot; aria-label=&quot;おわりに permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;おわりに&lt;/h2&gt;
+&lt;p&gt;大学の講義が始まってからのインターンシップだったため変則的なスケジュール (週2，3日勤務を4週間) でしたが，柔軟に対応していただき助かりました．
+また，フルリモートでの参加でしたが，ペアプロやビデオ通話などで社員の方々の人となりを知ることができました．
+約1ヶ月ありがとうございました!&lt;/p&gt;</content:encoded></item></channel></rss>
