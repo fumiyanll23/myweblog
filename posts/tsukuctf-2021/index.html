@@ -1,0 +1,497 @@
+<!DOCTYPE html><html lang="ja"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 4.25.6"/><meta name="description" content="TsukuCTF 2021に1人チームfumyianll23で参加しました．公式write-upはこちらで公開されています．著者にとって初のwrite-upです．" data-gatsby-head="true"/><meta name="twitter:card" content="summary_large_image" data-gatsby-head="true"/><meta name="twitter:title" content="TsukuCTF 2021 write-up - MyWeblog" data-gatsby-head="true"/><meta name="twitter:description" content="TsukuCTF 2021に1人チームfumyianll23で参加しました．公式write-upはこちらで公開されています．著者にとって初のwrite-upです．" data-gatsby-head="true"/><meta name="og:title" content="TsukuCTF 2021 write-up - MyWeblog" data-gatsby-head="true"/><meta name="og:type" content="website" data-gatsby-head="true"/><meta name="og:description" content="TsukuCTF 2021に1人チームfumyianll23で参加しました．公式write-upはこちらで公開されています．著者にとって初のwrite-upです．" data-gatsby-head="true"/><meta name="theme-color" content="hsl(31, 92%, 62%)"/><style data-href="/styles.0d19eddfc18f13549d76.css" data-identity="gatsby-global-css">:after,:before,:root{--color-white:#fff;--color-primary:#5c92ff;--color-secondary:#f7a145;--color-prism-background:#eaeaeb;--color-typographic-base-font:#242933;--color-typographic-link-p-font:#5c92ff;--color-typographic-link-s-font:#f7a145;--color-page-border:#eaeaeb;--color-page-background:#fff;--color-sidebar-border:#eaeaeb;--color-sidebar-border-fade:#fff;--color-contacts-border:#eaeaeb;--color-button-border:#eaeaeb;--color-button-color:#242933;--color-theme-switcher:#3f485a;--color-theme-switcher-hover:#5c92ff}.dark :after,.dark :before,:root.dark{--color-white:#fff;--color-primary:#5c92ff;--color-secondary:#f7a145;--color-prism-background:#191d24;--color-typographic-base-font:#fff;--color-typographic-link-p-font:#5c92ff;--color-typographic-link-s-font:#f7a145;--color-page-border:#3f485a;--color-page-background:#242933;--color-sidebar-border:#3f485a;--color-sidebar-border-fade:#242933;--color-contacts-border:#3f485a;--color-button-border:#3f485a;--color-button-color:#fff;--color-theme-switcher:#eaeaeb;--color-theme-switcher-hover:#5c92ff}html{font-size:100}body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;background:var(--color-page-background);color:var(--color-typographic-base-font);font-size:16px;line-height:1.625;margin:0 0 0 calc(100vw - 100%);text-rendering:optimizelegibility}body,h1,h2,h3,h4,h5,h6{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif}h1,h2,h3,h4,h5,h6{font-weight:600}h1{font-size:40px;line-height:52px;margin-bottom:26px;margin-top:104px}h2{font-size:27px;line-height:39px}h2,h3{margin-bottom:13px;margin-top:52px}h3{font-size:22px;line-height:26px}h4{font-size:19.2px;margin-top:39px}h4,h5{line-height:26px;margin-bottom:13px}h5,h6{font-size:16px;margin-top:65px}h6{line-height:26px;margin-bottom:13px}img{max-width:100%}hr,img{border:0;display:block}hr{background-image:linear-gradient(180deg,transparent 1px,transparent 11px,#242933 0,#242933 15px,transparent 0,transparent 26px);background-size:100% 26px;color:var(--color-typographic-base-font);height:26px;margin:52px auto;width:100px}a{color:var(--color-typographic-link-p-font);text-decoration:none}a:active,a:focus,a:hover{color:var(--color-typographic-link-s-font)}b,strong{font-weight:600}ul{list-style:square;margin-bottom:26px}ul li{margin-bottom:10px;padding:0 5px}p{line-height:26px;margin-bottom:26px}blockquote{font-style:italic;padding:0;text-align:center}figure{display:block;height:auto;width:100%}figcaption{color:var(--color-typographic-base-font);font-size:14px;font-style:italic;line-height:19.5px;margin-bottom:0;margin-top:6.5px;text-align:center}@media screen and (min-width:685px){figure.float-left,figure.float-right{max-width:310px;padding:0 26px}.float-right{float:right}.float-left{float:left}}code[class*=language-],pre[class*=language-]{word-wrap:normal;color:#657b83;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;hyphens:none;line-height:1.5;-o-tab-size:4;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{border-radius:.3em;margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background-color:var(--color-prism-background)}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em}code[class*=language-] ::selection,code[class*=language-]::selection,pre[class*=language-] ::selection,pre[class*=language-]::selection{background:#073642}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#93a1a1}.token.punctuation{color:#586e75}.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#268bd2}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string,.token.url{color:#2aa198}.token.entity{background:#eee8d5;color:#657b83;cursor:help}.token.atrule,.token.attr-value,.token.keyword{color:#859900}.token.class-name,.token.function{color:#b58900}.token.important,.token.regex,.token.variable{color:#cb4b16}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.Feed-module--feed--a6204 .Feed-module--item--c7a63{margin-bottom:32.5px}.Feed-module--feed--a6204 .Feed-module--item--c7a63:last-child{margin-bottom:13px}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--title--f252f{font-size:27px;line-height:39px;margin-bottom:13px;margin-top:0}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--title--f252f .Feed-module--link--6123b{color:var(--color-typographic-base-font)}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--title--f252f .Feed-module--link--6123b:focus,.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--title--f252f .Feed-module--link--6123b:hover{border-bottom:1px solid #242933;color:var(--color-typographic-base-font)}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--description--57348{font-size:16px;line-height:26px;margin-bottom:19.5px}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--meta--250c2 .Feed-module--time--72864{color:var(--color-typographic-base-font);font-size:14px;font-weight:600;text-transform:uppercase}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--meta--250c2 .Feed-module--divider--81a18{margin:0 13px}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--more--51a4e{color:var(--color-primary);font-size:16px}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--more--51a4e:focus,.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--more--51a4e:hover{border-bottom:1px solid #5c92ff;color:var(--color-primary)}.Layout-module--layout--2c933{margin-left:auto;margin-right:auto;max-width:1070px}.Layout-module--layout--2c933:before{content:"";display:table}.Layout-module--layout--2c933:after{clear:both;content:"";display:table}.Page-module--page--24e03{margin-bottom:52px}.Page-module--page--24e03 .Page-module--inner--4b31d{padding:26px 19.5px 0}.Page-module--page--24e03 .Page-module--title--90338{font-size:40px;font-weight:600;line-height:52px;margin-bottom:37.7px;margin-top:0}.Page-module--page--24e03 .Page-module--body--561c4{font-size:16px;line-height:26px;margin:0 0 26px}@media screen and (min-width:685px){.Page-module--page--24e03{width:calc(58.275% - 12.5px)}.Page-module--page--24e03:nth-child(1n){clear:none;float:left;margin-right:30px}.Page-module--page--24e03:last-child{margin-right:0}.Page-module--page--24e03:nth-child(12n){float:right;margin-right:0}.Page-module--page--24e03:nth-child(12n+1){clear:both}.Page-module--page--24e03 .Page-module--inner--4b31d{padding:32.5px 19.5px 0}}@media screen and (min-width:960px){.Page-module--page--24e03{width:calc(66.6% - 10px)}.Page-module--page--24e03:nth-child(1n){clear:none;float:left;margin-right:30px}.Page-module--page--24e03:last-child{margin-right:0}.Page-module--page--24e03:nth-child(3n){float:right;margin-right:0}.Page-module--page--24e03:nth-child(3n+1){clear:both}.Page-module--page--24e03 .Page-module--inner--4b31d{padding:39px 26px 0}}.Pagination-module--pagination--d61cb{display:flex;margin-top:52px}.Pagination-module--pagination--d61cb .Pagination-module--previous--4a76b{text-align:left;width:50%}.Pagination-module--pagination--d61cb .Pagination-module--previous--4a76b .Pagination-module--previousLink--5590d{color:var(--color-secondary);font-size:26px;font-weight:700}.Pagination-module--pagination--d61cb .Pagination-module--previous--4a76b .Pagination-module--previousLink--5590d:focus,.Pagination-module--pagination--d61cb .Pagination-module--previous--4a76b .Pagination-module--previousLink--5590d:hover{color:var(--color-primary)}.Pagination-module--pagination--d61cb .Pagination-module--previous--4a76b .Pagination-module--previousLink--5590d.Pagination-module--disable--7e105{color:#3f485a;pointer-events:none}.Pagination-module--pagination--d61cb .Pagination-module--next--1cab8{text-align:right;width:50%}.Pagination-module--pagination--d61cb .Pagination-module--next--1cab8 .Pagination-module--nextLink--532ff{color:var(--color-secondary);font-size:26px;font-weight:700}.Pagination-module--pagination--d61cb .Pagination-module--next--1cab8 .Pagination-module--nextLink--532ff:focus,.Pagination-module--pagination--d61cb .Pagination-module--next--1cab8 .Pagination-module--nextLink--532ff:hover{color:var(--color-primary)}.Pagination-module--pagination--d61cb .Pagination-module--next--1cab8 .Pagination-module--nextLink--532ff.Pagination-module--disable--7e105{color:#3f485a;pointer-events:none}.Button-module--button--b1113{border:1px solid var(--color-button-border);border-radius:20px;color:var(--color-button-color);display:inline-block;font-size:16px;font-weight:400;height:40px;line-height:40px;margin-left:auto;margin-right:auto;padding:0 26px;text-align:center;text-decoration:none}.Button-module--button--b1113:focus,.Button-module--button--b1113:hover{color:#5c92ff}.ThemeSwitcher-module--themeSwitcher--8a77f{--color:var(--color-theme-switcher)}.ThemeSwitcher-module--themeSwitcher--8a77f .ThemeSwitcher-module--button--7cb7b{align-items:center;background:transparent;border:0;cursor:pointer;display:flex;justify-content:center;outline:0}.ThemeSwitcher-module--themeSwitcher--8a77f .ThemeSwitcher-module--button--7cb7b svg{stroke:var(--color);pointer-events:none;transition:stroke .4s}.ThemeSwitcher-module--themeSwitcher--8a77f .ThemeSwitcher-module--button--7cb7b:hover{--color:var(--color-theme-switcher-hover)}.ThemeSwitcher-module--themeSwitcher--8a77f .ThemeSwitcher-module--moon--10537{stroke-dasharray:0 1px;opacity:0;transition:stroke-dasharray .2s ease-in,opacity .4s ease-in}.ThemeSwitcher-module--themeSwitcher--8a77f .ThemeSwitcher-module--sun--2163a{stroke-dasharray:1px 1px;opacity:1;transition:stroke-dasharray .2s ease-in,opacity .4s ease-in}.ThemeSwitcher-module--themeSwitcher--8a77f.ThemeSwitcher-module--dark--6db0c .ThemeSwitcher-module--moon--10537{stroke-dasharray:1px 1px;opacity:1}.ThemeSwitcher-module--themeSwitcher--8a77f.ThemeSwitcher-module--dark--6db0c .ThemeSwitcher-module--sun--2163a{stroke-dasharray:0 1px;opacity:0}.Author-module--author--cbd31 .Author-module--photo--9787b{background-clip:padding-box;border-radius:50%;display:inline-block;height:75px;margin-bottom:0;width:75px}.Author-module--author--cbd31 .Author-module--photo--9787b img{border-radius:50%}.Author-module--author--cbd31 .Author-module--title--cf7e5{font-size:18px;font-weight:600;line-height:29.25px;margin:0}.Author-module--author--cbd31 .Author-module--title--cf7e5 .Author-module--link--09c17,.Author-module--author--cbd31 .Author-module--title--cf7e5 .Author-module--link--09c17:focus,.Author-module--author--cbd31 .Author-module--title--cf7e5 .Author-module--link--09c17:hover{color:var(--color-typographic-base-font)}.Author-module--author--cbd31 .Author-module--subtitle--86ec5{color:#7f8ba4;line-height:26px;margin-bottom:26px}.Author-module--author--cbd31 .Author-module--titleContainer--4f576{align-items:center;display:flex;justify-content:space-between;margin:13px 0}.Icon-module--icon--1d7da{fill:currentcolor;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;speak:none;stroke:currentcolor;stroke-width:0;display:inline-block;font-style:normal;font-variant:normal;font-weight:400;height:1em;line-height:1em;text-align:center;text-transform:none;width:1em}.Contacts-module--contacts--09178{margin-bottom:26px}.Contacts-module--contacts--09178 .Contacts-module--list--9670b{display:flex;flex-flow:row wrap;flex-grow:0;flex-shrink:0;list-style:none;margin:13px 0;max-width:165px;padding:0}.Contacts-module--contacts--09178 .Contacts-module--list--9670b .Contacts-module--item--f9cb0{align-content:center;align-items:center;border:1px solid var(--color-contacts-border);border-radius:50%;display:flex;height:40px;justify-content:center;line-height:40px;margin:6.5px;padding:0;text-align:center;width:40px}.Contacts-module--contacts--09178 .Contacts-module--list--9670b .Contacts-module--item--f9cb0:nth-child(3n+1){margin-left:0}.Contacts-module--contacts--09178 .Contacts-module--list--9670b .Contacts-module--item--f9cb0 .Contacts-module--link--de1e0{border:0;color:var(--color-typographic-base-font);cursor:pointer;display:flex}.Contacts-module--contacts--09178 .Contacts-module--list--9670b .Contacts-module--item--f9cb0 .Contacts-module--link--de1e0:focus,.Contacts-module--contacts--09178 .Contacts-module--list--9670b .Contacts-module--item--f9cb0 .Contacts-module--link--de1e0:hover{color:var(--color-typographic-link-p-font)}.Copyright-module--copyright--2c602{color:#7f8ba4;font-size:14px}.Menu-module--menu--113a9{margin-bottom:26px}.Menu-module--menu--113a9 .Menu-module--list--e1ae3{list-style:none;margin:0;padding:0}.Menu-module--menu--113a9 .Menu-module--list--e1ae3 .Menu-module--item--8b679{margin:13px 0;padding:0}.Menu-module--menu--113a9 .Menu-module--list--e1ae3 .Menu-module--item--8b679 .Menu-module--link--a6f02{border:0;color:var(--color-typographic-base-font);font-size:16px;font-weight:400}.Menu-module--menu--113a9 .Menu-module--list--e1ae3 .Menu-module--item--8b679 .Menu-module--link--a6f02:focus,.Menu-module--menu--113a9 .Menu-module--list--e1ae3 .Menu-module--item--8b679 .Menu-module--link--a6f02:hover{border-bottom:1px solid #5c92ff;color:#5c92ff}.Menu-module--menu--113a9 .Menu-module--list--e1ae3 .Menu-module--item--8b679 .Menu-module--link--a6f02.Menu-module--active--6cb74{border-bottom:1px solid var(--color-typographic-base-font);color:var(--color-typographic-base-font)}.Sidebar-module--sidebar--1bfa1{width:100%}.Sidebar-module--sidebar--1bfa1 .Sidebar-module--inner--344d0{padding:26px 19.5px 0;position:relative}.Sidebar-module--sidebar--1bfa1 .Sidebar-module--inner--344d0:after{background:var(--color-sidebar-border);background:linear-gradient(to bottom,var(--color-sidebar-border) 0,var(--color-sidebar-border) 48%,var(--color-sidebar-border-fade) 100%)}@media screen and (min-width:685px){.Sidebar-module--sidebar--1bfa1{width:calc(41.625% - 17.5px)}.Sidebar-module--sidebar--1bfa1:nth-child(1n){clear:none;float:left;margin-right:30px}.Sidebar-module--sidebar--1bfa1:last-child{margin-right:0}.Sidebar-module--sidebar--1bfa1:nth-child(12n){float:right;margin-right:0}.Sidebar-module--sidebar--1bfa1:nth-child(12n+1){clear:both}.Sidebar-module--sidebar--1bfa1 .Sidebar-module--inner--344d0{padding:32.5px 19.5px 0}.Sidebar-module--sidebar--1bfa1 .Sidebar-module--inner--344d0:after{bottom:0;content:"";height:540px;position:absolute;right:-10px;top:30px;width:1px}}@media screen and (min-width:960px){.Sidebar-module--sidebar--1bfa1{width:calc(33.3% - 20px)}.Sidebar-module--sidebar--1bfa1:nth-child(1n){clear:none;float:left;margin-right:30px}.Sidebar-module--sidebar--1bfa1:last-child{margin-right:0}.Sidebar-module--sidebar--1bfa1:nth-child(3n){float:right;margin-right:0}.Sidebar-module--sidebar--1bfa1:nth-child(3n+1){clear:both}.Sidebar-module--sidebar--1bfa1 .Sidebar-module--inner--344d0{padding:39px}}.Author-module--author--1c58d{border-top:1px solid var(--color-page-border);line-height:26px;margin-bottom:52px;margin-top:26px;max-width:640px;padding-top:26px}.Author-module--author--1c58d .Author-module--bio--08950 .Author-module--twitter--90647{display:block;text-decoration:underline}.Author-module--author--1c58d .Author-module--bio--08950 .Author-module--twitter--90647:focus,.Author-module--author--1c58d .Author-module--bio--08950 .Author-module--twitter--90647:hover{color:var(--color-typographic-link-s-font)}@media screen and (min-width:685px){.Author-module--author--1c58d{margin-left:auto;margin-right:auto}}.Content-module--content--80d58{margin:0 auto;max-width:945px;padding:0 13px}.Content-module--content--80d58 .Content-module--title--09504{font-size:32px;font-weight:600;line-height:42.9px;margin:26px auto 0;max-width:640px;text-align:center}.Content-module--content--80d58 .Content-module--body--726c2 figure{margin-bottom:26px}.Content-module--content--80d58 .Content-module--body--726c2 figure blockquote{font-style:italic;margin-top:0;padding:26px 0;text-align:center}.Content-module--content--80d58 .Content-module--body--726c2 figure blockquote p{font-size:26.9072px;line-height:39px;margin-bottom:26px;margin-top:0;max-width:640px}.Content-module--content--80d58 .Content-module--body--726c2 a{text-decoration:underline}.Content-module--content--80d58 .Content-module--body--726c2 *{margin-left:auto;margin-right:auto;max-width:640px}.Content-module--content--80d58 .Content-module--body--726c2 h2>a{visibility:hidden}.Content-module--content--80d58 .Content-module--body--726c2 h2>a>svg{fill:var(--color-typographic-base-font)}.Content-module--content--80d58 .Content-module--body--726c2 img{max-width:100%}@media screen and (min-width:960px){.Content-module--content--80d58{padding:0}.Content-module--content--80d58 .Content-module--title--09504{font-size:48px;line-height:58.5px;margin-bottom:39px;margin-top:58.5px}.Content-module--content--80d58 .Content-module--body--726c2,.Content-module--content--80d58 .Content-module--body--726c2 p{font-size:18px;line-height:29.25px;margin-bottom:29.25px}.Content-module--content--80d58 .Content-module--body--726c2 h2>a{padding-right:13px;visibility:unset}}.Meta-module--meta--dae0a .Meta-module--date--4d30d{font-style:italic}.Tags-module--tags--18589{margin-bottom:13px}.Tags-module--tags--18589 .Tags-module--list--82ae6{list-style:none;padding:0}.Tags-module--tags--18589 .Tags-module--list--82ae6 .Tags-module--item--52015{display:inline-block;margin:6.5px 0}@media screen and (min-width:685px){.Tags-module--tags--18589 .Tags-module--list--82ae6 .Tags-module--item--52015:first-child{margin-left:0;padding-left:0}}.Post-module--post--3a994 .Post-module--content--3c6e5{margin:0 auto}.Post-module--post--3a994 .Post-module--comments--d3b99,.Post-module--post--3a994 .Post-module--footer--f8705{margin:0 auto;max-width:640px;padding:0 13px}.Post-module--post--3a994 .Post-module--buttons--2972d{align-items:center;display:flex;justify-content:center;margin:26px 0 0;text-align:center}.Post-module--post--3a994 .Post-module--buttons--2972d .Post-module--buttonArticles--d793a{margin:0 13px 0 0}@media screen and (min-width:960px){.Post-module--post--3a994 .Post-module--comments--d3b99,.Post-module--post--3a994 .Post-module--footer--f8705{padding:0}.Post-module--post--3a994 .Post-module--buttons--2972d{left:30px;margin:0 13px 0 0;max-width:none;position:fixed;top:30px}}</style><title data-gatsby-head="true">TsukuCTF 2021 write-up - MyWeblog</title><link rel="alternate" type="application/rss+xml" title="MyWeblog" href="/rss.xml"/><style type="text/css">
+    .anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .anchor.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .anchor svg,
+    h2 .anchor svg,
+    h3 .anchor svg,
+    h4 .anchor svg,
+    h5 .anchor svg,
+    h6 .anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor svg,
+    h2:hover .anchor svg,
+    h3:hover .anchor svg,
+    h4:hover .anchor svg,
+    h5:hover .anchor svg,
+    h6:hover .anchor svg,
+    h1 .anchor:focus svg,
+    h2 .anchor:focus svg,
+    h3 .anchor:focus svg,
+    h4 .anchor:focus svg,
+    h5 .anchor:focus svg,
+    h6 .anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><link rel="preconnect" href="https://www.googletagmanager.com"/><link rel="dns-prefetch" href="https://www.googletagmanager.com"/><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-HPJZC3YDQQ"></script><script>
+      
+      
+      if(true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){window.dataLayer && window.dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-HPJZC3YDQQ', {"send_page_view":false});
+      }
+      </script><link rel="sitemap" type="application/xml" href="/sitemap/sitemap-index.xml"/><link rel="icon" href="/favicon-32x32.png?v=c12c945b50f2d123047d7c501add6845" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=c12c945b50f2d123047d7c501add6845"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=c12c945b50f2d123047d7c501add6845"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=c12c945b50f2d123047d7c501add6845"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=c12c945b50f2d123047d7c501add6845"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=c12c945b50f2d123047d7c501add6845"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=c12c945b50f2d123047d7c501add6845"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=c12c945b50f2d123047d7c501add6845"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=c12c945b50f2d123047d7c501add6845"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script></head><body><script>
+          void function() {
+            var cachedMode;
+
+            try {
+              var preferredTheme = JSON.parse(localStorage.getItem('diesel:theme-atom'));
+
+              if (preferredTheme && preferredTheme.mode) {
+                cachedMode = preferredTheme.mode;
+              }
+            } catch (err) { }
+
+            function setTheme(newTheme) {
+              document.documentElement.className = newTheme;
+            }
+
+            var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+            setTheme(cachedMode || (darkQuery.matches ? 'dark' : 'light'));
+          }()
+        </script><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="Layout-module--layout--2c933"><div class="Post-module--post--3a994"><div class="Post-module--buttons--2972d"><a class="Button-module--button--b1113 Post-module--buttonArticles--d793a" href="/">All Articles</a></div><div class="Post-module--content--3c6e5"><div class="Content-module--content--80d58"><h1 class="Content-module--title--09504">TsukuCTF 2021 write-up</h1><div class="Content-module--body--726c2"><h2 id="はじめに" style="position:relative;"><a href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB" aria-label="はじめに permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>はじめに</h2>
+<p><a href="https://tsukuctf.sechack365.com/" target="_blank" rel="nofollow noopener noreferrer">TsukuCTF 2021</a>に1人チーム<code class="language-text">fumyianll23</code>で参加しました．公式write-upは<a href="https://fans.sechack365.com/ctf/tsukuctf2021/" target="_blank" rel="nofollow noopener noreferrer">こちら</a>で公開されています．著者にとって初のwrite-upです．</p>
+<h2 id="コンテスト概要" style="position:relative;"><a href="#%E3%82%B3%E3%83%B3%E3%83%86%E3%82%B9%E3%83%88%E6%A6%82%E8%A6%81" aria-label="コンテスト概要 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>コンテスト概要</h2>
+<p>開催期間は2021/09/11 12:00 (JST) - 2021/09/12 11:59 (JST) でした．その他のルールは以下の通りです (cf. <a href="https://tsukuctf.sechack365.com/rules" target="_blank" rel="nofollow noopener noreferrer">Rules</a>)：</p>
+<blockquote>
+<p>TsukuCTF について</p>
+</blockquote>
+<p>開催期間は 2021/09/11 12:00(JST) ~ 2021/09/12 11:59(JST)です。
+ジャンルは OSINT, Misc, Web, Crypto, Hardware, etc… を予定しています。
+問題の不具合や運営への質問は公式 Twitterへの ダイレクトメッセージ機能 をご利用ください。Twitter が使用できない方は<a href="mailto:tsukuctf@gmail.com" target="_blank" rel="nofollow noopener noreferrer">tsukuctf@gmail.com</a>宛にご連絡ください。ただし、メールアドレス宛の連絡は少々時間をいただく場合がございます。
+運営からの連絡は CTFd の Notifications 機能およびTwitterを用います。コンテスト中以外の連絡は基本的にTwitterを用います。
+フラグは何度でも入力することができます。ただし一部の問題は回数制限が設けられています。その場合は問題文に記載がございます。
+誤ったフラグを入力することによる減点はありません。
+問題の点数は解かれた人数に応じて減少します(一部を除く)。
+問題サーバへ大量アクセスすることでフラグを入手できる問題はございません。一部の問題を除いて 10 回以上アクセスする必要はありません。
+有償のツールや環境でしか解くことができない問題はありません。
+チームで参加する場合はアカウントを共有するのではなく、Team 機能をご利用ください。
+本 CTF の開催期間終了後であれば是非 Writeup を公開ください。
+本 CTF は NICT 主催の若手セキュリティイノベーター育成プログラムSecHack365の修了生イベントに際して開催されています。</p>
+<h2 id="結果" style="position:relative;"><a href="#%E7%B5%90%E6%9E%9C" aria-label="結果 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>結果</h2>
+<p>正の得点を得ている182チーム中91位 (752 pts) でした．
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 360px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/17e5238542933c39b79b29006cf8b71a/f21e7/result.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 76.25%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAABJ0AAASdAHeZh94AAADMElEQVQ4y2WRS28bZRSG/Qf4BQiRFGjBie3Y4/HMeMYz47ETJ06Ttkns2E489Xg8iXMhaSAqiSKigMSKVblU1Cm0BSrBgiUSvUBKFyiAxJo1W/4AG/Sgb6I0rlgcffrO5T3ve96IlLVJ6w5x2WC24VH3AoqXKrh+l8qCR3XRo1C+gttZYaZ2FTcQeZfF9hKXq00mpudIKGaIIbAikmaT0QzkjML45CStjs/y+hp+u02j1mBr6xpLS0vsvLNN023RDjr4HZ+1tTXq9Tpuc5FkSkLRdCTNIpLOWgyZs7xqLnDOqDGgzzOYrfKyVmEgW+G8vUC0eJWXlFkG9WpYHzJneEWfI1kOiBZbDBh13rCqpAXDuJInuv8n1j3Qe2AdgtqDwh0wD8G4BfYhaCL3OZhfwAvbfzH44T/EPwLr9r/Yd+Hc+38T00pEkprNhfY91L0nZHceYu0+Rt15hHL9B0a2TsLYfYh6/QHSWw/Qdx/zYvNropvfk9j+ibGDRxQOjni9+x0JrXgiWZIzxJPpMIZHJJKyiuUUsZwC+WIJM++g6jlylo1mmOSdfHjzREoiFs6kSaVlBFZoSjqbD12SDQfxz41OsbO3j7+6id/dpNpo0u6u0llZp7X8Jq3ldZzSFEnVDmdk3TlxWbMFQ5v+EE6JBapZZDilMixpjCg5kkqOmJQlntbDXEo1+/rP5iPPA528ilmk7nbwghVqTY/y9Cx116dSa1JzPbygi54fewbaPx/p/8h6PmxScgXGp+doegHlS3OUJi8zU10I39HyNBdnqmhWEUncX7OeYxs5BRNJITFjFEJgkU/IehixtMbAhRhDKZWkaoZAol/IF8s1a5SU2scwpeTQnQm+vP8tX93/Bi3nsLv/ATdufML5mMTG1h6//f4HK911vGCDn49+YWJiitVrb/PxzVtcqcyH4LJ+CqiaaHaJm707fNa7jT1a5tPeXY6Pf2W+4dIKNjh68hTf79IONnn64zHj4xfZ3tvn3YP3UIz82Q37JUeTSkhdSBYyhNNy1g5lvzaUIi7rYU3JOaQ0i6w9Fvb0O/0/U07/YoGI01rGcJ7VJPWMRL8hwpT/AFzRQy4PtSDfAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/17e5238542933c39b79b29006cf8b71a/8ac56/result.webp 240w,
+/static/17e5238542933c39b79b29006cf8b71a/a3012/result.webp 360w"
+              sizes="(max-width: 360px) 100vw, 360px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/17e5238542933c39b79b29006cf8b71a/8ff5a/result.png 240w,
+/static/17e5238542933c39b79b29006cf8b71a/f21e7/result.png 360w"
+            sizes="(max-width: 360px) 100vw, 360px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/17e5238542933c39b79b29006cf8b71a/f21e7/result.png"
+            alt="コンテストの結果"
+            title="コンテストの結果"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<h2 id="実行環境" style="position:relative;"><a href="#%E5%AE%9F%E8%A1%8C%E7%92%B0%E5%A2%83" aria-label="実行環境 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>実行環境</h2>
+<ul>
+<li>Windows10 バージョン21H1</li>
+<li>WSL2 (Ubuntu20.04 LTS)</li>
+</ul>
+<h2 id="tsukushi" style="position:relative;"><a href="#tsukushi" aria-label="tsukushi permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tsukushi</h2>
+<h3 id="welcome-welcome-154-solves-100-pts" style="position:relative;"><a href="#welcome-welcome-154-solves-100-pts" aria-label="welcome welcome 154 solves 100 pts permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[welcome] Welcome (154 solves, 100 pts)</h3>
+<blockquote>
+<p>TsukuCTF 2021にご参加いただきありがとうございます。フラグの形式は全て<code class="language-text">TsukuCTF{}</code>です。この問題のフラグは<a href="https://twitter.com/tsukuctf" target="_blank" rel="nofollow noopener noreferrer">Twitter</a>のアカウント名です。質問などはTwitterのDMにお願い致します。</p>
+<p>※トップページのロゴに何か隠れています… (競技には無関係です)
+※追記(12:28): アカウント名及びスクリーンネームどちらを入力してもAcceptされるよう変更いたしました。誤解を招く表記だったことお詫び申し上げます。</p>
+</blockquote>
+<p><a href="https://twitter.com/tsukuctf" target="_blank" rel="nofollow noopener noreferrer">Twitter</a>のリンクを踏むとTsukuCTFのTwitterアカウントに飛びます．アカウント名がそのままフラグになっていました．</p>
+<p>フラグ：<code class="language-text">TsukuCTF{2021}</code></p>
+<h2 id="osint" style="position:relative;"><a href="#osint" aria-label="osint permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>OSINT</h2>
+<h3 id="easy-ramen-93-solves-100-pts" style="position:relative;"><a href="#easy-ramen-93-solves-100-pts" aria-label="easy ramen 93 solves 100 pts permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[easy] ramen (93 solves, 100 pts)</h3>
+<blockquote>
+<p>ハッカーにとってラーメンは必須の飲み物だといわれています。写真のラーメン店の本店のインスタグラムIDを特定してください。</p>
+</blockquote>
+<p>以下の画像ファイルが配布されました：
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/c7968082e916090715da93ca70826578/bf6f8/ramen.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 76.25%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEUElEQVQ4yz3MSUxUdwDA4f+lSW9NWo1tUqvVSs2roG2pUuvCvlu0BTsgyCAjooDDKAoMIAxogLghiJARrbKLgCKgoCyFYYZhFlAYQqpNmhrjAija5fIO79e0Bw/f9RPnknxRe31CkLSCbR6ryUxIoMl4gbsdbQz39zA80MPoUB9jpiHMfT1YbjXQeyaNjgxfqhI34r1uJf6bviLsOw98PJYjDvp/zknVOoxJW6ktzcNm+QWndYApazsPBk/z3FnNI6uRaVM1k6Ot2KxDOO02bC0V6MMk1rt9RLDHUsLdl3A4RELovJdTHu2OrbaQmSkHNtNt/rBX89qWj61zD9WV33NQ+yWu7mP8NX6Sx9azOM3dTLtcVBoy2SYtImb9CvJ+8KT72I8IQ7gbVw74MjHSj3WknyeOKv4ZN/BsMA/NLjeWffMOQZ7vcSdNAw/v8aejgqeOMzywD+IYtRCzeQ2hqxeREy7RV7QTcSpS4nZpMveddlzWVt448pkdyeXpcC4VGZsJDvmYZJ+ldCX68cR+ljlbFQtjufzmbGbqwQTGo2rygldRpfaiK2cbojrek76ydCYcY8xYjLy25TI7nM3ToSxKz+8gSLOauO0fMt6hpaMlmod3dfxtz+F3xyUmJ8bpPJ5EneZb6vdvoUUXgLiVHc5A8W4mzP24rI28suUxZ8ri2VAOhjwv4tWfUnE6lIvFwVhqE5gzZ/PalsVDexMzE056DTHc1PlzPd2Pa1o/RG+hiv7CKBw9Lfw6M87j0RJmh7W8GNFjq4tlvDmRBXsxLyxFvLQU8Mp8mBfOM8zcN2Pp62G4pohbR4K5rQ/j5pFAxA19FNd0wTh6W7GO2XA5+pl3GZk1H2bOdIh50yGeD2iZN2WyYMtlYdrIo0kTZ0uLKNFrqUkO4po2gIY0f+pSfBA9J+K5nLSF4fpztLe3E//Tdtqa65kavcGzyQZeuoy8dNXw3NXMlKWNlrpLpCSoiI0M5Hp5EZc03lxO9qMmaSuX93n/F6qVOm2oUn9ouzLtsCt746OVL1YsViJCAxSNOk5JT9mnpKckKXtio5UQ342Kz3o3ZUegp1KSf1Spz4xVGlMDlZ/3+yu1KX5KfWqAIjrzd9GcEUGjNoT63CTudHaTvj+eDe5LWeu2BPdVS1izcjFrP3sfb89lxO3wJkurwaAO58rerVxN9qUuNYC6VD+uZ4Qgugpi5Ju5UXKbXiU36iLk43vC5fOnSuXyUyfklMQoOTpii7wzbKOcqAqWs9LUcn7GAVm/N1puPZEqmy/my0MX9HLLkXC54aCf3JQeJItuQ7TUXaCS2rIjpc4ijVQZ5yW9K4Rks45Lc/NvpLLifMmQmSp1tjdLA/cGpSifr6XRvm4JeOuKLlIqj/OSyuI2SaKrQPW/Nn2UuJEXKypjN4gPhBBjo04xO7cgykqOicKsVNHZ3iQG7w0KVcAGYR24I4C3ruoiRXmclzi3e5P4F9118LVP8QZyAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/c7968082e916090715da93ca70826578/8ac56/ramen.webp 240w,
+/static/c7968082e916090715da93ca70826578/d3be9/ramen.webp 480w,
+/static/c7968082e916090715da93ca70826578/e46b2/ramen.webp 960w,
+/static/c7968082e916090715da93ca70826578/f992d/ramen.webp 1440w,
+/static/c7968082e916090715da93ca70826578/882b9/ramen.webp 1920w,
+/static/c7968082e916090715da93ca70826578/2b8a8/ramen.webp 2047w"
+              sizes="(max-width: 960px) 100vw, 960px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/c7968082e916090715da93ca70826578/8ff5a/ramen.png 240w,
+/static/c7968082e916090715da93ca70826578/e85cb/ramen.png 480w,
+/static/c7968082e916090715da93ca70826578/d9199/ramen.png 960w,
+/static/c7968082e916090715da93ca70826578/07a9c/ramen.png 1440w,
+/static/c7968082e916090715da93ca70826578/29114/ramen.png 1920w,
+/static/c7968082e916090715da93ca70826578/bf6f8/ramen.png 2047w"
+            sizes="(max-width: 960px) 100vw, 960px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/c7968082e916090715da93ca70826578/d9199/ramen.png"
+            alt="ramen"
+            title="ramen"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p>トッピングのヤングコーンが特徴的だったので「ラーメン ヤングコーン」でググったところ，<a href="https://kikanbo.co.jp/" target="_blank" rel="nofollow noopener noreferrer">鬼金棒</a>というお店がヒットしました．メニューからラーメンの画像をいくつか見ていきましたが，どのラーメンも真っ赤で辛そうです (← 違う，そうじゃない)．残念ながら目当てのラーメンではないようです…．「ラーメン ベビーコーン」でググってみてもあまり変わりませんでした．
+いろいろ調べてみるとGoogle検索では画像から検索することができるようです．配布された画像で検索をかけてみると， “serveware” という英単語で検索されて画像もスープのようなものばかりがヒットしました．これも違う…．
+今度は「ベビーコーン ラーメン」でググってみると<a href="https://tabelog.com/keywords/%E3%83%A4%E3%83%B3%E3%82%B0%E3%82%B3%E3%83%BC%E3%83%B3/tokyo/kwdLst/MC/4/" target="_blank" rel="nofollow noopener noreferrer">東京でおすすめのラーメン(ヤングコーン)をご紹介！ (4ページ目)</a>という記事を発見．記事を眺めていると配布された画像そっくりのラーメンが!!どうやら銀座篝 Echika池袋店というラーメン屋だそうです．店名さえ分かればこっちのもの．Instagramにて<a href="https://www.instagram.com/kagari_honten/" target="_blank" rel="nofollow noopener noreferrer">お店のアカウント</a>を探し出して無事にフラグを入手できました．</p>
+<p>フラグ：<code class="language-text">TsukuCTF{kagari_honten}</code></p>
+<h2 id="misc" style="position:relative;"><a href="#misc" aria-label="misc permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Misc</h2>
+<h3 id="easy-toritsukushi-90-solves-100-pts" style="position:relative;"><a href="#easy-toritsukushi-90-solves-100-pts" aria-label="easy toritsukushi 90 solves 100 pts permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[easy] TORItsukushi (90 solves, 100 pts)</h3>
+<blockquote>
+<p>大文字文字列 <code class="language-text">TSUKUSHI</code> を可能な限り何度も取りつくしてください。残った文字列がフラグです。フラグ内に大文字文字列 <code class="language-text">TSUKUSHI</code> は含まれていません。</p>
+<p>※追記(12:38): 文中に大文字を追加しました。</p>
+</blockquote>
+<p>長い長いテキストファイルが配布されました．エディタの置換機能などを利用してひたすら “TSUKUSHI” を削除していくと，フラグを入手できました．</p>
+<p>フラグ：<code class="language-text">TsukuCTF{Would_you_like_some_fresh-baked_Tsukushi?}</code></p>
+<h3 id="easy-customization-98-solves-100-pts" style="position:relative;"><a href="#easy-customization-98-solves-100-pts" aria-label="easy customization 98 solves 100 pts permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[easy] Customization (98 solves, 100 pts)</h3>
+<blockquote>
+<p>Tsukushiくんは自分を鍛えるために、毎日欠かさず活動を行う習慣化を行うことにしました。マンダラートを利用しますが、晒されるのが恥ずかしいので目標の部分を消してしまったようです。目標を見つけてください。</p>
+</blockquote>
+<p><a href="https://docs.google.com/spreadsheets/d/1Q-3HaD9aIsjT6bDFSp3avXMbrHB6g0OsR3hfuB9MSvE/edit#gid=0" target="_blank" rel="nofollow noopener noreferrer">https://docs.google.com/spreadsheets/d/1Q-3HaD9aIsjT6bDFSp3avXMbrHB6g0OsR3hfuB9MSvE/edit#gid=0</a></p>
+<blockquote>
+<p>※追記(12:45): フラグが想定とは別のものになっていましたので修正いたしました。以前のフラグでもAcceptされるよう変更しました。</p>
+</blockquote>
+<p>リンクを踏むと以下のようなGoogleスプレッドシートを見ることができました：
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 958px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/41636836fca204b1ccd806b305c5969d/b97f6/customization.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 63.74999999999999%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABJ0AAASdAHeZh94AAADVklEQVQ4y0WQb2iUBRzHf85F1uYMo7VyXoRKZaNcrRdRlGQQVG8yjDDINFNkact06w9EvogomqsEEQqdGLHCJiOH4tkfF2uDpdvu5u3+P3/vuee5u909c+e2u9vdpzShF5833xcf+H6kPD0D7gzMF2BhAYolKF2jcIMFKBTgyhVY4D9mgat5mJ+H2TzcmOYA+djJ8kYyxy5F5+14nHbHocMw6TBd9iVcWlWdnZEw2y9H6VC8fBDZwo7AYV71hdijJ9mRcBnoPw+d31A8cw7ZmMqyykjSktBYq0SQdAaJBxHlB8T4hUdjfu7RQ4hbRJTvkUADtcZHPK7q3G4PIrO/semrjfRurGagawsSNQKMhoZx014mrH7qc1kkMYSYS2mx1pE3f+ekPcaidIZbTAUxY2yzRsEa4z37dSQpVNk1SKGOZ+yXkKfSLdTawkrnJhqcRqpcGzGmkdhfSMJHjRJlsRZHYg4SOIL4b6bGbMMzBbXOfiQuiPEJkjV4Uh9F7kv8hCiHEOUYEj6ERNZzh/95uoMX6ImOcCx2ke7YMH2RS+yaaEfGBVE3IRaI9g4SErbrnZwvwmA+jzSl5pDkLG1mkv3GCFXaIjyhJbhqP+V4L8W/dzPn/xQSgxzVjiMzu3louptOx2B98jhibeaIfRYqQGUBuT9lI5bKafsSXus0S9w67jbrcZJ/MKP+zMzws+TGWsEd4VTgAqsGxtgXGEV3L7JzykQyJboyLpTLzJfLSLOqIqEgi2M6VaFhxFhGY2A5vmAfauRXLk+cYdLfz2Tcy9B3Bxh9cAV7DnQgcY2qaARRwhxMWlCpULwmjKXTTDo23vEAPRN/ssy/FBlpoNHwcZepcattcpuVpCGo0uCP4glo1MR0xFAQK4Pkyhx0slApUyxXkHdTKV62TK5aPqbNs9Q7tYjiQfQsHjNHX8LHh9YJJPIYom5A8i/wROZzhvQUm/VORHuAr62e6w2L5RJyp64j4RB7EwHet7xIqhpRqhGzlXrrM77Qx9maPIm4W/Gce4S33hT2Hm2kS93GBu01JPIcX1q9/wtf0TTWhsOs1m3u1Sd4OPo064JNNCsraNJfZGXKYU1iijV2gbZvf6RU18Th9maWT9XTZHSx2oATqdz1y6V/G/4DvGIANZCUtAAAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/41636836fca204b1ccd806b305c5969d/8ac56/customization.webp 240w,
+/static/41636836fca204b1ccd806b305c5969d/d3be9/customization.webp 480w,
+/static/41636836fca204b1ccd806b305c5969d/cb8de/customization.webp 958w"
+              sizes="(max-width: 958px) 100vw, 958px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/41636836fca204b1ccd806b305c5969d/8ff5a/customization.png 240w,
+/static/41636836fca204b1ccd806b305c5969d/e85cb/customization.png 480w,
+/static/41636836fca204b1ccd806b305c5969d/b97f6/customization.png 958w"
+            sizes="(max-width: 958px) 100vw, 958px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/41636836fca204b1ccd806b305c5969d/b97f6/customization.png"
+            alt="Customization"
+            title="Customization"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p>一見するとマンダラートの中央のマスは何も書かれていないように思えますが，これは文字とマスの背景が同じ色になっています．マスをクリックすると文字が読めるようになり，フラグを入手できました．</p>
+<p>フラグ：<code class="language-text">TsukuCTF{yak1n1ku_ta6eta1}</code></p>
+<h2 id="hardware" style="position:relative;"><a href="#hardware" aria-label="hardware permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Hardware</h2>
+<h3 id="easy-cad-82-solves-100-pts" style="position:relative;"><a href="#easy-cad-82-solves-100-pts" aria-label="easy cad 82 solves 100 pts permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[easy] CAD (82 solves, 100 pts)</h3>
+<blockquote>
+<p>少し早いが筑紫くんと素日華ちゃんは少し早いが今年のクリスマスについて話をしていた。</p>
+</blockquote>
+<p>素日華ちゃん「クリスマス、キーホルダーが欲しいな～」
+筑紫くん「いいよ～素日華の好きな動物を模したものを作っちゃおうかな～」
+そして、筑紫くんは3Dプリンタで彼女の好きな動物をキーホルダーにして、メッセージも残したらしい。</p>
+<blockquote>
+<p>※この問題はCADソフトが手元にない場合でも解くことが可能です。</p>
+</blockquote>
+<p>STLファイルが配布されました．Windowsには「3Dビューアー」が標準インストールされているので，ファイルを開くことができます．3Dモデルをひっくり返すと，裏面にフラグが彫られていました：
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 862px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/12b6cab6cd620773cd3d1cc7777a7e14/f0551/cad.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 60%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABJ0AAASdAHeZh94AAACYUlEQVQoz1WTWVMaURCF5+dSFA9UGTRGxaDsFrsCmmFEBATC5DmipgzEvMSSACLMAsOOGit/4aS6lcQ8nFnu3Pn69HKF27su2h0Fna6KrqpD0XowhmO+n198wVHmGB9EkSUdplGtXWEwmkDvG9B6BlS9D0XV0VE05gh0UbUe+oMRjOEIo8kMP65vkMkc4+DgANls9j9JkoTrmzqG4ynDNAJqPXQVjaECuSKXoVAYGxt2diWKItLpNIrFIkqlEsrlMmRZRlmWUSgUeF3vGXh8+o3J7J5NUFYEFQi2t7eH95ubWFtbw+7uLlKpFDKZDHK5HE5OThhAIlg+n+d1UUzB4/FidfUd6+z8AsZgBKHVvoPH42G5XC5sb28jGAzC7/cjFArB5/MhEolgf38fiUQC0WiUQVtbWzCbzbBYLLBarVheXkbl/AICFbd29Z0jLoAkCkAwApDi8ThisRgH2dnZ4YBOpxMOh4PvNtsblOVPzzWkGjSat3C73QgEAgiHw5w6OUomk9wccrgQfaMs0ukjpFIS7HY7v7faHQiKpnO3esYAiUQS6+vr8Pm87IQ2UbqkhVNyRwEvqzWMpzOejNPKGeqNJk+KoLzM3mQ2R6FYRDQaQyAYxNLSEv9MaVN6JK/XC0k6RPO2jfvHJ55H6u54OmcYcQRqNT3o/QG6qsaibptMJi48qfbtCs1Wm11QeabzBwaRCPR3wAl49+qE0LDWfzZhs9nwdmWFC375tYr5wy+GkGjPaxiVioE03KpGJ6WLjvIMVdmpgc+nFXwsy2i02jy4fIoWGo5eQEPO6h9MB5n7A5Fy7Y5PiiX3AAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/12b6cab6cd620773cd3d1cc7777a7e14/8ac56/cad.webp 240w,
+/static/12b6cab6cd620773cd3d1cc7777a7e14/d3be9/cad.webp 480w,
+/static/12b6cab6cd620773cd3d1cc7777a7e14/e32b8/cad.webp 862w"
+              sizes="(max-width: 862px) 100vw, 862px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/12b6cab6cd620773cd3d1cc7777a7e14/8ff5a/cad.png 240w,
+/static/12b6cab6cd620773cd3d1cc7777a7e14/e85cb/cad.png 480w,
+/static/12b6cab6cd620773cd3d1cc7777a7e14/f0551/cad.png 862w"
+            sizes="(max-width: 862px) 100vw, 862px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/12b6cab6cd620773cd3d1cc7777a7e14/f0551/cad.png"
+            alt="CAD"
+            title="CAD"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p>フラグ：<code class="language-text">TsukuCTF{ILIK3B3ar}</code></p>
+<h3 id="easy-ltika-49-solves-100-pts" style="position:relative;"><a href="#easy-ltika-49-solves-100-pts" aria-label="easy ltika 49 solves 100 pts permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[easy] Ltika (49 solves, 100 pts)</h3>
+<blockquote>
+<p>Tsukushiくんはシリアル通信等メッセージを送ることに飽きてしまったため、Lチカ（LEDを光らせること）でメッセージを伝える方法を考案した。メッセージを（ローマ字(大文字)、数字、記号を含む）フラグ形式で答えてください。例えばメッセージがTSUKUSHI123&#x26;の場合、フラグはTsukuCTF{TSUKUSHI123&#x26;}となります。</p>
+<p>※この問題はマイコンが手元にない場合でも解くことが可能です。（Tinkercadを使ったardunioのシミュレータも使用可）</p>
+</blockquote>
+<p>以下のようなINOファイルが配布されました：</p>
+<div class="gatsby-highlight" data-language="ltika.ino"><pre class="language-ltika.ino"><code class="language-ltika.ino">void setup() {
+  // initialize digital pin LED_BUILTIN as an output.
+  pinMode(LED_BUILTIN, OUTPUT);
+}
+
+void blinking(){
+  digitalWrite(LED_BUILTIN, HIGH);
+  delay(500);
+  digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
+  delay(300);                       // wait for a second
+}
+void lit(){
+  digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
+  delay(2000);                       // wait for a second
+  digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
+  delay(300);                       // wait for a second
+}
+
+void wait(){
+  digitalWrite(LED_BUILTIN, LOW);
+  delay(1200);
+}
+// the loop function runs over and over again forever
+void loop() {
+  blinking();
+  wait();
+
+  lit();
+  blinking();
+  wait();
+
+  blinking();
+  lit();
+  lit();
+  lit();
+  wait();
+
+  lit();
+  lit();
+  lit();
+  lit();
+  lit();
+  wait();
+
+  lit();
+  blinking();
+  lit();
+  lit();
+  wait();
+
+  blinking();
+  blinking();
+  blinking();
+  blinking();
+  wait();
+
+  blinking();
+  lit();
+  wait();
+
+  blinking();
+  lit();
+  blinking();
+  wait();
+
+  lit();
+  blinking();
+  blinking();
+  wait();
+
+  blinking();
+  lit();
+  lit();
+  wait();
+
+  blinking();
+  lit();
+  wait();
+
+  blinking();
+  lit();
+  blinking();
+  wait();
+
+  blinking();
+  wait();
+
+  lit();
+  blinking();
+  lit();
+  blinking();
+  lit();
+  lit();
+  wait();
+
+  delay(3000);
+}</code></pre></div>
+<p>VS Codeで開くと，アイコンからArduinoのファイルであることが分かりました．コードを読み進めていくと，定義されている関数はそれぞれ</p>
+<ul>
+<li>blinking関数：短音 (.)</li>
+<li>lit関数：長音 (-)</li>
+<li>wait関数：空白</li>
+</ul>
+<p>に対応しているようです．loop関数内の処理をモールス信号に変換すると以下のようになりました：</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">. -. .--- ----- -.-- .... .- .-. -.. .-- .- .-. . -.-.--</code></pre></div>
+<p><a href="https://morsedecoder.com/" target="_blank" rel="nofollow noopener noreferrer">Morse Decoder</a>で復号するとフラグを入手できました．</p>
+<p>フラグ：<code class="language-text">TsukuCTF{ENJ0YHARDWARE!}</code></p>
+<h3 id="easy-pcb-29-solves-152-pts" style="position:relative;"><a href="#easy-pcb-29-solves-152-pts" aria-label="easy pcb 29 solves 152 pts permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[easy] PCB (29 solves, 152 pts)</h3>
+<blockquote>
+<p>筑紫くん「素日華の誕生日プレゼントに彼女の好きな星座を基板に入れたけど気づいてくれるかな～」</p>
+</blockquote>
+<p>フラグは星座を表す英単語大文字で答えてください。例えば星座が仔犬座の場合はTsukuCTF{CANIS MINOR}、獅子座の場合はTsukuCTF{LEO}となります。</p>
+<blockquote>
+<p>※この問題は基盤設計ソフトが手元ない場合でも解くことが可能です。</p>
+</blockquote>
+<p>以下のようなファイルが圧縮されたZIPファイルが配布されました：</p>
+<ul>
+<li>TsukCTF.drl</li>
+<li>TsukCTF-B_Cu.gbl</li>
+<li>TsukCTF-B_Mask.gbs</li>
+<li>TsukCTF-B_SilkS.gbo</li>
+<li>TsukCTF-Edge_Cuts.gm1</li>
+<li>TsukCTF-F_Cu.gtl</li>
+<li>TsukCTF-F_Mask.gts</li>
+<li>TsukCTF-F_SilkS.gto</li>
+<li>TsukCTF-job.gbrjob</li>
+</ul>
+<p>ブラウザで「pcb viewer online」と検索すると<a href="https://www.altium.com/viewer/" target="_blank" rel="nofollow noopener noreferrer">ALTIUM 365 VIEWER</a>というサイトを発見．圧縮されていたファイルの全てを投げると以下のような画像が表示されました：
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 471px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 112.08333333333333%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWCAYAAADAQbwGAAAACXBIWXMAABJ0AAASdAHeZh94AAACxUlEQVQ4y5VVv08UQRid44CLKIVyNB6Eq4gYVAi/laBGDZU2xE5sFQsSEztb/wQTGy1NLPxRmWCiMRFJbAwa1GigoEAkeLezO3t76/6YeWZ3Z/dmvTvU4suX/WbmzZvvvZkl2owGv8OH0+3Azbtw8lF2u5Q4JOtqLV/LwVp/vw/trAbCBhlAANEiwhyHIAI8yyEyAryVJ7UgR/VoLP4Osj6lg9BxCm1SQ+l0CVbRAhtgoKMU5VNlaCc10AkKbVqDccJAtc9CpZ/BKtqoHgToiAE6RhFg6MM6di/tgrDjEUPeVmMTMsiKkHWcY5Yh0w4Lxs2XcIsUQq4N6saoUQOM6TeOaMy6+BXe4W14+S8wrq7C76qm2mWMqIABG9IsAlAf9NYT2MNvAMJSvU4AQ4axKH+ApEQ44ILefgjevSnriESJ56mAdFyHlwN4zk+Opm4QAnYaYHMr4J2eMobGgNr5HVRmNyQgwBaWYV3YkBOjmt8KcLKd6rVQeptmOLsFY+FtwsyeWoc18V5h6kC78wj29DcJWDtqMkcFDPwV7yyINHBmB4J8BogJQV6jOrkOv8tO9bUpIDumqhws8CFyAJt/Bj+/BBA71ddGtkoDKj4UmahnYt9PmNcewCusADFrwuvU3xtQCgBigeeWJRCF07MGZ2gLoiUSoRFoEx8CXsGC2/8CIBWItmjyr2IV2t178Ns3ZUu4YvYGKutjFMggZMTmnkJfXEkYqyz0649hXn4nx3jENiPqb8r3+0sw519BkFXwXBmiVcijIWVe90gZzuAH8HZ5WzJNeqjP7ALt1VDdejVF3cMhsp8AshZayuv7Aa9gyOPHPTxakbugwT1WvkNDS8VbApOvgt14DvPKx2SzyNhD0tjydf63iNrBZYis8h6aA+Ye7yD+8kam/WgOMZDSuVL4A7J7bdiF/4weGb023LyD7TMafgObSyhnINY6pgAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/a9fff9219fd6ff096995fbf1017bcf24/8ac56/pcb.webp 240w,
+/static/a9fff9219fd6ff096995fbf1017bcf24/7e43b/pcb.webp 471w"
+              sizes="(max-width: 471px) 100vw, 471px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/a9fff9219fd6ff096995fbf1017bcf24/8ff5a/pcb.png 240w,
+/static/a9fff9219fd6ff096995fbf1017bcf24/1f09d/pcb.png 471w"
+            sizes="(max-width: 471px) 100vw, 471px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/a9fff9219fd6ff096995fbf1017bcf24/1f09d/pcb.png"
+            alt="PCB"
+            title="PCB"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+    </span></p>
+<p>これは白鳥座です．白鳥座の英語名を調べるとフラグを入手できました．</p>
+<p>フラグ：<code class="language-text">TsukuCTF{CYGNUS}</code></p></div></div></div><div class="Post-module--footer--f8705"><div class="Meta-module--meta--dae0a"><p class="Meta-module--date--4d30d">Published<!-- --> <!-- -->2021/09/16</p></div><div class="Tags-module--tags--18589"><ul class="Tags-module--list--82ae6"><li class="Tags-module--item--52015"><a class="Button-module--button--b1113" href="/tag/ctf/">CTF</a></li></ul></div><div class="Author-module--author--1c58d"><p class="Author-module--bio--08950">hello, world<a class="Author-module--twitter--90647" href="https://www.twitter.com/fumiyanll23" rel="noopener noreferrer" target="_blank"><strong>Fumiyan</strong> on Twitter</a></p></div></div><div class="Post-module--comments--d3b99"></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/posts/tsukuctf-2021";window.___webpackCompilationHash="7e8907d73091173b1fd2";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-2283184d250a2c89fbde.js"],"app":["/app-26045f1bd63be15a3e56.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-0c915c7b1bdb5eac4fdf.js"],"component---src-templates-index-template-index-template-tsx":["/component---src-templates-index-template-index-template-tsx-a6a7b76ba659225118a4.js"],"component---src-templates-not-found-template-not-found-template-tsx":["/component---src-templates-not-found-template-not-found-template-tsx-329b2a2ad199ec2448f3.js"],"component---src-templates-page-template-page-template-tsx":["/component---src-templates-page-template-page-template-tsx-c2d1d9bb749983c1d3ce.js"],"component---src-templates-post-template-post-template-tsx":["/component---src-templates-post-template-post-template-tsx-6841e77c9633d49b991d.js"],"component---src-templates-tag-template-tag-template-tsx":["/component---src-templates-tag-template-tag-template-tsx-88bf2b1430994922970d.js"],"component---src-templates-tags-template-tags-template-tsx":["/component---src-templates-tags-template-tags-template-tsx-c4ce294cbd69fb69c08d.js"]};/*]]>*/</script><script src="/polyfill-2283184d250a2c89fbde.js" nomodule=""></script><script src="/app-26045f1bd63be15a3e56.js" async=""></script><script src="/framework-745d5d28c0250a1a333b.js" async=""></script><script src="/webpack-runtime-4ccb904b528a7e120e3d.js" async=""></script></body></html>
