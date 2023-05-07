@@ -1,4 +1,119 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[MyWeblog]]></title><description><![CDATA[MyWeblog]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 05 May 2023 13:35:11 GMT</lastBuildDate><item><title><![CDATA[マネーフォワードのサマーインターンシップに参加した話]]></title><description><![CDATA[今月 (2021/10) のうち9日間で株式会社マネーフォワードのサマーインターンシップに参加したので，感想などをまとめておきます．]]></description><link>https://fumiyanll23.com/posts/internship-moneyforward</link><guid isPermaLink="false">https://fumiyanll23.com/posts/internship-moneyforward</guid><pubDate>Wed, 10 Nov 2021 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;はじめに&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&quot; aria-label=&quot;はじめに permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;はじめに&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[MyWeblog]]></title><description><![CDATA[MyWeblog]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 07 May 2023 13:18:20 GMT</lastBuildDate><item><title><![CDATA[修了&入社した話]]></title><description><![CDATA[2023/03/25に熊本大学大学院自然科学教育部機械数理工学専攻数理工学教育プログラムの博士前期課程 (修士課程) を無事に修了し，工学修士の学位を授与されました (今更)．]]></description><link>https://fumiyanll23.com/posts/graduate-and-join</link><guid isPermaLink="false">https://fumiyanll23.com/posts/graduate-and-join</guid><pubDate>Sat, 06 May 2023 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;はじめに&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&quot; aria-label=&quot;はじめに permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;はじめに&lt;/h2&gt;
+&lt;p&gt;2023/03/25に熊本大学大学院自然科学教育部機械数理工学専攻数理工学教育プログラムの博士前期課程 (修士課程) を無事に修了し，工学修士の学位を授与されました (今更)．
+修了記事をいつか書こうと思っていたら，いつの間にかゴールデンウイークの最終日を迎えていました()．
+せっかく(?)なので，入社して1ヶ月が経過したよっていう話と併せて書き残しておこうかと思います．&lt;/p&gt;
+&lt;h2 id=&quot;youは何しに大学院へ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#you%E3%81%AF%E4%BD%95%E3%81%97%E3%81%AB%E5%A4%A7%E5%AD%A6%E9%99%A2%E3%81%B8&quot; aria-label=&quot;youは何しに大学院へ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Youは何しに大学院へ?&lt;/h2&gt;
+&lt;p&gt;大学院に進学すること自体は，B3に進級した頃からふわっと考えていました (進学:就職 = 9:1くらい)．
+一番の理由は &lt;del&gt;働きたくなかったから&lt;/del&gt; もう少しだけ数学に触れていたかったからです．
+特に，B3後期に履修した代数学の講義&lt;sup id=&quot;fnref-1&quot;&gt;&lt;a href=&quot;#fn-1&quot; class=&quot;footnote-ref&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;で，初めて触れた代数学 (より正確には公理系) の考え方に強く惹かれ，大学院進学や所属する研究室を決定しました．&lt;/p&gt;
+&lt;h2 id=&quot;修士課程の2年間で何をしたのか&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E4%BF%AE%E5%A3%AB%E8%AA%B2%E7%A8%8B%E3%81%AE2%E5%B9%B4%E9%96%93%E3%81%A7%E4%BD%95%E3%82%92%E3%81%97%E3%81%9F%E3%81%AE%E3%81%8B&quot; aria-label=&quot;修士課程の2年間で何をしたのか permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;修士課程の2年間で何をしたのか?&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;研究&lt;/li&gt;
+&lt;li&gt;自主ゼミ&lt;/li&gt;
+&lt;li&gt;就活&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;の3つの観点から振り返っていきます．&lt;/p&gt;
+&lt;h3 id=&quot;1-研究&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-%E7%A0%94%E7%A9%B6&quot; aria-label=&quot;1 研究 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. 研究&lt;/h3&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 600px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/2b51e2522cf79a0a93cc4c20c2f14270/0a47e/nothing_nothing.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 69.16666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAIAAACgpqunAAAACXBIWXMAAAsTAAALEwEAmpwYAAAC7klEQVQozyWS30rycACGdyVdRhfQ5XQSnXQidRKBRTjMIsqBZhI1M3XDof60OdS5zW3Ozf1pzm1OHSEYRAUa+e2jfM4f3veFF6Ioajweq6oqy3K3261Wq+Px+OPjYzQaLRaLer3+9PT08vKiKMpyuZxOp5+fn6qqlstlkiQh3/eDIPj3RxAEnudNp1PHcarV6s/Pj6ZpKIrOZjPf95fLZTgcxnFc07S7u7vb21uI5/lsNptKpXZ3dwEAlmVJkuQ4TqFQkGW5VqshCGIYRi6X+/r6ymazlmVVKpV4PJ7P56F+v1+v12ma3tnZoWnaNM1sNovjeDQaJUmyXq83m00AAI7ji8Xi/v6+1WpxHIeiKIZhEMMwJElOJhMEQVzXHQ6HmUym3W4zDNPtdj3Pi0QiEARtbGyIonh5eQkAKBaLCILQNA0NBoNUKkVRVDgc9n2/XC7n83mSJE3TFATBtu3T09PNzU0I+o1JJpMoirZarVwuJ0kSRFFUOp0ulUrRaNQwDMuydF3nOM7zPJ7nZVl2Xfft7W1rayudTodCoUgk0mg0aJo2DANa75EkKRQKtdvtTqfjOI5pmmtZFEVVVV3XbTabnU5ne3v77OyMYRhFUX7lWq3m+/5sNtvf3+/3+xzHzedzz/NM01QUpdfrOY4DAKhUKq+vr0dHRwAAlmW1P6Cbm5sgCFar1eHhIcuyw+EQx/Fut6vrum3bvV7PMAxN02KxGAAgkUiQJClJkmEYoihCBEEEQfD9/Z1MJn3ft20bANBsNl3XNQyD53lN0yaTycXFRbVaBQBQFOV53nrOb+0gCN7f3+PxuCAIjUajVCrJskxRFMdx6xBJkiKRyPPz83A4nM/no9EIw7B+vw9hGLa+52q1CoKAZdlYLFYsFhVFcRxnMBioqtpqtc7Pzx8fH13X1XUdRVGCIARBgGAYJggCQZBkMlkoFBKJBAzDBwcHmUwG/wPDsIeHh+PjYxiGr66urq+v9/b2YBg+OTn5D1aXeoQin5EoAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/2b51e2522cf79a0a93cc4c20c2f14270/8ac56/nothing_nothing.webp 240w,
+/static/2b51e2522cf79a0a93cc4c20c2f14270/d3be9/nothing_nothing.webp 480w,
+/static/2b51e2522cf79a0a93cc4c20c2f14270/e88ff/nothing_nothing.webp 600w&quot;
+              sizes=&quot;(max-width: 600px) 100vw, 600px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/2b51e2522cf79a0a93cc4c20c2f14270/8ff5a/nothing_nothing.png 240w,
+/static/2b51e2522cf79a0a93cc4c20c2f14270/e85cb/nothing_nothing.png 480w,
+/static/2b51e2522cf79a0a93cc4c20c2f14270/0a47e/nothing_nothing.png 600w&quot;
+            sizes=&quot;(max-width: 600px) 100vw, 600px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/2b51e2522cf79a0a93cc4c20c2f14270/0a47e/nothing_nothing.png&quot;
+            alt=&quot;???「なんの成果も!!得られませんでした!!」&quot;
+            title=&quot;???「なんの成果も!!得られませんでした!!」&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;(出典: 諌山創『進撃の巨人 (1)』(講談社))&lt;/p&gt;
+&lt;p&gt;というのは冗談で，修了に必要な最低限の要件 (必要な単位の取得および修士論文の執筆と発表) は充たしました(それはそう)．
+最終的な研究テーマは『概アフィン符号の拡張について』でした．
+分野としては符号理論，マトロイド理論，暗号理論 (秘密分散) に関連する話題です．
+この記事では余白が狭すぎるので，内容の詳細な説明は割愛します．&lt;/p&gt;
+&lt;h3 id=&quot;2-自主ゼミ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-%E8%87%AA%E4%B8%BB%E3%82%BC%E3%83%9F&quot; aria-label=&quot;2 自主ゼミ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. 自主ゼミ&lt;/h3&gt;
+&lt;p&gt;大学院進学を機に「数理工学生ゼミ」という自主ゼミを立ち上げました．
+修了後は学科の後輩に譲渡し，今年度 (2023年度) も活動しているようです．
+興味のある熊大生は &lt;a href=&quot;https://twitter.com/kumasuuri&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;自主ゼミのTwitter&lt;/a&gt; あるいは &lt;a href=&quot;https://twitter.com/kumahh_&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;ゼミ長のTwitter&lt;/a&gt; から連絡を取ってみてくださいね．&lt;/p&gt;
+&lt;p&gt;自主ゼミを立ち上げた理由は大学院入試 (院試) に落ちたからです．
+進学を決めた当時は，進学先として主に外部の大学院を考えていました．
+理由として，暗号理論 (特に耐量子計算機暗号) の研究をしたかったものの，当時の熊大には暗号の先生はいらっしゃらなかったからです．
+当然，外部進学なので院試で落ちる可能性があります&lt;sup id=&quot;fnref-2&quot;&gt;&lt;a href=&quot;#fn-2&quot; class=&quot;footnote-ref&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;．
+そこで，当時の僕は2つのプランを用意しました:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;プランA. 院試に受かったとき ==&gt; 暗号理論の研究をして博士後期課程へ進学し，博士号を取得する．その後は民間の研究所あるいはIT企業にて研究・開発の職に就く&lt;/li&gt;
+&lt;li&gt;プランB. 院試に落ちたとき ==&gt; 第2期募集 (翌年の1月実施) で内部進学し，修士課程を修了した後 (恐らくエンジニア職に) 就職する．ただし，進学と同時に自主ゼミを立ち上げ，(学科の)後進の育成を行う&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;無事に(?)院試には落ちたので，予め用意していたプランに従って自主ゼミを立ち上げたというわけです．
+結果的にこれは大成功でした(自画自賛)．
+実際，&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.fast.kumamoto-u.ac.jp/gsst/senkonews/1260/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;大学院のHP&lt;/a&gt; に活動が取り上げられた&lt;/li&gt;
+&lt;li&gt;ゼミで知り合った後輩が，僕が所属していた研究室に来てくれた (とても嬉しい!!)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;という事象が発生しました．
+僕がゼミ長を務めた2年間 (2021/04-2023/03) に実施したゼミ(のほとんど)は &lt;a href=&quot;https://twitter.com/fumiyanll23/status/1510902724757393412&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;こちらのスレッド&lt;/a&gt; を参照してください．&lt;/p&gt;
+&lt;h3 id=&quot;3-就活&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#3-%E5%B0%B1%E6%B4%BB&quot; aria-label=&quot;3 就活 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;3. 就活&lt;/h3&gt;
+&lt;p&gt;内部進学が確定したので，修士課程修了後に就職することが決まりました (つまり，23卒)．
+初めて就活っぽいことを経験をしたのはB4の春休み (2021/04頃) のようです (cf. &lt;a href=&quot;https://twitter.com/fumiyanll23/status/1377925341864333315&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;当時のツイート&lt;/a&gt;)．
+サマーインターンシップの早期選考ですね．&lt;sup id=&quot;fnref-3&quot;&gt;&lt;a href=&quot;#fn-3&quot; class=&quot;footnote-ref&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;その後も会社説明会や逆求人イベントなどに参加，あるときはTwitterのDMに凸したり凸されたりし，最終的には&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;内定: 1社 (T社．2023/06に獲得および承諾)&lt;/li&gt;
+&lt;li&gt;短期インターンシップ: 3社 (それぞれ5日，1日，1日)&lt;/li&gt;
+&lt;li&gt;中期インターンシップ: 1社 (&lt;a href=&quot;https://blog.fumiyanll23.com/posts/internship-moneyforward&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;参加記事&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;お祈り: n社 (ただし，nは正整数&lt;sup id=&quot;fnref-4&quot;&gt;&lt;a href=&quot;#fn-4&quot; class=&quot;footnote-ref&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;という結果になりました．&lt;/p&gt;
+&lt;h2 id=&quot;入社して1ヶ月が経過したよ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E5%85%A5%E7%A4%BE%E3%81%97%E3%81%A61%E3%83%B6%E6%9C%88%E3%81%8C%E7%B5%8C%E9%81%8E%E3%81%97%E3%81%9F%E3%82%88&quot; aria-label=&quot;入社して1ヶ月が経過したよ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;入社して1ヶ月が経過したよ&lt;/h2&gt;
+&lt;p&gt;現在はT社 (@愛知県) にてデータエンジニアとして働いています．
+2023/03中旬から内定者アルバイトとして一足早く働き始めていたこともあり，職場および社会人生活に慣れるまであまり時間はかかりませんでした．
+業務では“以前から興味を持っており，いつかは触ってみたいと思っていた分野”に携わっているので割と楽しいです．
+とりあえず，今期の目標としては情報科学および業務に関する基礎的な知識や経験を身につける，といったところでしょうか．
+基本情報技術者試験 (FE) あたりは合格しておきたいです．&lt;/p&gt;
+&lt;h2 id=&quot;おわりに&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB&quot; aria-label=&quot;おわりに permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;おわりに&lt;/h2&gt;
+&lt;p&gt;大学院を修了した話と入社した話を書こうと思ったら，思わず大学院進学まで遡って書いてしまいました．
+せっかくブログを新調したので，今後もイベント参加や何かの節目にちょこちょこ記事を書いていきたいです(書くとは言っていない)．
+ブログ新調の記事も書こうかな～～～．&lt;/p&gt;
+&lt;div class=&quot;footnotes&quot;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&quot;fn-1&quot;&gt;整数論と体論に入門し，最終的にはRSA暗号や楕円曲線暗号の仕組みを理解するというもの．&lt;a href=&quot;#fnref-1&quot; class=&quot;footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;fn-2&quot;&gt;もちろん，内部進学でも落ちる可能性はあります．&lt;a href=&quot;#fnref-2&quot; class=&quot;footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;fn-3&quot;&gt;ちなみに，この選考は落ち，人生初のお祈りメールを頂戴しました．&lt;a href=&quot;#fnref-3&quot; class=&quot;footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;fn-4&quot;&gt;つまり，&lt;code class=&quot;language-text&quot;&gt;$n \in \mathbb{Z}_{&gt; 0}$&lt;/code&gt; (TeXの記法が分かる方向け)&lt;a href=&quot;#fnref-4&quot; class=&quot;footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</content:encoded></item><item><title><![CDATA[マネーフォワードのサマーインターンシップに参加した話]]></title><description><![CDATA[今月 (2021/10) のうち9日間で株式会社マネーフォワードのサマーインターンシップに参加したので，感想などをまとめておきます．]]></description><link>https://fumiyanll23.com/posts/internship-moneyforward</link><guid isPermaLink="false">https://fumiyanll23.com/posts/internship-moneyforward</guid><pubDate>Wed, 10 Nov 2021 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;はじめに&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&quot; aria-label=&quot;はじめに permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;はじめに&lt;/h2&gt;
 &lt;p&gt;今月 (2021/10) のうち9日間で株式会社マネーフォワードのサマーインターンシップに参加したので，感想などをまとめておきます．&lt;/p&gt;
 &lt;h2 id=&quot;株式会社マネーフォワードとは&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE%E3%83%9E%E3%83%8D%E3%83%BC%E3%83%95%E3%82%A9%E3%83%AF%E3%83%BC%E3%83%89%E3%81%A8%E3%81%AF&quot; aria-label=&quot;株式会社マネーフォワードとは permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;株式会社マネーフォワードとは?&lt;/h2&gt;
 &lt;p&gt;&lt;span
