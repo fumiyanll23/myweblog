@@ -1,4 +1,401 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[MyWeblog]]></title><description><![CDATA[MyWeblog]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 11 Jun 2023 02:48:08 GMT</lastBuildDate><item><title><![CDATA[修了&入社した話]]></title><description><![CDATA[2023/03/25に熊本大学大学院自然科学教育部機械数理工学専攻数理工学教育プログラムの博士前期課程 (修士課程) を無事に修了し，工学修士の学位を授与されました (今更)．]]></description><link>https://fumiyanll23.com/posts/graduate-and-join</link><guid isPermaLink="false">https://fumiyanll23.com/posts/graduate-and-join</guid><pubDate>Sat, 06 May 2023 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;はじめに&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&quot; aria-label=&quot;はじめに permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;はじめに&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[MyWeblog]]></title><description><![CDATA[MyWeblog]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 11 Dec 2023 21:49:01 GMT</lastBuildDate><item><title><![CDATA[TsukuCTF 2023 Writeup]]></title><description><![CDATA[TsukuCTF 2023に1人チームfumyianll23で参加しました．]]></description><link>https://fumiyanll23.com/posts/tsukuctf-2023-writeup</link><guid isPermaLink="false">https://fumiyanll23.com/posts/tsukuctf-2023-writeup</guid><pubDate>Mon, 11 Dec 2023 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;はじめに&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&quot; aria-label=&quot;はじめに permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;はじめに&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://tsukuctf.sechack365.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;TsukuCTF 2023&lt;/a&gt;に1人チーム“fumyianll23”で参加しました．
+著者にとっては1年ぶりのCTFでした．
+いくつかの問題について，writeupを書き残したいと思います．&lt;/p&gt;
+&lt;h2 id=&quot;結果&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E7%B5%90%E6%9E%9C&quot; aria-label=&quot;結果 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;結果&lt;/h2&gt;
+&lt;p&gt;得点が正の343チーム中170位 (1619 pts) でした．
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 237px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/eb3f226b00a10941dabd3080e99f1dd5/008e2/result.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 78.90295358649789%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABJ0AAASdAHeZh94AAADZElEQVQ4y1WUS28bVRiGvUbdNGlLiWfGc/dtkjiNc22urh3fM77f6thOUrtOGhXRoEggUUBhBSskVmzYs4ZFEX8AqaILVvwINvyBB51pYpLF0XfmnPO9837v+53jCxghInOP0K0wsmYhqSYfKTozioERjBIwgsiaPdnzBwxvbkfnscKzKJqFXzW9NTF8etDh08+/YGMzgbO4zG4qTbXeJJ3bJ7FXZHMnwfziCjvJDJu7SZLpIrlCgXK/TzKXIVtwyRVLuNUWW9u7+KywQ7XXo9ro8+L8nMPjIcejM/pHpwwGJ/SHpzwbnTA+e8Xrb76j0z/g9PkJnZNT3Ead49GYTDZPrtSg1zvAp9sRoguLxNe2SKZzOLFFQs4CjhNlLhqiUMyTTW2zsrzI9tY60ahJbDbM2uPHrG8/IV8sEV9dp1Tv8CSVwqeaIRT9vUZCNzEXukqxItNzVaSlFg/ma9x1ykw7Ze7N1Xiw0GAmso0U0Cc5ZjDqRZ9mhbkeuh1FM23UyDJ3nv+D+RV8eAGRS3AuwfoSol+D9Bqmar9i6AGEByJXEBNxAigWVCuCZlgEIqt8MP6Xz36BvR9g/DP89Adc/gbfvoH8j3Cn+sYDFDnqDVK+m+iaLQBt1NAj7rd/Z/rwL+4evOXe4B3a+E/k4Tumem+ZOvqbh9nv0Q0NTVR1k+H1RERZNREmyZqJLEvIioRh6kjSDJISYMbvRwnIKIqEX5a9/hR9KWnWBGPC0Ag5JAsuGzt7VJsdcvsV6u0uh89e0my1sUIOGzsZEskUqWyerUSatY0dEntZVtY3PVNvlSyYVbp9cm6VvFtlcDyk1T2g2TnCdSssLa8yOP6YRrPJYDhiNHyBW6pyNBqTzuQ9pgLjloZ2eM7rQ0k1PMevf+S1RWiWWHzdO2eGZ711cTUnhgoMUfLEECvsJQpjYvEVAob9PvnqPot7/FBSvSjOif4T+4KZYgRva6jbYSTNJpUvczI+4+UnryiWG9TqLTq9PlYo5n2Xaw0KboVCpUu93eHpQYtKo01sIY6s2/9rKOiLFyOR2afeaFMsVdnLubS7A84vLghG4vQOx9RaHfbLdVKFOulCgXwxS6XVZWl55YYp1/VfPV9eG1w9U0LHyGwM1QxjhhxmFN3bk8SZgImkWvgV/VbJ/wFvOh/EbYzIHgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/eb3f226b00a10941dabd3080e99f1dd5/4527a/result.webp 237w&quot;
+              sizes=&quot;(max-width: 237px) 100vw, 237px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/eb3f226b00a10941dabd3080e99f1dd5/008e2/result.png 237w&quot;
+            sizes=&quot;(max-width: 237px) 100vw, 237px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/eb3f226b00a10941dabd3080e99f1dd5/008e2/result.png&quot;
+            alt=&quot;コンテストの結果&quot;
+            title=&quot;コンテストの結果&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&quot;writeup&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#writeup&quot; aria-label=&quot;writeup permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Writeup&lt;/h2&gt;
+&lt;h3 id=&quot;web-easy-basic-274-solves-100-pts&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#web-easy-basic-274-solves-100-pts&quot; aria-label=&quot;web easy basic 274 solves 100 pts permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[web, easy] basic (274 solves, 100 pts)&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;保護されていない通信ではパスワードはまる見えダゾ!
+e.g. パスワードが Passw0rd! の場合、フラグは TsukuCTF23{Passw0rd!} となります。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;pcapngファイルが配布されていたので，&lt;a href=&quot;https://www.wireshark.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Wireshark&lt;/a&gt;に食わせてみました．
+HTTP通信でフィルタしてみたところ，5つの通信がヒットしました．
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 788px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 20.416666666666668%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAABJ0AAASdAHeZh94AAABGklEQVQY0yWLy0oCAQAA9xsk75GPVXfXVVez8BBCdbOHWdYvVhZpiamRZahbWD4JNDESFaEIT9UhJtYOAwPDCErAjxpWkUIOAqsKUljDuuxiITCPtOLEEbLhW9NYXA9i8VuwL4lYgyImiwmz3TxjzvaP4UIkHsId86BEZcSIA++uihKVcG44cW060fY11JgbMSIib0v44l68ex78BxpyVELacqHsyLPf6EJzkkfvJLl6OuSxn0bvpLiuHVHuJGmNc5SezyjUEzz0zqkPLtG7KZrDHIVGgmL7hELjmPuXFNX+Ba1RFmGMTnuap9g/pfdzS/MzS2WQpDXNM6JCdZKmPEjS/b7h9feO+keGN0row9SsGRhP7T1D96vAH0QKx/G9XoPvAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/02bfda11bd1da0e5733588c7c0d00b21/8ac56/wireshark_http.webp 240w,
+/static/02bfda11bd1da0e5733588c7c0d00b21/d3be9/wireshark_http.webp 480w,
+/static/02bfda11bd1da0e5733588c7c0d00b21/4d911/wireshark_http.webp 788w&quot;
+              sizes=&quot;(max-width: 788px) 100vw, 788px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/02bfda11bd1da0e5733588c7c0d00b21/8ff5a/wireshark_http.png 240w,
+/static/02bfda11bd1da0e5733588c7c0d00b21/e85cb/wireshark_http.png 480w,
+/static/02bfda11bd1da0e5733588c7c0d00b21/ea7fb/wireshark_http.png 788w&quot;
+            sizes=&quot;(max-width: 788px) 100vw, 788px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/02bfda11bd1da0e5733588c7c0d00b21/ea7fb/wireshark_http.png&quot;
+            alt=&quot;Wireshark - http&quot;
+            title=&quot;Wireshark - http&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+    &lt;/span&gt;
+No.12のレコードでは“401 Unauthorized”だったものがNo.27のレコードでは“200 OK”となっているので，No.27のレコードに対応するリクエストの中身を見ることで分かるのではないかと考えました．
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 49.16666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABJ0AAASdAHeZh94AAABhklEQVQoz5XP604TQRjG8b0SFV1ot3PasyxLgRahMbRLtdHSljZoYioLRaJ4vAYTo0aJerF/s0uMNdHEfvjlmWdm3g+vFccRUeAS+aYUemrurMt+O3QxskqtaqNFBemsIJ1lKvYS9tK10vLN61TsG1i7vccMLj7z4Ow9B88/Mnx1yeD1N8bvfjB6853Dt1d58PKShy++0L/4Su/8E93Zh7+yVutNepMTepOc/qMz7o1zuoc53dEx+6Nj2v0ndAbTst+fnNIdPSUbTskGUxqdIZt7A7bmWL7v0dpp0tiskyYxG2nCehITBx6eFmhRxUgHV9VwtcCoWtmLe6di46zc+oMVRDHtLKOxvc1Ws0myluIFAUJrhFLUpPyn4l2W/36zjryU850OeeMuszttnrX2mW20yJMmR37K2KwuxEq1RxavsRcl7LohdeVSF4Z1oYmkJlZmIZZUCs8YXGMwSperOEpSU8VKV7kISwjBPCklUvwi/l8xJyVWEISE4ZwgIFhQMVek7/v8BFA5VH9HL8JrAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/3da96c7e852860330762bad30a783b59/8ac56/wireshark_autorization.webp 240w,
+/static/3da96c7e852860330762bad30a783b59/d3be9/wireshark_autorization.webp 480w,
+/static/3da96c7e852860330762bad30a783b59/e46b2/wireshark_autorization.webp 960w,
+/static/3da96c7e852860330762bad30a783b59/b4d37/wireshark_autorization.webp 983w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/3da96c7e852860330762bad30a783b59/8ff5a/wireshark_autorization.png 240w,
+/static/3da96c7e852860330762bad30a783b59/e85cb/wireshark_autorization.png 480w,
+/static/3da96c7e852860330762bad30a783b59/d9199/wireshark_autorization.png 960w,
+/static/3da96c7e852860330762bad30a783b59/91b29/wireshark_autorization.png 983w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/3da96c7e852860330762bad30a783b59/d9199/wireshark_autorization.png&quot;
+            alt=&quot;Wireshark - 認証情報&quot;
+            title=&quot;Wireshark - 認証情報&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+    &lt;/span&gt;
+ビンゴ!認証情報が平文のまま記録されていました．通信を暗号化することの重要性がよく分かる問題でしたね．&lt;/p&gt;
+&lt;p&gt;フラグ: &lt;code class=&quot;language-text&quot;&gt;TsukuCTF23{2929b0u4}&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;osint-easy-location_for_what-240-solves-100-pts&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#osint-easy-location_for_what-240-solves-100-pts&quot; aria-label=&quot;osint easy location_for_what 240 solves 100 pts permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[osint, easy] location_for_what (240 solves, 100 pts)&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;とある場所を友達と探索していると、「ここ、何かの映画の聖地だった気がするけど、名前忘れちゃった…」とのこと。
+シュッと特定して教えてあげよう!
+Flagの形式は TsukuCTF23{映画のタイトル} です。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/a81cd6f9d152424713a017671d918866/493ac/location_for_what.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 56.25%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAAC+UlEQVQozwXB209aBwDA4fO6h+1xvSTNdOvSqtmqdV6GghWVS62CN46gKHJRcHBEOOgUQaHueAF0Whh4sGqoLr2ulGzGpFmy/+y37xPCqyYmHBqGxD5yuSSiqMO1ZCB7GqXwMsHh4ToTYi/fPbhL46M6Rma6WU6a8C3rkJK9rGcNKKqJ5wUryrEdQVo2M7/Yz5I8ikPUYbb0clDIEIsGcIgmbPYn1D+8zZ1vbtNtbMfs1LOWm2S7NIq8pWch0o0v0svcUj92vxFh0t7JoTqBP2ZhbETD3PQIg+Zu7tZ/ifGZAXfQyVdff0FTy/don7ZS/8MtHmnrMExqcEUGcEttBBN6vDEt82vtCI7pTh733WPA2o8UEOk212GwaWhs+5YOXSt9Vh33Gm/RY/iZDl0LzZ0NaIzNdA23MOLTI/82zMq2iXC6i8XkTwjjlk50pjb0T7uYn32GXTKym48T3LJh9rWin2mmy9JEj6mdhsf3qb9fj9nyhNCmlTl5gND2JNGMG0/MjD+uR3AsaAmFLMgHs+T24kwFTeQvcixnvfjjY0iyjbAs4pgyMG4bYnRwCFeol8juELMhE1ulcY4+zJG5dBPPexFWMk6Cv1hIKAsUjrZZlMc4PlWQFTfRjJOdnEStcsbnt69RCynU0q8k09OIs1rC8TGUyigbaj/7b4yUb0SE4kcJZc9LZkdCeR7k/GOIs7dxsmeLbJd9rB/PUChv8G+1yrtXJxRLW1Q/vaD61wGpXS8aywO01oeY7T8iZ/oQklkHmf0gysYyqbSTnSMbiewsxatVdrJRNtNOMkU74aiL+JrEhXrI37VzPl+/p6KeMOEYprOnAd1gE2KgA2HeM8VRLsWK5CG95ye5P4MnZMUfE4knPRTLAfaPXEjRGdY3vaSUIKsbAfJqklrtA5/e33BauqSoqmSPdxF2s3H+fFliJeYlk0+QK62TP0lSuVQ4Pd/iqpqgfLbB7/kI6sUK5Vcy+ZMwacXHiz/WqFzt8OZdgZvra/6p/cf/MkjuSq6+LwYAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/a81cd6f9d152424713a017671d918866/8ac56/location_for_what.webp 240w,
+/static/a81cd6f9d152424713a017671d918866/d3be9/location_for_what.webp 480w,
+/static/a81cd6f9d152424713a017671d918866/e46b2/location_for_what.webp 960w,
+/static/a81cd6f9d152424713a017671d918866/f992d/location_for_what.webp 1440w,
+/static/a81cd6f9d152424713a017671d918866/882b9/location_for_what.webp 1920w,
+/static/a81cd6f9d152424713a017671d918866/b33a3/location_for_what.webp 4032w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/a81cd6f9d152424713a017671d918866/8ff5a/location_for_what.png 240w,
+/static/a81cd6f9d152424713a017671d918866/e85cb/location_for_what.png 480w,
+/static/a81cd6f9d152424713a017671d918866/d9199/location_for_what.png 960w,
+/static/a81cd6f9d152424713a017671d918866/07a9c/location_for_what.png 1440w,
+/static/a81cd6f9d152424713a017671d918866/29114/location_for_what.png 1920w,
+/static/a81cd6f9d152424713a017671d918866/493ac/location_for_what.png 4032w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/a81cd6f9d152424713a017671d918866/d9199/location_for_what.png&quot;
+            alt=&quot;location_for_what&quot;
+            title=&quot;location_for_what&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;これは新海誠監督の映画『言の葉の庭』の聖地ですね(知識)&lt;sup id=&quot;fnref-1&quot;&gt;&lt;a href=&quot;#fn-1&quot; class=&quot;footnote-ref&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;．&lt;/p&gt;
+&lt;p&gt;フラグ: &lt;code class=&quot;language-text&quot;&gt;TsukuCTF23{言の葉の庭}&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;osint-easy-castle-217-solves-100-pts&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#osint-easy-castle-217-solves-100-pts&quot; aria-label=&quot;osint easy castle 217 solves 100 pts permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[osint, easy] castle (217 solves, 100 pts)&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;この前、お城に行ってこの写真を取ってきたんだ!
+どこにあるかわかるかい?&lt;/p&gt;
+&lt;p&gt;フラグのフォーマットは、TsukuCTF23{緯度_軽度} です。
+小数点は第三桁まで有効とします。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;/db32b3533c05a9e4f4faa40d2ae53c23/castle.jpg&quot; alt=&quot;castle&quot;&gt;&lt;/p&gt;
+&lt;p&gt;我らがGoogle先生で画像検索 (Google Lens) してみたところ，兵庫県姫路市の「太陽公園」であることが分かりました (&lt;a href=&quot;https://lens.google.com/search?ep=cntpubb&amp;#x26;hl=ja&amp;#x26;re=df&amp;#x26;s=4&amp;#x26;p=AbrfA8o33UQmsXNqAuR1tstPqxc7Ifo3Weo38XPXxit24aVMyY0MU2KFTsf-N9lv9dO024EokT518INqP7f16hxbRCU5ZZ8QIr1MLVcTqjhbdf8ooBIuq3_604iPVSuef9pvGsqLCqpsytkI3-4S_AaoMV2-Ae8K-Rob2kgRby4zxIA1ndlX9GKlj9ZANLJRnZJSj8ElgchCydp0mN7h-iq8WRdrMVTQdztDwAc_mjIdiD4XOU6oJw8iGi5TNtg1LVgn0eYDoXIiUEb8eSZA#lns=W251bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsIkVrY0tKRFppT0RabFpqbGhMV1ZqTm1JdE5HTXlaaTA1T1dZM0xUWXpZV013TWpNeU56TXpaQklmU1RrelEyNTNlREl4VDBWVGMwWldkMUYzZG5veE4wVnRhVUl3UW5oU1p3PT0iLG51bGwsbnVsbCxudWxsLDEsbnVsbCxbbnVsbCxudWxsLFswLDc0MjIsOTI1NzgsNTA2MDddXV0=&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;検索結果&lt;/a&gt;)．
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 52.083333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABJ0AAASdAHeZh94AAACyUlEQVQoz13QfUzMARzH8d/f5qHzUCqq+3WXJdXuITpPRQzjrrtU0yIqYfKHTWxm89gcklwuursepBNGjkzRw9aw3alRybIWStwtKiL/eHxb2fzhu7322T6f/76C2XyeYosVi8X2L8vLK7CVlHKh2DJurDcVmnnW0Q78Bn7x//38DaMjHxG8JNOZOMnrr8kSJk+Zis9Mf7x9/Bjbpk7zYbq3LxMmTCQ3z0yLG5z98Mz9g7cDw3g8Hr586Of9wDveeAYRFi+JISk5hcSkFPSGJOL1iazTGoiJjSN22UqUqijCwiMJEYPIMZZxwDFATlEj++xdHMq34Sg7SX3hPhzHttH0sBnBVFhE7b1GbKUVHMs1Umm/xpVrDhLWJxOvX49aHYVSqSRYFDmZd4qmBgf2knwqr1Ry0XaW6ooinPersF8w0tLmQjCZitibs5tNm1LZviObg4eOUmwtw5CQREzsciLCw1EolIjSIHJPm2lsfY7l1mNO3O6mtmsEz9AIPa/e8rpnmE/DXxGyMjPYsjGZzWkb0Wl1ZKSnsys7G60uAZVKTUREJHL5HPz9fDHmFfDg0SMqbt5lu9HG2Us3aai9RXGBmcP7j9Pc9ABBERFKokGLXq9n7ZrVpG7YwNaMdOJWrCI0NBSZTE6IXMasWf7YrFa+f/9G7+tennf3UFdXxw27ncsnzrEzaw9XK6sQYpcuIV6nJTU1hczMTLakpWGI16FZHIMolSKXBTMvbC4SiReHjxzhclU5NTV36Ho5Qq/7M6Ojnxn8MIjzoZP+vj6EBdEaVKoootTziY7WoFm4iGjNQqTSYOQyOUFSEVGUIZFMo8BkYmhokLaOTs5Yq7HfqMdRfZ1mVzutvWP//IIwO0BKQKA4ztcvAIVCjUq9gJA5YQQGycaJwSHM8PbDYi3B7X7Hk9ZWOjs6cLlcNNY30PK0E2fbC/r6PfwB4ujwMxFzeAYAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/19d4e6e03457f85b089ab8bc412b44f6/8ac56/google-lens_castle.webp 240w,
+/static/19d4e6e03457f85b089ab8bc412b44f6/d3be9/google-lens_castle.webp 480w,
+/static/19d4e6e03457f85b089ab8bc412b44f6/e46b2/google-lens_castle.webp 960w,
+/static/19d4e6e03457f85b089ab8bc412b44f6/f992d/google-lens_castle.webp 1440w,
+/static/19d4e6e03457f85b089ab8bc412b44f6/fd3b2/google-lens_castle.webp 1837w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/19d4e6e03457f85b089ab8bc412b44f6/8ff5a/google-lens_castle.png 240w,
+/static/19d4e6e03457f85b089ab8bc412b44f6/e85cb/google-lens_castle.png 480w,
+/static/19d4e6e03457f85b089ab8bc412b44f6/d9199/google-lens_castle.png 960w,
+/static/19d4e6e03457f85b089ab8bc412b44f6/07a9c/google-lens_castle.png 1440w,
+/static/19d4e6e03457f85b089ab8bc412b44f6/4779f/google-lens_castle.png 1837w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/19d4e6e03457f85b089ab8bc412b44f6/d9199/google-lens_castle.png&quot;
+            alt=&quot;Google Lens - castle&quot;
+            title=&quot;Google Lens - castle&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+    &lt;/span&gt;
+Googleマップで検索すると，URLから緯度と経度を取得できました (&lt;a href=&quot;https://www.google.com/maps/place/%E5%A4%AA%E9%99%BD%E5%85%AC%E5%9C%92/@34.88846,134.6272295,17z/data=!3m1!5s0x35551e0ba0301241:0x77233a61c3f09428!4m10!1m2!2m1!1z5aSq6Zm95YWs5ZyS!3m6!1s0x35551e0c754b78a5:0xf6a9c4321074b986!8m2!3d34.8879775!4d134.6293228!15sCgzlpKrpmb3lhazlnJJaDyIN5aSq6Zm9IOWFrOWckpIBBHBhcmvgAQA!16s%2Fg%2F121qmyqf?hl=ja&amp;#x26;entry=ttu&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;検索結果&lt;/a&gt;)．&lt;/p&gt;
+&lt;p&gt;フラグ: &lt;code class=&quot;language-text&quot;&gt;TsukuCTF23{34.888_134.627}&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;osint-easy-mab-166-solves-228&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#osint-easy-mab-166-solves-228&quot; aria-label=&quot;osint easy mab 166 solves 228 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[osint, easy] mab (166 solves, 228)&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;mab.main.jpが使用しているレンタルサーバサービスを特定し、そのWebサイトのドメイン名を答えてください。Flagフォーマットは TsukuCTF23{ドメイン名}です。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;「ドメイン名　レンタルサーバサービス　探し方」でググってみると，&lt;a href=&quot;https://www.aguse.jp/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;aguse.&lt;/a&gt;というWebサイトで調べられることが分かりました．
+検索してみると，「逆引きホスト名」からロリポップを使用していることが分かりました．
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 953px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 84.58333333333331%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAABJ0AAASdAHeZh94AAADTklEQVQ4y42S3WscZRSH5++SxoCt3oi3gn9D7wSVilfeWcU7EcQLsSIIFi1CFZo2iU3asLFpdrObndnZzOx87c7398dmvx6Z2SQQLNIDD7/3HN75zXnf9wibv+6y8eNDNn76i1v3d/m8o/NVz+CLrs7dnsGXPYO7XYOvT00+Ox7xwW6X95/2ubnd5+0Lbm33eWenz+1nZwgb9//mxg9/cOPen7z12z4ftmTutBTutEZ8tD/k40OFT45UPj1Sud0a8t6TE97d6fHmVo/Nxz02t9bU+RtbXYSHQ4Pf+yoPGhR+aUv8/FLkm+0DHsgWjycxj6yQR+OQJ+OQp07Mnh3zzHkFdoTg+D6d45eI/VOyNCEKQ8o8I4tjzsuC+bRiVlVXet5QMptOmVUl07JYM52ymJ0jKOMJR+0OXVFCVlRORzpnro/uB4xcH9X1UK90vVYcl0mcIGljnrdFDk5kDk5VJN1GGGUF34sa350M+bY/4iiteN0YDjXa7Q6maTGQBnTaIoIeROzJCvtnGs9Nh4EX4EQxkyjGrjWMCLIcN4yQDRPND5pamJdIkspgMCCOEzS9Nu8j+EmK63k4QUCU5URZhhsneEnaUK+jvMANQvpnCprr4acZUZ6TJAXjsY9uONh2SBBkCIbr0R3I9FSd+j7r3Lno7rLDqCgYGSZ7/7xAtiZYftCY1lHkOa7rUpZlkwuW53MqD+nIw7Wh416ZXeLESfMjdTxBd9zGMEgzlsvVtTtdrVYIuu3QkyT6itJ8oE0muHFMkGVNF5eEWU6YF42uj1ywXK0ak0ttDOuuDk96HPf6tEQZyTCxHA/DDzH84D+Ywbped/2qEMIswwtdDNvCi0OiLCKuB7sqSYuSpCjIqylZURDVncYJQRwTJmmjzaMVJWlZklUVgu5kvGi7HBzbyGbOQCsw3RzLT5rN9R3Wx3P8AFFR6UoDTkQJUVEYjjTUiY0VRs3eemIExfLZ2Zc4OFLpiBb7hwqtnoFqJ9hx0hyt1nEYYQXhNeq6m2brPVE9ahnC2PMQZRFVV9EsA3Nicqbr2IFPnBfNbMY1ed7k17iop2VOWuTkVYEwWyyoX3+xXLFYLhtdLpfM5gtm8/n/Mp/PqaZzbH+OF81xwzn/Asri2HW6xSWTAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/a1e12741ef3a6c87942f588f4e57c6b6/8ac56/aguse_mab-main-jp.webp 240w,
+/static/a1e12741ef3a6c87942f588f4e57c6b6/d3be9/aguse_mab-main-jp.webp 480w,
+/static/a1e12741ef3a6c87942f588f4e57c6b6/5bf28/aguse_mab-main-jp.webp 953w&quot;
+              sizes=&quot;(max-width: 953px) 100vw, 953px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/a1e12741ef3a6c87942f588f4e57c6b6/8ff5a/aguse_mab-main-jp.png 240w,
+/static/a1e12741ef3a6c87942f588f4e57c6b6/e85cb/aguse_mab-main-jp.png 480w,
+/static/a1e12741ef3a6c87942f588f4e57c6b6/38124/aguse_mab-main-jp.png 953w&quot;
+            sizes=&quot;(max-width: 953px) 100vw, 953px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/a1e12741ef3a6c87942f588f4e57c6b6/38124/aguse_mab-main-jp.png&quot;
+            alt=&quot;aguse - mab.main.jp&quot;
+            title=&quot;aguse - mab.main.jp&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;フラグ: &lt;code class=&quot;language-text&quot;&gt;TsukuCTF23{lolipop.jp}&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;osint-easy-eruption-258-solves-100-pts&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#osint-easy-eruption-258-solves-100-pts&quot; aria-label=&quot;osint easy eruption 258 solves 100 pts permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[osint, easy] eruption (258 solves, 100 pts)&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;つくしくんは旅行に行ったときに噴火を見ました。噴火の瞬間を実際に見たのは初めてでしたが、見た日付を覚えていません。
+つくしくんが噴火を見た日付を写真の撮影日から特定して教えてください。
+撮影場所が日本なのでタイムゾーンはJSTです。フラグの形式は TsukuCTF23{YYYY/MM/DD} です。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/c94b32b8b38ccf89ef10d873dc906742/ec605/eruption.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 55.833333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAUBAgT/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAAB0ysqjcQB/8QAGhAAAgIDAAAAAAAAAAAAAAAAAQIREgAQMv/aAAgBAQABBQKwy0tfQ6DtH//EABURAQEAAAAAAAAAAAAAAAAAABAR/9oACAEDAQE/AYf/xAAWEQEBAQAAAAAAAAAAAAAAAAAAERL/2gAIAQIBAT8B0r//xAAWEAADAAAAAAAAAAAAAAAAAAAAIDH/2gAIAQEABj8CWn//xAAcEAACAgIDAAAAAAAAAAAAAAAAAREhMUFRYZH/2gAIAQEAAT8h5GhblQQVX4K0YV0NpLn/2gAMAwEAAgADAAAAEBcP/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAIAQMBAT8QY//EABcRAAMBAAAAAAAAAAAAAAAAAAEQEUH/2gAIAQIBAT8QF4v/xAAdEAEAAgICAwAAAAAAAAAAAAABABFBUSExYXGx/9oACAEBAAE/EEKQeoAHTpmL/haJW1a8xPIaU1eaYgLU3P/Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/c94b32b8b38ccf89ef10d873dc906742/8ac56/eruption.webp 240w,
+/static/c94b32b8b38ccf89ef10d873dc906742/d3be9/eruption.webp 480w,
+/static/c94b32b8b38ccf89ef10d873dc906742/e46b2/eruption.webp 960w,
+/static/c94b32b8b38ccf89ef10d873dc906742/5543b/eruption.webp 1125w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/c94b32b8b38ccf89ef10d873dc906742/09b79/eruption.jpg 240w,
+/static/c94b32b8b38ccf89ef10d873dc906742/7cc5e/eruption.jpg 480w,
+/static/c94b32b8b38ccf89ef10d873dc906742/6a068/eruption.jpg 960w,
+/static/c94b32b8b38ccf89ef10d873dc906742/ec605/eruption.jpg 1125w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/c94b32b8b38ccf89ef10d873dc906742/6a068/eruption.jpg&quot;
+            alt=&quot;eruption&quot;
+            title=&quot;eruption&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;これは桜島ですね(地元)．
+何も考えずに「桜島　爆発的噴火」&lt;sup id=&quot;fnref-2&quot;&gt;&lt;a href=&quot;#fn-2&quot; class=&quot;footnote-ref&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;などでググりましたが，日付を特定するほどの情報は得られませんでした．
+ふと我に返ってExif情報を見てみたところ，ちゃんと撮影日が残っていました．&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;$ exiftool eruption.jpg
+ExifTool Version Number         &lt;span class=&quot;token builtin class-name&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;12.40&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;. &lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;. &lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;.
+Date/Time Original              &lt;span class=&quot;token builtin class-name&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2022&lt;/span&gt;:01:28 &lt;span class=&quot;token number&quot;&gt;14&lt;/span&gt;:19:00
+Create Date                     &lt;span class=&quot;token builtin class-name&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2022&lt;/span&gt;:01:28 &lt;span class=&quot;token number&quot;&gt;14&lt;/span&gt;:19:00
+&lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;. &lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;. &lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;フラグ: &lt;code class=&quot;language-text&quot;&gt;TsukuCTF23{2022/01/28}&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;osint-easy-perfume-175-solves-198-pts&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#osint-easy-perfume-175-solves-198-pts&quot; aria-label=&quot;osint easy perfume 175 solves 198 pts permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[osint, easy] perfume (175 solves, 198 pts)&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;とある施設でいろいろな香水を見かけたが、施設の場所が思い出せない。
+この施設の場所を調べ、教えてほしい。&lt;/p&gt;
+&lt;p&gt;フラグはTsukuCTF23{緯度_経度}であり、小数点第三桁まで有効である。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;/6b6d2f1041eecdfe0e36c780e638cd81/perfume.jpg&quot; alt=&quot;perfume&quot;&gt;&lt;/p&gt;
+&lt;p&gt;香水の展示が珍しいと思ったので「日本　香水　展示施設」でググってみると，&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;静岡県盤田市&lt;/li&gt;
+&lt;li&gt;大分県別府市&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;の2箇所に「香りの博物館」という施設があることが分かりました．
+しかし，ググるだけではどちらの施設か特定できません．
+試しにGoogle Lensに投げてみたところ，&lt;a href=&quot;https://yoshipuriblog.com/bmw-oita-kaori/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;【BMW日本一周16日目】大分県別府市の『大分香りの博物館』に行って来ました！&lt;/a&gt;というブログ記事がサジェストされました (&lt;a href=&quot;https://lens.google.com/search?ep=cntpubb&amp;#x26;hl=ja&amp;#x26;re=df&amp;#x26;s=4&amp;#x26;p=AbrfA8qwA3toSlkhyAt-KTAnNnCmeQK8hd9NAk5ej3n-03EcK6On1iRr7xa9g4V0FDn1xDWhREyJVeNBrcf1hjaDQ-NQ-lyO3zzQbCLw0tr7fK9xAyavmvtSkaq9YTuerf82k9NgE8tjCxyYjxIHjl30o6HElcfbTC_uYLW9CDrcUi9B2kiEbZ_jfLT7h6nG9C10q4pCU4oXv8X1d8he--mi962KBmML_4qsSGFRXOe8-A4_xYq1Jb2w2Gljgps2RvAhSWQiavazb7fCOoqw#lns=W251bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsIkVrY0tKR0UwTlRoa01EazRMVGMxWlRNdE5EQmpZeTFoTVRrMExUYzVaVFppWXpNeVlUVmxNaElmWnpNMWRUSllibDkxTlRSVGMwWldkMUYzZG5veE4wY3lkWFV3UTNoU1p3PT0iLG51bGwsbnVsbCxudWxsLDEsbnVsbCxbbnVsbCxudWxsLFsxMDAwLDE3NjA1LDgxNjg0LDI4NDIzXV1d&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;検索結果&lt;/a&gt;)．
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 52.083333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABJ0AAASdAHeZh94AAACe0lEQVQoz1WS2UuUURjG5y/IfWv0W+YbRyya0VEzcyGIugm6qKjbQCIKjUQvcskpMykzLJOSLCzDFKLMpTR3Q03LLXIFIQ1TsSaX0QYC+cX3TVYeeDicB87vPO/7Hl1YeASWsK2Ki99H9J5YzBardrZGRKEEh5KXc5HPQ2/oaq/jweMyqiufUpCSxP3cbOprXjI2MoIuMEhiU0GC7NJ/nipRNODu5U/q2URuJh7icuJRci4lU363kFeVFbwoLabkRgatDbXoZEMwmxJEgwZQd0FSkGSj5ivGELz99FxIPc/z/HQqrmfR3/Oagd42JseHmJ4ap6epmqnJMXTqJVWipGC1RpCQkEBMdBTW8DBCTCYkWdGAHh4+XMsvYHllha9zc2xswKfBTrLTjvO2tYYl+3fmZ2dcQDXFdr3AiWNHSDpzmriY3eyNjsSyKxRZNmBQTHh5+5OZkU5DdTlPysqoa2zn/YdhHKs/6OvuoLQghZb6KnSS5EqoD5Q4EBvJ4XgLos82JF83gsUAJNmgPejrr+f0qUTSkk9SWnKPZccvFhftTIwOMTkxysL8LOvrP/+ULCmIkpEdISFYzTtRZBlZEJAEUSvZYDTh6eVHts3G8NAgfb1ddLbUUfusnMGuBlrqqshMPUdzfTU6FSTKitZDdRABehF9kIyg+a70Wg89fcjNzcNu/0ZTYz1Xbek8vHWFlel+HhXlcnB/AsWFBS6gmkK9KIgyZks4YdZIjMGhf4fl6qEfWZnZvOtu5+PwANMzX1hYXGTd6aS9oxNbVgZtzU1bgeofNJtVYBRG0z+gmtDN3YvbRXdQl8PhYGlpibW1NVYdqzidTs3fAH4DJJy2yTVZzHQAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/434b70f434bd9cc74603796e9c61075e/8ac56/google-lens_perfume.webp 240w,
+/static/434b70f434bd9cc74603796e9c61075e/d3be9/google-lens_perfume.webp 480w,
+/static/434b70f434bd9cc74603796e9c61075e/e46b2/google-lens_perfume.webp 960w,
+/static/434b70f434bd9cc74603796e9c61075e/f992d/google-lens_perfume.webp 1440w,
+/static/434b70f434bd9cc74603796e9c61075e/78de1/google-lens_perfume.webp 1840w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/434b70f434bd9cc74603796e9c61075e/8ff5a/google-lens_perfume.png 240w,
+/static/434b70f434bd9cc74603796e9c61075e/e85cb/google-lens_perfume.png 480w,
+/static/434b70f434bd9cc74603796e9c61075e/d9199/google-lens_perfume.png 960w,
+/static/434b70f434bd9cc74603796e9c61075e/07a9c/google-lens_perfume.png 1440w,
+/static/434b70f434bd9cc74603796e9c61075e/161ec/google-lens_perfume.png 1840w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/434b70f434bd9cc74603796e9c61075e/d9199/google-lens_perfume.png&quot;
+            alt=&quot;Google Lens - perfume&quot;
+            title=&quot;Google Lens - perfume&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+    &lt;/span&gt;
+記事のタイトルから，大分県の方であることが分かりました．
+あとはGoogleマップで検索するだけです．&lt;/p&gt;
+&lt;p&gt;フラグ: &lt;code class=&quot;language-text&quot;&gt;TsukuCTF23{33.312_131.489}&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&quot;おわりに&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB&quot; aria-label=&quot;おわりに permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;おわりに&lt;/h2&gt;
+&lt;p&gt;今年 (2023年) 最初にして最後のwriteupでした．
+冒頭にも書いたようにCTFへの参加は1年ぶりだったのですが，これまで通り上位50%ぐらいの順位だったので満足です (欲を言えばcryptoの問題も解けたかったですが…)．
+運営の皆様お疲れ様でした&amp;#x26;ありがとうございました!&lt;/p&gt;
+&lt;div class=&quot;footnotes&quot;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&quot;fn-1&quot;&gt;著者はこの映画を見たことはありません．また，画像の場所がどこかすらも知らないです (調べてみたところ，東京都の新宿御苑でした)．ですが，主人公が靴職人を目指す高校生であり，ヒロイン役が花澤香菜であることは知っています(偏った知識)．&lt;a href=&quot;#fnref-1&quot; class=&quot;footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;fn-2&quot;&gt;桜島はよく噴火する(地元民並感)ので，「爆発的噴火」などのキーワードでないと絞り込めないと考えたからです．&lt;a href=&quot;#fnref-2&quot; class=&quot;footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</content:encoded></item><item><title><![CDATA[修了&入社した話]]></title><description><![CDATA[2023/03/25に熊本大学大学院自然科学教育部機械数理工学専攻数理工学教育プログラムの博士前期課程 (修士課程) を無事に修了し，工学修士の学位を授与されました (今更)．]]></description><link>https://fumiyanll23.com/posts/graduate-and-join</link><guid isPermaLink="false">https://fumiyanll23.com/posts/graduate-and-join</guid><pubDate>Sat, 06 May 2023 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;はじめに&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&quot; aria-label=&quot;はじめに permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;はじめに&lt;/h2&gt;
 &lt;p&gt;2023/03/25に熊本大学大学院自然科学教育部機械数理工学専攻数理工学教育プログラムの博士前期課程 (修士課程) を無事に修了し，工学修士の学位を授与されました (今更)．
 修了記事をいつか書こうと思っていたら，いつの間にかゴールデンウイークの最終日を迎えていました()．
 せっかく(?)なので，入社して1ヶ月が経過したよっていう話と併せて書き残しておこうかと思います．&lt;/p&gt;

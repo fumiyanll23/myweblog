@@ -1,0 +1,478 @@
+<!DOCTYPE html><html lang="ja"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 4.25.6"/><meta name="description" content="TsukuCTF 2023に1人チームfumyianll23で参加しました．" data-gatsby-head="true"/><meta name="twitter:card" content="summary_large_image" data-gatsby-head="true"/><meta name="twitter:title" content="TsukuCTF 2023 Writeup - MyWeblog" data-gatsby-head="true"/><meta name="twitter:description" content="TsukuCTF 2023に1人チームfumyianll23で参加しました．" data-gatsby-head="true"/><meta name="og:title" content="TsukuCTF 2023 Writeup - MyWeblog" data-gatsby-head="true"/><meta name="og:type" content="website" data-gatsby-head="true"/><meta name="og:description" content="TsukuCTF 2023に1人チームfumyianll23で参加しました．" data-gatsby-head="true"/><meta name="theme-color" content="hsl(31, 92%, 62%)"/><style data-href="/styles.0d19eddfc18f13549d76.css" data-identity="gatsby-global-css">:after,:before,:root{--color-white:#fff;--color-primary:#5c92ff;--color-secondary:#f7a145;--color-prism-background:#eaeaeb;--color-typographic-base-font:#242933;--color-typographic-link-p-font:#5c92ff;--color-typographic-link-s-font:#f7a145;--color-page-border:#eaeaeb;--color-page-background:#fff;--color-sidebar-border:#eaeaeb;--color-sidebar-border-fade:#fff;--color-contacts-border:#eaeaeb;--color-button-border:#eaeaeb;--color-button-color:#242933;--color-theme-switcher:#3f485a;--color-theme-switcher-hover:#5c92ff}.dark :after,.dark :before,:root.dark{--color-white:#fff;--color-primary:#5c92ff;--color-secondary:#f7a145;--color-prism-background:#191d24;--color-typographic-base-font:#fff;--color-typographic-link-p-font:#5c92ff;--color-typographic-link-s-font:#f7a145;--color-page-border:#3f485a;--color-page-background:#242933;--color-sidebar-border:#3f485a;--color-sidebar-border-fade:#242933;--color-contacts-border:#3f485a;--color-button-border:#3f485a;--color-button-color:#fff;--color-theme-switcher:#eaeaeb;--color-theme-switcher-hover:#5c92ff}html{font-size:100}body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;background:var(--color-page-background);color:var(--color-typographic-base-font);font-size:16px;line-height:1.625;margin:0 0 0 calc(100vw - 100%);text-rendering:optimizelegibility}body,h1,h2,h3,h4,h5,h6{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif}h1,h2,h3,h4,h5,h6{font-weight:600}h1{font-size:40px;line-height:52px;margin-bottom:26px;margin-top:104px}h2{font-size:27px;line-height:39px}h2,h3{margin-bottom:13px;margin-top:52px}h3{font-size:22px;line-height:26px}h4{font-size:19.2px;margin-top:39px}h4,h5{line-height:26px;margin-bottom:13px}h5,h6{font-size:16px;margin-top:65px}h6{line-height:26px;margin-bottom:13px}img{max-width:100%}hr,img{border:0;display:block}hr{background-image:linear-gradient(180deg,transparent 1px,transparent 11px,#242933 0,#242933 15px,transparent 0,transparent 26px);background-size:100% 26px;color:var(--color-typographic-base-font);height:26px;margin:52px auto;width:100px}a{color:var(--color-typographic-link-p-font);text-decoration:none}a:active,a:focus,a:hover{color:var(--color-typographic-link-s-font)}b,strong{font-weight:600}ul{list-style:square;margin-bottom:26px}ul li{margin-bottom:10px;padding:0 5px}p{line-height:26px;margin-bottom:26px}blockquote{font-style:italic;padding:0;text-align:center}figure{display:block;height:auto;width:100%}figcaption{color:var(--color-typographic-base-font);font-size:14px;font-style:italic;line-height:19.5px;margin-bottom:0;margin-top:6.5px;text-align:center}@media screen and (min-width:685px){figure.float-left,figure.float-right{max-width:310px;padding:0 26px}.float-right{float:right}.float-left{float:left}}code[class*=language-],pre[class*=language-]{word-wrap:normal;color:#657b83;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;hyphens:none;line-height:1.5;-o-tab-size:4;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{border-radius:.3em;margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background-color:var(--color-prism-background)}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em}code[class*=language-] ::selection,code[class*=language-]::selection,pre[class*=language-] ::selection,pre[class*=language-]::selection{background:#073642}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#93a1a1}.token.punctuation{color:#586e75}.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#268bd2}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string,.token.url{color:#2aa198}.token.entity{background:#eee8d5;color:#657b83;cursor:help}.token.atrule,.token.attr-value,.token.keyword{color:#859900}.token.class-name,.token.function{color:#b58900}.token.important,.token.regex,.token.variable{color:#cb4b16}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.Feed-module--feed--a6204 .Feed-module--item--c7a63{margin-bottom:32.5px}.Feed-module--feed--a6204 .Feed-module--item--c7a63:last-child{margin-bottom:13px}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--title--f252f{font-size:27px;line-height:39px;margin-bottom:13px;margin-top:0}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--title--f252f .Feed-module--link--6123b{color:var(--color-typographic-base-font)}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--title--f252f .Feed-module--link--6123b:focus,.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--title--f252f .Feed-module--link--6123b:hover{border-bottom:1px solid #242933;color:var(--color-typographic-base-font)}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--description--57348{font-size:16px;line-height:26px;margin-bottom:19.5px}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--meta--250c2 .Feed-module--time--72864{color:var(--color-typographic-base-font);font-size:14px;font-weight:600;text-transform:uppercase}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--meta--250c2 .Feed-module--divider--81a18{margin:0 13px}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--more--51a4e{color:var(--color-primary);font-size:16px}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--more--51a4e:focus,.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--more--51a4e:hover{border-bottom:1px solid #5c92ff;color:var(--color-primary)}.Layout-module--layout--2c933{margin-left:auto;margin-right:auto;max-width:1070px}.Layout-module--layout--2c933:before{content:"";display:table}.Layout-module--layout--2c933:after{clear:both;content:"";display:table}.Page-module--page--24e03{margin-bottom:52px}.Page-module--page--24e03 .Page-module--inner--4b31d{padding:26px 19.5px 0}.Page-module--page--24e03 .Page-module--title--90338{font-size:40px;font-weight:600;line-height:52px;margin-bottom:37.7px;margin-top:0}.Page-module--page--24e03 .Page-module--body--561c4{font-size:16px;line-height:26px;margin:0 0 26px}@media screen and (min-width:685px){.Page-module--page--24e03{width:calc(58.275% - 12.5px)}.Page-module--page--24e03:nth-child(1n){clear:none;float:left;margin-right:30px}.Page-module--page--24e03:last-child{margin-right:0}.Page-module--page--24e03:nth-child(12n){float:right;margin-right:0}.Page-module--page--24e03:nth-child(12n+1){clear:both}.Page-module--page--24e03 .Page-module--inner--4b31d{padding:32.5px 19.5px 0}}@media screen and (min-width:960px){.Page-module--page--24e03{width:calc(66.6% - 10px)}.Page-module--page--24e03:nth-child(1n){clear:none;float:left;margin-right:30px}.Page-module--page--24e03:last-child{margin-right:0}.Page-module--page--24e03:nth-child(3n){float:right;margin-right:0}.Page-module--page--24e03:nth-child(3n+1){clear:both}.Page-module--page--24e03 .Page-module--inner--4b31d{padding:39px 26px 0}}.Pagination-module--pagination--d61cb{display:flex;margin-top:52px}.Pagination-module--pagination--d61cb .Pagination-module--previous--4a76b{text-align:left;width:50%}.Pagination-module--pagination--d61cb .Pagination-module--previous--4a76b .Pagination-module--previousLink--5590d{color:var(--color-secondary);font-size:26px;font-weight:700}.Pagination-module--pagination--d61cb .Pagination-module--previous--4a76b .Pagination-module--previousLink--5590d:focus,.Pagination-module--pagination--d61cb .Pagination-module--previous--4a76b .Pagination-module--previousLink--5590d:hover{color:var(--color-primary)}.Pagination-module--pagination--d61cb .Pagination-module--previous--4a76b .Pagination-module--previousLink--5590d.Pagination-module--disable--7e105{color:#3f485a;pointer-events:none}.Pagination-module--pagination--d61cb .Pagination-module--next--1cab8{text-align:right;width:50%}.Pagination-module--pagination--d61cb .Pagination-module--next--1cab8 .Pagination-module--nextLink--532ff{color:var(--color-secondary);font-size:26px;font-weight:700}.Pagination-module--pagination--d61cb .Pagination-module--next--1cab8 .Pagination-module--nextLink--532ff:focus,.Pagination-module--pagination--d61cb .Pagination-module--next--1cab8 .Pagination-module--nextLink--532ff:hover{color:var(--color-primary)}.Pagination-module--pagination--d61cb .Pagination-module--next--1cab8 .Pagination-module--nextLink--532ff.Pagination-module--disable--7e105{color:#3f485a;pointer-events:none}.Button-module--button--b1113{border:1px solid var(--color-button-border);border-radius:20px;color:var(--color-button-color);display:inline-block;font-size:16px;font-weight:400;height:40px;line-height:40px;margin-left:auto;margin-right:auto;padding:0 26px;text-align:center;text-decoration:none}.Button-module--button--b1113:focus,.Button-module--button--b1113:hover{color:#5c92ff}.ThemeSwitcher-module--themeSwitcher--8a77f{--color:var(--color-theme-switcher)}.ThemeSwitcher-module--themeSwitcher--8a77f .ThemeSwitcher-module--button--7cb7b{align-items:center;background:transparent;border:0;cursor:pointer;display:flex;justify-content:center;outline:0}.ThemeSwitcher-module--themeSwitcher--8a77f .ThemeSwitcher-module--button--7cb7b svg{stroke:var(--color);pointer-events:none;transition:stroke .4s}.ThemeSwitcher-module--themeSwitcher--8a77f .ThemeSwitcher-module--button--7cb7b:hover{--color:var(--color-theme-switcher-hover)}.ThemeSwitcher-module--themeSwitcher--8a77f .ThemeSwitcher-module--moon--10537{stroke-dasharray:0 1px;opacity:0;transition:stroke-dasharray .2s ease-in,opacity .4s ease-in}.ThemeSwitcher-module--themeSwitcher--8a77f .ThemeSwitcher-module--sun--2163a{stroke-dasharray:1px 1px;opacity:1;transition:stroke-dasharray .2s ease-in,opacity .4s ease-in}.ThemeSwitcher-module--themeSwitcher--8a77f.ThemeSwitcher-module--dark--6db0c .ThemeSwitcher-module--moon--10537{stroke-dasharray:1px 1px;opacity:1}.ThemeSwitcher-module--themeSwitcher--8a77f.ThemeSwitcher-module--dark--6db0c .ThemeSwitcher-module--sun--2163a{stroke-dasharray:0 1px;opacity:0}.Author-module--author--cbd31 .Author-module--photo--9787b{background-clip:padding-box;border-radius:50%;display:inline-block;height:75px;margin-bottom:0;width:75px}.Author-module--author--cbd31 .Author-module--photo--9787b img{border-radius:50%}.Author-module--author--cbd31 .Author-module--title--cf7e5{font-size:18px;font-weight:600;line-height:29.25px;margin:0}.Author-module--author--cbd31 .Author-module--title--cf7e5 .Author-module--link--09c17,.Author-module--author--cbd31 .Author-module--title--cf7e5 .Author-module--link--09c17:focus,.Author-module--author--cbd31 .Author-module--title--cf7e5 .Author-module--link--09c17:hover{color:var(--color-typographic-base-font)}.Author-module--author--cbd31 .Author-module--subtitle--86ec5{color:#7f8ba4;line-height:26px;margin-bottom:26px}.Author-module--author--cbd31 .Author-module--titleContainer--4f576{align-items:center;display:flex;justify-content:space-between;margin:13px 0}.Icon-module--icon--1d7da{fill:currentcolor;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;speak:none;stroke:currentcolor;stroke-width:0;display:inline-block;font-style:normal;font-variant:normal;font-weight:400;height:1em;line-height:1em;text-align:center;text-transform:none;width:1em}.Contacts-module--contacts--09178{margin-bottom:26px}.Contacts-module--contacts--09178 .Contacts-module--list--9670b{display:flex;flex-flow:row wrap;flex-grow:0;flex-shrink:0;list-style:none;margin:13px 0;max-width:165px;padding:0}.Contacts-module--contacts--09178 .Contacts-module--list--9670b .Contacts-module--item--f9cb0{align-content:center;align-items:center;border:1px solid var(--color-contacts-border);border-radius:50%;display:flex;height:40px;justify-content:center;line-height:40px;margin:6.5px;padding:0;text-align:center;width:40px}.Contacts-module--contacts--09178 .Contacts-module--list--9670b .Contacts-module--item--f9cb0:nth-child(3n+1){margin-left:0}.Contacts-module--contacts--09178 .Contacts-module--list--9670b .Contacts-module--item--f9cb0 .Contacts-module--link--de1e0{border:0;color:var(--color-typographic-base-font);cursor:pointer;display:flex}.Contacts-module--contacts--09178 .Contacts-module--list--9670b .Contacts-module--item--f9cb0 .Contacts-module--link--de1e0:focus,.Contacts-module--contacts--09178 .Contacts-module--list--9670b .Contacts-module--item--f9cb0 .Contacts-module--link--de1e0:hover{color:var(--color-typographic-link-p-font)}.Copyright-module--copyright--2c602{color:#7f8ba4;font-size:14px}.Menu-module--menu--113a9{margin-bottom:26px}.Menu-module--menu--113a9 .Menu-module--list--e1ae3{list-style:none;margin:0;padding:0}.Menu-module--menu--113a9 .Menu-module--list--e1ae3 .Menu-module--item--8b679{margin:13px 0;padding:0}.Menu-module--menu--113a9 .Menu-module--list--e1ae3 .Menu-module--item--8b679 .Menu-module--link--a6f02{border:0;color:var(--color-typographic-base-font);font-size:16px;font-weight:400}.Menu-module--menu--113a9 .Menu-module--list--e1ae3 .Menu-module--item--8b679 .Menu-module--link--a6f02:focus,.Menu-module--menu--113a9 .Menu-module--list--e1ae3 .Menu-module--item--8b679 .Menu-module--link--a6f02:hover{border-bottom:1px solid #5c92ff;color:#5c92ff}.Menu-module--menu--113a9 .Menu-module--list--e1ae3 .Menu-module--item--8b679 .Menu-module--link--a6f02.Menu-module--active--6cb74{border-bottom:1px solid var(--color-typographic-base-font);color:var(--color-typographic-base-font)}.Sidebar-module--sidebar--1bfa1{width:100%}.Sidebar-module--sidebar--1bfa1 .Sidebar-module--inner--344d0{padding:26px 19.5px 0;position:relative}.Sidebar-module--sidebar--1bfa1 .Sidebar-module--inner--344d0:after{background:var(--color-sidebar-border);background:linear-gradient(to bottom,var(--color-sidebar-border) 0,var(--color-sidebar-border) 48%,var(--color-sidebar-border-fade) 100%)}@media screen and (min-width:685px){.Sidebar-module--sidebar--1bfa1{width:calc(41.625% - 17.5px)}.Sidebar-module--sidebar--1bfa1:nth-child(1n){clear:none;float:left;margin-right:30px}.Sidebar-module--sidebar--1bfa1:last-child{margin-right:0}.Sidebar-module--sidebar--1bfa1:nth-child(12n){float:right;margin-right:0}.Sidebar-module--sidebar--1bfa1:nth-child(12n+1){clear:both}.Sidebar-module--sidebar--1bfa1 .Sidebar-module--inner--344d0{padding:32.5px 19.5px 0}.Sidebar-module--sidebar--1bfa1 .Sidebar-module--inner--344d0:after{bottom:0;content:"";height:540px;position:absolute;right:-10px;top:30px;width:1px}}@media screen and (min-width:960px){.Sidebar-module--sidebar--1bfa1{width:calc(33.3% - 20px)}.Sidebar-module--sidebar--1bfa1:nth-child(1n){clear:none;float:left;margin-right:30px}.Sidebar-module--sidebar--1bfa1:last-child{margin-right:0}.Sidebar-module--sidebar--1bfa1:nth-child(3n){float:right;margin-right:0}.Sidebar-module--sidebar--1bfa1:nth-child(3n+1){clear:both}.Sidebar-module--sidebar--1bfa1 .Sidebar-module--inner--344d0{padding:39px}}.Author-module--author--1c58d{border-top:1px solid var(--color-page-border);line-height:26px;margin-bottom:52px;margin-top:26px;max-width:640px;padding-top:26px}.Author-module--author--1c58d .Author-module--bio--08950 .Author-module--twitter--90647{display:block;text-decoration:underline}.Author-module--author--1c58d .Author-module--bio--08950 .Author-module--twitter--90647:focus,.Author-module--author--1c58d .Author-module--bio--08950 .Author-module--twitter--90647:hover{color:var(--color-typographic-link-s-font)}@media screen and (min-width:685px){.Author-module--author--1c58d{margin-left:auto;margin-right:auto}}.Content-module--content--80d58{margin:0 auto;max-width:945px;padding:0 13px}.Content-module--content--80d58 .Content-module--title--09504{font-size:32px;font-weight:600;line-height:42.9px;margin:26px auto 0;max-width:640px;text-align:center}.Content-module--content--80d58 .Content-module--body--726c2 figure{margin-bottom:26px}.Content-module--content--80d58 .Content-module--body--726c2 figure blockquote{font-style:italic;margin-top:0;padding:26px 0;text-align:center}.Content-module--content--80d58 .Content-module--body--726c2 figure blockquote p{font-size:26.9072px;line-height:39px;margin-bottom:26px;margin-top:0;max-width:640px}.Content-module--content--80d58 .Content-module--body--726c2 a{text-decoration:underline}.Content-module--content--80d58 .Content-module--body--726c2 *{margin-left:auto;margin-right:auto;max-width:640px}.Content-module--content--80d58 .Content-module--body--726c2 h2>a{visibility:hidden}.Content-module--content--80d58 .Content-module--body--726c2 h2>a>svg{fill:var(--color-typographic-base-font)}.Content-module--content--80d58 .Content-module--body--726c2 img{max-width:100%}@media screen and (min-width:960px){.Content-module--content--80d58{padding:0}.Content-module--content--80d58 .Content-module--title--09504{font-size:48px;line-height:58.5px;margin-bottom:39px;margin-top:58.5px}.Content-module--content--80d58 .Content-module--body--726c2,.Content-module--content--80d58 .Content-module--body--726c2 p{font-size:18px;line-height:29.25px;margin-bottom:29.25px}.Content-module--content--80d58 .Content-module--body--726c2 h2>a{padding-right:13px;visibility:unset}}.Meta-module--meta--dae0a .Meta-module--date--4d30d{font-style:italic}.Tags-module--tags--18589{margin-bottom:13px}.Tags-module--tags--18589 .Tags-module--list--82ae6{list-style:none;padding:0}.Tags-module--tags--18589 .Tags-module--list--82ae6 .Tags-module--item--52015{display:inline-block;margin:6.5px 0}@media screen and (min-width:685px){.Tags-module--tags--18589 .Tags-module--list--82ae6 .Tags-module--item--52015:first-child{margin-left:0;padding-left:0}}.Post-module--post--3a994 .Post-module--content--3c6e5{margin:0 auto}.Post-module--post--3a994 .Post-module--comments--d3b99,.Post-module--post--3a994 .Post-module--footer--f8705{margin:0 auto;max-width:640px;padding:0 13px}.Post-module--post--3a994 .Post-module--buttons--2972d{align-items:center;display:flex;justify-content:center;margin:26px 0 0;text-align:center}.Post-module--post--3a994 .Post-module--buttons--2972d .Post-module--buttonArticles--d793a{margin:0 13px 0 0}@media screen and (min-width:960px){.Post-module--post--3a994 .Post-module--comments--d3b99,.Post-module--post--3a994 .Post-module--footer--f8705{padding:0}.Post-module--post--3a994 .Post-module--buttons--2972d{left:30px;margin:0 13px 0 0;max-width:none;position:fixed;top:30px}}</style><title data-gatsby-head="true">TsukuCTF 2023 Writeup - MyWeblog</title><link rel="alternate" type="application/rss+xml" title="MyWeblog" href="/rss.xml"/><style type="text/css">
+    .anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .anchor.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .anchor svg,
+    h2 .anchor svg,
+    h3 .anchor svg,
+    h4 .anchor svg,
+    h5 .anchor svg,
+    h6 .anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor svg,
+    h2:hover .anchor svg,
+    h3:hover .anchor svg,
+    h4:hover .anchor svg,
+    h5:hover .anchor svg,
+    h6:hover .anchor svg,
+    h1 .anchor:focus svg,
+    h2 .anchor:focus svg,
+    h3 .anchor:focus svg,
+    h4 .anchor:focus svg,
+    h5 .anchor:focus svg,
+    h6 .anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><link rel="preconnect" href="https://www.googletagmanager.com"/><link rel="dns-prefetch" href="https://www.googletagmanager.com"/><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-HPJZC3YDQQ"></script><script>
+      
+      
+      if(true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){window.dataLayer && window.dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-HPJZC3YDQQ', {"send_page_view":false});
+      }
+      </script><link rel="sitemap" type="application/xml" href="/sitemap/sitemap-index.xml"/><link rel="icon" href="/favicon-32x32.png?v=c12c945b50f2d123047d7c501add6845" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=c12c945b50f2d123047d7c501add6845"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=c12c945b50f2d123047d7c501add6845"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=c12c945b50f2d123047d7c501add6845"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=c12c945b50f2d123047d7c501add6845"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=c12c945b50f2d123047d7c501add6845"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=c12c945b50f2d123047d7c501add6845"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=c12c945b50f2d123047d7c501add6845"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=c12c945b50f2d123047d7c501add6845"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script></head><body><script>
+          void function() {
+            var cachedMode;
+
+            try {
+              var preferredTheme = JSON.parse(localStorage.getItem('diesel:theme-atom'));
+
+              if (preferredTheme && preferredTheme.mode) {
+                cachedMode = preferredTheme.mode;
+              }
+            } catch (err) { }
+
+            function setTheme(newTheme) {
+              document.documentElement.className = newTheme;
+            }
+
+            var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+            setTheme(cachedMode || (darkQuery.matches ? 'dark' : 'light'));
+          }()
+        </script><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="Layout-module--layout--2c933"><div class="Post-module--post--3a994"><div class="Post-module--buttons--2972d"><a class="Button-module--button--b1113 Post-module--buttonArticles--d793a" href="/">All Articles</a></div><div class="Post-module--content--3c6e5"><div class="Content-module--content--80d58"><h1 class="Content-module--title--09504">TsukuCTF 2023 Writeup</h1><div class="Content-module--body--726c2"><h2 id="はじめに" style="position:relative;"><a href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB" aria-label="はじめに permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>はじめに</h2>
+<p><a href="https://tsukuctf.sechack365.com/" target="_blank" rel="nofollow noopener noreferrer">TsukuCTF 2023</a>に1人チーム“fumyianll23”で参加しました．
+著者にとっては1年ぶりのCTFでした．
+いくつかの問題について，writeupを書き残したいと思います．</p>
+<h2 id="結果" style="position:relative;"><a href="#%E7%B5%90%E6%9E%9C" aria-label="結果 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>結果</h2>
+<p>得点が正の343チーム中170位 (1619 pts) でした．
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 237px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/eb3f226b00a10941dabd3080e99f1dd5/008e2/result.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 78.90295358649789%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABJ0AAASdAHeZh94AAADZElEQVQ4y1WUS28bVRiGvUbdNGlLiWfGc/dtkjiNc22urh3fM77f6thOUrtOGhXRoEggUUBhBSskVmzYs4ZFEX8AqaILVvwINvyBB51pYpLF0XfmnPO9837v+53jCxghInOP0K0wsmYhqSYfKTozioERjBIwgsiaPdnzBwxvbkfnscKzKJqFXzW9NTF8etDh08+/YGMzgbO4zG4qTbXeJJ3bJ7FXZHMnwfziCjvJDJu7SZLpIrlCgXK/TzKXIVtwyRVLuNUWW9u7+KywQ7XXo9ro8+L8nMPjIcejM/pHpwwGJ/SHpzwbnTA+e8Xrb76j0z/g9PkJnZNT3Ead49GYTDZPrtSg1zvAp9sRoguLxNe2SKZzOLFFQs4CjhNlLhqiUMyTTW2zsrzI9tY60ahJbDbM2uPHrG8/IV8sEV9dp1Tv8CSVwqeaIRT9vUZCNzEXukqxItNzVaSlFg/ma9x1ykw7Ze7N1Xiw0GAmso0U0Cc5ZjDqRZ9mhbkeuh1FM23UyDJ3nv+D+RV8eAGRS3AuwfoSol+D9Bqmar9i6AGEByJXEBNxAigWVCuCZlgEIqt8MP6Xz36BvR9g/DP89Adc/gbfvoH8j3Cn+sYDFDnqDVK+m+iaLQBt1NAj7rd/Z/rwL+4evOXe4B3a+E/k4Tumem+ZOvqbh9nv0Q0NTVR1k+H1RERZNREmyZqJLEvIioRh6kjSDJISYMbvRwnIKIqEX5a9/hR9KWnWBGPC0Ag5JAsuGzt7VJsdcvsV6u0uh89e0my1sUIOGzsZEskUqWyerUSatY0dEntZVtY3PVNvlSyYVbp9cm6VvFtlcDyk1T2g2TnCdSssLa8yOP6YRrPJYDhiNHyBW6pyNBqTzuQ9pgLjloZ2eM7rQ0k1PMevf+S1RWiWWHzdO2eGZ711cTUnhgoMUfLEECvsJQpjYvEVAob9PvnqPot7/FBSvSjOif4T+4KZYgRva6jbYSTNJpUvczI+4+UnryiWG9TqLTq9PlYo5n2Xaw0KboVCpUu93eHpQYtKo01sIY6s2/9rKOiLFyOR2afeaFMsVdnLubS7A84vLghG4vQOx9RaHfbLdVKFOulCgXwxS6XVZWl55YYp1/VfPV9eG1w9U0LHyGwM1QxjhhxmFN3bk8SZgImkWvgV/VbJ/wFvOh/EbYzIHgAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/eb3f226b00a10941dabd3080e99f1dd5/4527a/result.webp 237w"
+              sizes="(max-width: 237px) 100vw, 237px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/eb3f226b00a10941dabd3080e99f1dd5/008e2/result.png 237w"
+            sizes="(max-width: 237px) 100vw, 237px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/eb3f226b00a10941dabd3080e99f1dd5/008e2/result.png"
+            alt="コンテストの結果"
+            title="コンテストの結果"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<h2 id="writeup" style="position:relative;"><a href="#writeup" aria-label="writeup permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Writeup</h2>
+<h3 id="web-easy-basic-274-solves-100-pts" style="position:relative;"><a href="#web-easy-basic-274-solves-100-pts" aria-label="web easy basic 274 solves 100 pts permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[web, easy] basic (274 solves, 100 pts)</h3>
+<blockquote>
+<p>保護されていない通信ではパスワードはまる見えダゾ!
+e.g. パスワードが Passw0rd! の場合、フラグは TsukuCTF23{Passw0rd!} となります。</p>
+</blockquote>
+<p>pcapngファイルが配布されていたので，<a href="https://www.wireshark.org/" target="_blank" rel="nofollow noopener noreferrer">Wireshark</a>に食わせてみました．
+HTTP通信でフィルタしてみたところ，5つの通信がヒットしました．
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 788px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 20.416666666666668%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAABJ0AAASdAHeZh94AAABGklEQVQY0yWLy0oCAQAA9xsk75GPVXfXVVez8BBCdbOHWdYvVhZpiamRZahbWD4JNDESFaEIT9UhJtYOAwPDCErAjxpWkUIOAqsKUljDuuxiITCPtOLEEbLhW9NYXA9i8VuwL4lYgyImiwmz3TxjzvaP4UIkHsId86BEZcSIA++uihKVcG44cW060fY11JgbMSIib0v44l68ex78BxpyVELacqHsyLPf6EJzkkfvJLl6OuSxn0bvpLiuHVHuJGmNc5SezyjUEzz0zqkPLtG7KZrDHIVGgmL7hELjmPuXFNX+Ba1RFmGMTnuap9g/pfdzS/MzS2WQpDXNM6JCdZKmPEjS/b7h9feO+keGN0row9SsGRhP7T1D96vAH0QKx/G9XoPvAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/02bfda11bd1da0e5733588c7c0d00b21/8ac56/wireshark_http.webp 240w,
+/static/02bfda11bd1da0e5733588c7c0d00b21/d3be9/wireshark_http.webp 480w,
+/static/02bfda11bd1da0e5733588c7c0d00b21/4d911/wireshark_http.webp 788w"
+              sizes="(max-width: 788px) 100vw, 788px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/02bfda11bd1da0e5733588c7c0d00b21/8ff5a/wireshark_http.png 240w,
+/static/02bfda11bd1da0e5733588c7c0d00b21/e85cb/wireshark_http.png 480w,
+/static/02bfda11bd1da0e5733588c7c0d00b21/ea7fb/wireshark_http.png 788w"
+            sizes="(max-width: 788px) 100vw, 788px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/02bfda11bd1da0e5733588c7c0d00b21/ea7fb/wireshark_http.png"
+            alt="Wireshark - http"
+            title="Wireshark - http"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+    </span>
+No.12のレコードでは“401 Unauthorized”だったものがNo.27のレコードでは“200 OK”となっているので，No.27のレコードに対応するリクエストの中身を見ることで分かるのではないかと考えました．
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 49.16666666666667%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABJ0AAASdAHeZh94AAABhklEQVQoz5XP604TQRjG8b0SFV1ot3PasyxLgRahMbRLtdHSljZoYioLRaJ4vAYTo0aJerF/s0uMNdHEfvjlmWdm3g+vFccRUeAS+aYUemrurMt+O3QxskqtaqNFBemsIJ1lKvYS9tK10vLN61TsG1i7vccMLj7z4Ow9B88/Mnx1yeD1N8bvfjB6853Dt1d58PKShy++0L/4Su/8E93Zh7+yVutNepMTepOc/qMz7o1zuoc53dEx+6Nj2v0ndAbTst+fnNIdPSUbTskGUxqdIZt7A7bmWL7v0dpp0tiskyYxG2nCehITBx6eFmhRxUgHV9VwtcCoWtmLe6di46zc+oMVRDHtLKOxvc1Ws0myluIFAUJrhFLUpPyn4l2W/36zjryU850OeeMuszttnrX2mW20yJMmR37K2KwuxEq1RxavsRcl7LohdeVSF4Z1oYmkJlZmIZZUCs8YXGMwSperOEpSU8VKV7kISwjBPCklUvwi/l8xJyVWEISE4ZwgIFhQMVek7/v8BFA5VH9HL8JrAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/3da96c7e852860330762bad30a783b59/8ac56/wireshark_autorization.webp 240w,
+/static/3da96c7e852860330762bad30a783b59/d3be9/wireshark_autorization.webp 480w,
+/static/3da96c7e852860330762bad30a783b59/e46b2/wireshark_autorization.webp 960w,
+/static/3da96c7e852860330762bad30a783b59/b4d37/wireshark_autorization.webp 983w"
+              sizes="(max-width: 960px) 100vw, 960px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/3da96c7e852860330762bad30a783b59/8ff5a/wireshark_autorization.png 240w,
+/static/3da96c7e852860330762bad30a783b59/e85cb/wireshark_autorization.png 480w,
+/static/3da96c7e852860330762bad30a783b59/d9199/wireshark_autorization.png 960w,
+/static/3da96c7e852860330762bad30a783b59/91b29/wireshark_autorization.png 983w"
+            sizes="(max-width: 960px) 100vw, 960px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/3da96c7e852860330762bad30a783b59/d9199/wireshark_autorization.png"
+            alt="Wireshark - 認証情報"
+            title="Wireshark - 認証情報"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+    </span>
+ビンゴ!認証情報が平文のまま記録されていました．通信を暗号化することの重要性がよく分かる問題でしたね．</p>
+<p>フラグ: <code class="language-text">TsukuCTF23{2929b0u4}</code></p>
+<h3 id="osint-easy-location_for_what-240-solves-100-pts" style="position:relative;"><a href="#osint-easy-location_for_what-240-solves-100-pts" aria-label="osint easy location_for_what 240 solves 100 pts permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[osint, easy] location_for_what (240 solves, 100 pts)</h3>
+<blockquote>
+<p>とある場所を友達と探索していると、「ここ、何かの映画の聖地だった気がするけど、名前忘れちゃった…」とのこと。
+シュッと特定して教えてあげよう!
+Flagの形式は TsukuCTF23{映画のタイトル} です。</p>
+</blockquote>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/a81cd6f9d152424713a017671d918866/493ac/location_for_what.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 56.25%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAAC+UlEQVQozwXB209aBwDA4fO6h+1xvSTNdOvSqtmqdV6GghWVS62CN46gKHJRcHBEOOgUQaHueAF0Whh4sGqoLr2ulGzGpFmy/+y37xPCqyYmHBqGxD5yuSSiqMO1ZCB7GqXwMsHh4ToTYi/fPbhL46M6Rma6WU6a8C3rkJK9rGcNKKqJ5wUryrEdQVo2M7/Yz5I8ikPUYbb0clDIEIsGcIgmbPYn1D+8zZ1vbtNtbMfs1LOWm2S7NIq8pWch0o0v0svcUj92vxFh0t7JoTqBP2ZhbETD3PQIg+Zu7tZ/ifGZAXfQyVdff0FTy/don7ZS/8MtHmnrMExqcEUGcEttBBN6vDEt82vtCI7pTh733WPA2o8UEOk212GwaWhs+5YOXSt9Vh33Gm/RY/iZDl0LzZ0NaIzNdA23MOLTI/82zMq2iXC6i8XkTwjjlk50pjb0T7uYn32GXTKym48T3LJh9rWin2mmy9JEj6mdhsf3qb9fj9nyhNCmlTl5gND2JNGMG0/MjD+uR3AsaAmFLMgHs+T24kwFTeQvcixnvfjjY0iyjbAs4pgyMG4bYnRwCFeol8juELMhE1ulcY4+zJG5dBPPexFWMk6Cv1hIKAsUjrZZlMc4PlWQFTfRjJOdnEStcsbnt69RCynU0q8k09OIs1rC8TGUyigbaj/7b4yUb0SE4kcJZc9LZkdCeR7k/GOIs7dxsmeLbJd9rB/PUChv8G+1yrtXJxRLW1Q/vaD61wGpXS8aywO01oeY7T8iZ/oQklkHmf0gysYyqbSTnSMbiewsxatVdrJRNtNOMkU74aiL+JrEhXrI37VzPl+/p6KeMOEYprOnAd1gE2KgA2HeM8VRLsWK5CG95ye5P4MnZMUfE4knPRTLAfaPXEjRGdY3vaSUIKsbAfJqklrtA5/e33BauqSoqmSPdxF2s3H+fFliJeYlk0+QK62TP0lSuVQ4Pd/iqpqgfLbB7/kI6sUK5Vcy+ZMwacXHiz/WqFzt8OZdgZvra/6p/cf/MkjuSq6+LwYAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/a81cd6f9d152424713a017671d918866/8ac56/location_for_what.webp 240w,
+/static/a81cd6f9d152424713a017671d918866/d3be9/location_for_what.webp 480w,
+/static/a81cd6f9d152424713a017671d918866/e46b2/location_for_what.webp 960w,
+/static/a81cd6f9d152424713a017671d918866/f992d/location_for_what.webp 1440w,
+/static/a81cd6f9d152424713a017671d918866/882b9/location_for_what.webp 1920w,
+/static/a81cd6f9d152424713a017671d918866/b33a3/location_for_what.webp 4032w"
+              sizes="(max-width: 960px) 100vw, 960px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/a81cd6f9d152424713a017671d918866/8ff5a/location_for_what.png 240w,
+/static/a81cd6f9d152424713a017671d918866/e85cb/location_for_what.png 480w,
+/static/a81cd6f9d152424713a017671d918866/d9199/location_for_what.png 960w,
+/static/a81cd6f9d152424713a017671d918866/07a9c/location_for_what.png 1440w,
+/static/a81cd6f9d152424713a017671d918866/29114/location_for_what.png 1920w,
+/static/a81cd6f9d152424713a017671d918866/493ac/location_for_what.png 4032w"
+            sizes="(max-width: 960px) 100vw, 960px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/a81cd6f9d152424713a017671d918866/d9199/location_for_what.png"
+            alt="location_for_what"
+            title="location_for_what"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p>これは新海誠監督の映画『言の葉の庭』の聖地ですね(知識)<sup id="fnref-1"><a href="#fn-1" class="footnote-ref">1</a></sup>．</p>
+<p>フラグ: <code class="language-text">TsukuCTF23{言の葉の庭}</code></p>
+<h3 id="osint-easy-castle-217-solves-100-pts" style="position:relative;"><a href="#osint-easy-castle-217-solves-100-pts" aria-label="osint easy castle 217 solves 100 pts permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[osint, easy] castle (217 solves, 100 pts)</h3>
+<blockquote>
+<p>この前、お城に行ってこの写真を取ってきたんだ!
+どこにあるかわかるかい?</p>
+<p>フラグのフォーマットは、TsukuCTF23{緯度_軽度} です。
+小数点は第三桁まで有効とします。</p>
+</blockquote>
+<p><img src="/db32b3533c05a9e4f4faa40d2ae53c23/castle.jpg" alt="castle"></p>
+<p>我らがGoogle先生で画像検索 (Google Lens) してみたところ，兵庫県姫路市の「太陽公園」であることが分かりました (<a href="https://lens.google.com/search?ep=cntpubb&#x26;hl=ja&#x26;re=df&#x26;s=4&#x26;p=AbrfA8o33UQmsXNqAuR1tstPqxc7Ifo3Weo38XPXxit24aVMyY0MU2KFTsf-N9lv9dO024EokT518INqP7f16hxbRCU5ZZ8QIr1MLVcTqjhbdf8ooBIuq3_604iPVSuef9pvGsqLCqpsytkI3-4S_AaoMV2-Ae8K-Rob2kgRby4zxIA1ndlX9GKlj9ZANLJRnZJSj8ElgchCydp0mN7h-iq8WRdrMVTQdztDwAc_mjIdiD4XOU6oJw8iGi5TNtg1LVgn0eYDoXIiUEb8eSZA#lns=W251bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsIkVrY0tKRFppT0RabFpqbGhMV1ZqTm1JdE5HTXlaaTA1T1dZM0xUWXpZV013TWpNeU56TXpaQklmU1RrelEyNTNlREl4VDBWVGMwWldkMUYzZG5veE4wVnRhVUl3UW5oU1p3PT0iLG51bGwsbnVsbCxudWxsLDEsbnVsbCxbbnVsbCxudWxsLFswLDc0MjIsOTI1NzgsNTA2MDddXV0=" target="_blank" rel="nofollow noopener noreferrer">検索結果</a>)．
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 52.083333333333336%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABJ0AAASdAHeZh94AAACyUlEQVQoz13QfUzMARzH8d/f5qHzUCqq+3WXJdXuITpPRQzjrrtU0yIqYfKHTWxm89gcklwuursepBNGjkzRw9aw3alRybIWStwtKiL/eHxb2fzhu7322T6f/76C2XyeYosVi8X2L8vLK7CVlHKh2DJurDcVmnnW0Q78Bn7x//38DaMjHxG8JNOZOMnrr8kSJk+Zis9Mf7x9/Bjbpk7zYbq3LxMmTCQ3z0yLG5z98Mz9g7cDw3g8Hr586Of9wDveeAYRFi+JISk5hcSkFPSGJOL1iazTGoiJjSN22UqUqijCwiMJEYPIMZZxwDFATlEj++xdHMq34Sg7SX3hPhzHttH0sBnBVFhE7b1GbKUVHMs1Umm/xpVrDhLWJxOvX49aHYVSqSRYFDmZd4qmBgf2knwqr1Ry0XaW6ooinPersF8w0tLmQjCZitibs5tNm1LZviObg4eOUmwtw5CQREzsciLCw1EolIjSIHJPm2lsfY7l1mNO3O6mtmsEz9AIPa/e8rpnmE/DXxGyMjPYsjGZzWkb0Wl1ZKSnsys7G60uAZVKTUREJHL5HPz9fDHmFfDg0SMqbt5lu9HG2Us3aai9RXGBmcP7j9Pc9ABBERFKokGLXq9n7ZrVpG7YwNaMdOJWrCI0NBSZTE6IXMasWf7YrFa+f/9G7+tennf3UFdXxw27ncsnzrEzaw9XK6sQYpcuIV6nJTU1hczMTLakpWGI16FZHIMolSKXBTMvbC4SiReHjxzhclU5NTV36Ho5Qq/7M6Ojnxn8MIjzoZP+vj6EBdEaVKoootTziY7WoFm4iGjNQqTSYOQyOUFSEVGUIZFMo8BkYmhokLaOTs5Yq7HfqMdRfZ1mVzutvWP//IIwO0BKQKA4ztcvAIVCjUq9gJA5YQQGycaJwSHM8PbDYi3B7X7Hk9ZWOjs6cLlcNNY30PK0E2fbC/r6PfwB4ujwMxFzeAYAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/19d4e6e03457f85b089ab8bc412b44f6/8ac56/google-lens_castle.webp 240w,
+/static/19d4e6e03457f85b089ab8bc412b44f6/d3be9/google-lens_castle.webp 480w,
+/static/19d4e6e03457f85b089ab8bc412b44f6/e46b2/google-lens_castle.webp 960w,
+/static/19d4e6e03457f85b089ab8bc412b44f6/f992d/google-lens_castle.webp 1440w,
+/static/19d4e6e03457f85b089ab8bc412b44f6/fd3b2/google-lens_castle.webp 1837w"
+              sizes="(max-width: 960px) 100vw, 960px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/19d4e6e03457f85b089ab8bc412b44f6/8ff5a/google-lens_castle.png 240w,
+/static/19d4e6e03457f85b089ab8bc412b44f6/e85cb/google-lens_castle.png 480w,
+/static/19d4e6e03457f85b089ab8bc412b44f6/d9199/google-lens_castle.png 960w,
+/static/19d4e6e03457f85b089ab8bc412b44f6/07a9c/google-lens_castle.png 1440w,
+/static/19d4e6e03457f85b089ab8bc412b44f6/4779f/google-lens_castle.png 1837w"
+            sizes="(max-width: 960px) 100vw, 960px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/19d4e6e03457f85b089ab8bc412b44f6/d9199/google-lens_castle.png"
+            alt="Google Lens - castle"
+            title="Google Lens - castle"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+    </span>
+Googleマップで検索すると，URLから緯度と経度を取得できました (<a href="https://www.google.com/maps/place/%E5%A4%AA%E9%99%BD%E5%85%AC%E5%9C%92/@34.88846,134.6272295,17z/data=!3m1!5s0x35551e0ba0301241:0x77233a61c3f09428!4m10!1m2!2m1!1z5aSq6Zm95YWs5ZyS!3m6!1s0x35551e0c754b78a5:0xf6a9c4321074b986!8m2!3d34.8879775!4d134.6293228!15sCgzlpKrpmb3lhazlnJJaDyIN5aSq6Zm9IOWFrOWckpIBBHBhcmvgAQA!16s%2Fg%2F121qmyqf?hl=ja&#x26;entry=ttu" target="_blank" rel="nofollow noopener noreferrer">検索結果</a>)．</p>
+<p>フラグ: <code class="language-text">TsukuCTF23{34.888_134.627}</code></p>
+<h3 id="osint-easy-mab-166-solves-228" style="position:relative;"><a href="#osint-easy-mab-166-solves-228" aria-label="osint easy mab 166 solves 228 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[osint, easy] mab (166 solves, 228)</h3>
+<blockquote>
+<p>mab.main.jpが使用しているレンタルサーバサービスを特定し、そのWebサイトのドメイン名を答えてください。Flagフォーマットは TsukuCTF23{ドメイン名}です。</p>
+</blockquote>
+<p>「ドメイン名　レンタルサーバサービス　探し方」でググってみると，<a href="https://www.aguse.jp/" target="_blank" rel="nofollow noopener noreferrer">aguse.</a>というWebサイトで調べられることが分かりました．
+検索してみると，「逆引きホスト名」からロリポップを使用していることが分かりました．
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 953px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 84.58333333333331%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAABJ0AAASdAHeZh94AAADTklEQVQ4y42S3WscZRSH5++SxoCt3oi3gn9D7wSVilfeWcU7EcQLsSIIFi1CFZo2iU3asLFpdrObndnZzOx87c7398dmvx6Z2SQQLNIDD7/3HN75zXnf9wibv+6y8eNDNn76i1v3d/m8o/NVz+CLrs7dnsGXPYO7XYOvT00+Ox7xwW6X95/2ubnd5+0Lbm33eWenz+1nZwgb9//mxg9/cOPen7z12z4ftmTutBTutEZ8tD/k40OFT45UPj1Sud0a8t6TE97d6fHmVo/Nxz02t9bU+RtbXYSHQ4Pf+yoPGhR+aUv8/FLkm+0DHsgWjycxj6yQR+OQJ+OQp07Mnh3zzHkFdoTg+D6d45eI/VOyNCEKQ8o8I4tjzsuC+bRiVlVXet5QMptOmVUl07JYM52ymJ0jKOMJR+0OXVFCVlRORzpnro/uB4xcH9X1UK90vVYcl0mcIGljnrdFDk5kDk5VJN1GGGUF34sa350M+bY/4iiteN0YDjXa7Q6maTGQBnTaIoIeROzJCvtnGs9Nh4EX4EQxkyjGrjWMCLIcN4yQDRPND5pamJdIkspgMCCOEzS9Nu8j+EmK63k4QUCU5URZhhsneEnaUK+jvMANQvpnCprr4acZUZ6TJAXjsY9uONh2SBBkCIbr0R3I9FSd+j7r3Lno7rLDqCgYGSZ7/7xAtiZYftCY1lHkOa7rUpZlkwuW53MqD+nIw7Wh416ZXeLESfMjdTxBd9zGMEgzlsvVtTtdrVYIuu3QkyT6itJ8oE0muHFMkGVNF5eEWU6YF42uj1ywXK0ak0ttDOuuDk96HPf6tEQZyTCxHA/DDzH84D+Ywbped/2qEMIswwtdDNvCi0OiLCKuB7sqSYuSpCjIqylZURDVncYJQRwTJmmjzaMVJWlZklUVgu5kvGi7HBzbyGbOQCsw3RzLT5rN9R3Wx3P8AFFR6UoDTkQJUVEYjjTUiY0VRs3eemIExfLZ2Zc4OFLpiBb7hwqtnoFqJ9hx0hyt1nEYYQXhNeq6m2brPVE9ahnC2PMQZRFVV9EsA3Nicqbr2IFPnBfNbMY1ed7k17iop2VOWuTkVYEwWyyoX3+xXLFYLhtdLpfM5gtm8/n/Mp/PqaZzbH+OF81xwzn/Asri2HW6xSWTAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/a1e12741ef3a6c87942f588f4e57c6b6/8ac56/aguse_mab-main-jp.webp 240w,
+/static/a1e12741ef3a6c87942f588f4e57c6b6/d3be9/aguse_mab-main-jp.webp 480w,
+/static/a1e12741ef3a6c87942f588f4e57c6b6/5bf28/aguse_mab-main-jp.webp 953w"
+              sizes="(max-width: 953px) 100vw, 953px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/a1e12741ef3a6c87942f588f4e57c6b6/8ff5a/aguse_mab-main-jp.png 240w,
+/static/a1e12741ef3a6c87942f588f4e57c6b6/e85cb/aguse_mab-main-jp.png 480w,
+/static/a1e12741ef3a6c87942f588f4e57c6b6/38124/aguse_mab-main-jp.png 953w"
+            sizes="(max-width: 953px) 100vw, 953px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/a1e12741ef3a6c87942f588f4e57c6b6/38124/aguse_mab-main-jp.png"
+            alt="aguse - mab.main.jp"
+            title="aguse - mab.main.jp"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+    </span></p>
+<p>フラグ: <code class="language-text">TsukuCTF23{lolipop.jp}</code></p>
+<h3 id="osint-easy-eruption-258-solves-100-pts" style="position:relative;"><a href="#osint-easy-eruption-258-solves-100-pts" aria-label="osint easy eruption 258 solves 100 pts permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[osint, easy] eruption (258 solves, 100 pts)</h3>
+<blockquote>
+<p>つくしくんは旅行に行ったときに噴火を見ました。噴火の瞬間を実際に見たのは初めてでしたが、見た日付を覚えていません。
+つくしくんが噴火を見た日付を写真の撮影日から特定して教えてください。
+撮影場所が日本なのでタイムゾーンはJSTです。フラグの形式は TsukuCTF23{YYYY/MM/DD} です。</p>
+</blockquote>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/c94b32b8b38ccf89ef10d873dc906742/ec605/eruption.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 55.833333333333336%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAUBAgT/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAAB0ysqjcQB/8QAGhAAAgIDAAAAAAAAAAAAAAAAAQIREgAQMv/aAAgBAQABBQKwy0tfQ6DtH//EABURAQEAAAAAAAAAAAAAAAAAABAR/9oACAEDAQE/AYf/xAAWEQEBAQAAAAAAAAAAAAAAAAAAERL/2gAIAQIBAT8B0r//xAAWEAADAAAAAAAAAAAAAAAAAAAAIDH/2gAIAQEABj8CWn//xAAcEAACAgIDAAAAAAAAAAAAAAAAAREhMUFRYZH/2gAIAQEAAT8h5GhblQQVX4K0YV0NpLn/2gAMAwEAAgADAAAAEBcP/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAIAQMBAT8QY//EABcRAAMBAAAAAAAAAAAAAAAAAAEQEUH/2gAIAQIBAT8QF4v/xAAdEAEAAgICAwAAAAAAAAAAAAABABFBUSExYXGx/9oACAEBAAE/EEKQeoAHTpmL/haJW1a8xPIaU1eaYgLU3P/Z'); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/c94b32b8b38ccf89ef10d873dc906742/8ac56/eruption.webp 240w,
+/static/c94b32b8b38ccf89ef10d873dc906742/d3be9/eruption.webp 480w,
+/static/c94b32b8b38ccf89ef10d873dc906742/e46b2/eruption.webp 960w,
+/static/c94b32b8b38ccf89ef10d873dc906742/5543b/eruption.webp 1125w"
+              sizes="(max-width: 960px) 100vw, 960px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/c94b32b8b38ccf89ef10d873dc906742/09b79/eruption.jpg 240w,
+/static/c94b32b8b38ccf89ef10d873dc906742/7cc5e/eruption.jpg 480w,
+/static/c94b32b8b38ccf89ef10d873dc906742/6a068/eruption.jpg 960w,
+/static/c94b32b8b38ccf89ef10d873dc906742/ec605/eruption.jpg 1125w"
+            sizes="(max-width: 960px) 100vw, 960px"
+            type="image/jpeg"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/c94b32b8b38ccf89ef10d873dc906742/6a068/eruption.jpg"
+            alt="eruption"
+            title="eruption"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p>これは桜島ですね(地元)．
+何も考えずに「桜島　爆発的噴火」<sup id="fnref-2"><a href="#fn-2" class="footnote-ref">2</a></sup>などでググりましたが，日付を特定するほどの情報は得られませんでした．
+ふと我に返ってExif情報を見てみたところ，ちゃんと撮影日が残っていました．</p>
+<div class="gatsby-highlight" data-language="sh"><pre class="language-sh"><code class="language-sh">$ exiftool eruption.jpg
+ExifTool Version Number         <span class="token builtin class-name">:</span> <span class="token number">12.40</span>
+<span class="token punctuation">..</span>. <span class="token punctuation">..</span>. <span class="token punctuation">..</span>.
+Date/Time Original              <span class="token builtin class-name">:</span> <span class="token number">2022</span>:01:28 <span class="token number">14</span>:19:00
+Create Date                     <span class="token builtin class-name">:</span> <span class="token number">2022</span>:01:28 <span class="token number">14</span>:19:00
+<span class="token punctuation">..</span>. <span class="token punctuation">..</span>. <span class="token punctuation">..</span>.</code></pre></div>
+<p>フラグ: <code class="language-text">TsukuCTF23{2022/01/28}</code></p>
+<h3 id="osint-easy-perfume-175-solves-198-pts" style="position:relative;"><a href="#osint-easy-perfume-175-solves-198-pts" aria-label="osint easy perfume 175 solves 198 pts permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[osint, easy] perfume (175 solves, 198 pts)</h3>
+<blockquote>
+<p>とある施設でいろいろな香水を見かけたが、施設の場所が思い出せない。
+この施設の場所を調べ、教えてほしい。</p>
+<p>フラグはTsukuCTF23{緯度_経度}であり、小数点第三桁まで有効である。</p>
+</blockquote>
+<p><img src="/6b6d2f1041eecdfe0e36c780e638cd81/perfume.jpg" alt="perfume"></p>
+<p>香水の展示が珍しいと思ったので「日本　香水　展示施設」でググってみると，</p>
+<ul>
+<li>静岡県盤田市</li>
+<li>大分県別府市</li>
+</ul>
+<p>の2箇所に「香りの博物館」という施設があることが分かりました．
+しかし，ググるだけではどちらの施設か特定できません．
+試しにGoogle Lensに投げてみたところ，<a href="https://yoshipuriblog.com/bmw-oita-kaori/" target="_blank" rel="nofollow noopener noreferrer">【BMW日本一周16日目】大分県別府市の『大分香りの博物館』に行って来ました！</a>というブログ記事がサジェストされました (<a href="https://lens.google.com/search?ep=cntpubb&#x26;hl=ja&#x26;re=df&#x26;s=4&#x26;p=AbrfA8qwA3toSlkhyAt-KTAnNnCmeQK8hd9NAk5ej3n-03EcK6On1iRr7xa9g4V0FDn1xDWhREyJVeNBrcf1hjaDQ-NQ-lyO3zzQbCLw0tr7fK9xAyavmvtSkaq9YTuerf82k9NgE8tjCxyYjxIHjl30o6HElcfbTC_uYLW9CDrcUi9B2kiEbZ_jfLT7h6nG9C10q4pCU4oXv8X1d8he--mi962KBmML_4qsSGFRXOe8-A4_xYq1Jb2w2Gljgps2RvAhSWQiavazb7fCOoqw#lns=W251bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsIkVrY0tKR0UwTlRoa01EazRMVGMxWlRNdE5EQmpZeTFoTVRrMExUYzVaVFppWXpNeVlUVmxNaElmWnpNMWRUSllibDkxTlRSVGMwWldkMUYzZG5veE4wY3lkWFV3UTNoU1p3PT0iLG51bGwsbnVsbCxudWxsLDEsbnVsbCxbbnVsbCxudWxsLFsxMDAwLDE3NjA1LDgxNjg0LDI4NDIzXV1d" target="_blank" rel="nofollow noopener noreferrer">検索結果</a>)．
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 52.083333333333336%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABJ0AAASdAHeZh94AAACe0lEQVQoz1WS2UuUURjG5y/IfWv0W+YbRyya0VEzcyGIugm6qKjbQCIKjUQvcskpMykzLJOSLCzDFKLMpTR3Q03LLXIFIQ1TsSaX0QYC+cX3TVYeeDicB87vPO/7Hl1YeASWsK2Ki99H9J5YzBardrZGRKEEh5KXc5HPQ2/oaq/jweMyqiufUpCSxP3cbOprXjI2MoIuMEhiU0GC7NJ/nipRNODu5U/q2URuJh7icuJRci4lU363kFeVFbwoLabkRgatDbXoZEMwmxJEgwZQd0FSkGSj5ivGELz99FxIPc/z/HQqrmfR3/Oagd42JseHmJ4ap6epmqnJMXTqJVWipGC1RpCQkEBMdBTW8DBCTCYkWdGAHh4+XMsvYHllha9zc2xswKfBTrLTjvO2tYYl+3fmZ2dcQDXFdr3AiWNHSDpzmriY3eyNjsSyKxRZNmBQTHh5+5OZkU5DdTlPysqoa2zn/YdhHKs/6OvuoLQghZb6KnSS5EqoD5Q4EBvJ4XgLos82JF83gsUAJNmgPejrr+f0qUTSkk9SWnKPZccvFhftTIwOMTkxysL8LOvrP/+ULCmIkpEdISFYzTtRZBlZEJAEUSvZYDTh6eVHts3G8NAgfb1ddLbUUfusnMGuBlrqqshMPUdzfTU6FSTKitZDdRABehF9kIyg+a70Wg89fcjNzcNu/0ZTYz1Xbek8vHWFlel+HhXlcnB/AsWFBS6gmkK9KIgyZks4YdZIjMGhf4fl6qEfWZnZvOtu5+PwANMzX1hYXGTd6aS9oxNbVgZtzU1bgeofNJtVYBRG0z+gmtDN3YvbRXdQl8PhYGlpibW1NVYdqzidTs3fAH4DJJy2yTVZzHQAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/434b70f434bd9cc74603796e9c61075e/8ac56/google-lens_perfume.webp 240w,
+/static/434b70f434bd9cc74603796e9c61075e/d3be9/google-lens_perfume.webp 480w,
+/static/434b70f434bd9cc74603796e9c61075e/e46b2/google-lens_perfume.webp 960w,
+/static/434b70f434bd9cc74603796e9c61075e/f992d/google-lens_perfume.webp 1440w,
+/static/434b70f434bd9cc74603796e9c61075e/78de1/google-lens_perfume.webp 1840w"
+              sizes="(max-width: 960px) 100vw, 960px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/434b70f434bd9cc74603796e9c61075e/8ff5a/google-lens_perfume.png 240w,
+/static/434b70f434bd9cc74603796e9c61075e/e85cb/google-lens_perfume.png 480w,
+/static/434b70f434bd9cc74603796e9c61075e/d9199/google-lens_perfume.png 960w,
+/static/434b70f434bd9cc74603796e9c61075e/07a9c/google-lens_perfume.png 1440w,
+/static/434b70f434bd9cc74603796e9c61075e/161ec/google-lens_perfume.png 1840w"
+            sizes="(max-width: 960px) 100vw, 960px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/434b70f434bd9cc74603796e9c61075e/d9199/google-lens_perfume.png"
+            alt="Google Lens - perfume"
+            title="Google Lens - perfume"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+    </span>
+記事のタイトルから，大分県の方であることが分かりました．
+あとはGoogleマップで検索するだけです．</p>
+<p>フラグ: <code class="language-text">TsukuCTF23{33.312_131.489}</code></p>
+<h2 id="おわりに" style="position:relative;"><a href="#%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB" aria-label="おわりに permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>おわりに</h2>
+<p>今年 (2023年) 最初にして最後のwriteupでした．
+冒頭にも書いたようにCTFへの参加は1年ぶりだったのですが，これまで通り上位50%ぐらいの順位だったので満足です (欲を言えばcryptoの問題も解けたかったですが…)．
+運営の皆様お疲れ様でした&#x26;ありがとうございました!</p>
+<div class="footnotes">
+<hr>
+<ol>
+<li id="fn-1">著者はこの映画を見たことはありません．また，画像の場所がどこかすらも知らないです (調べてみたところ，東京都の新宿御苑でした)．ですが，主人公が靴職人を目指す高校生であり，ヒロイン役が花澤香菜であることは知っています(偏った知識)．<a href="#fnref-1" class="footnote-backref">↩</a></li>
+<li id="fn-2">桜島はよく噴火する(地元民並感)ので，「爆発的噴火」などのキーワードでないと絞り込めないと考えたからです．<a href="#fnref-2" class="footnote-backref">↩</a></li>
+</ol>
+</div></div></div></div><div class="Post-module--footer--f8705"><div class="Meta-module--meta--dae0a"><p class="Meta-module--date--4d30d">Published<!-- --> <!-- -->2023/12/12</p></div><div class="Tags-module--tags--18589"><ul class="Tags-module--list--82ae6"><li class="Tags-module--item--52015"><a class="Button-module--button--b1113" href="/tag/ctf/">CTF</a></li></ul></div><div class="Author-module--author--1c58d"><p class="Author-module--bio--08950">Hello, world! I am a &quot;deadline-driven developer&quot; based in Japan. I am interested in tech, math and mahjong.<a class="Author-module--twitter--90647" href="https://www.twitter.com/fumiyanll23" rel="noopener noreferrer" target="_blank"><strong>Fumiyan</strong> on Twitter</a></p></div></div><div class="Post-module--comments--d3b99"></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/posts/tsukuctf-2023-writeup";window.___webpackCompilationHash="c74cf99bebf5e4f94b18";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-aab30dc51de6f1efbb72.js"],"app":["/app-940d16ea065640f0430c.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-0c915c7b1bdb5eac4fdf.js"],"component---src-templates-index-template-index-template-tsx":["/component---src-templates-index-template-index-template-tsx-a6a7b76ba659225118a4.js"],"component---src-templates-not-found-template-not-found-template-tsx":["/component---src-templates-not-found-template-not-found-template-tsx-58d9df92bf9aeaeac079.js"],"component---src-templates-page-template-page-template-tsx":["/component---src-templates-page-template-page-template-tsx-c2d1d9bb749983c1d3ce.js"],"component---src-templates-post-template-post-template-tsx":["/component---src-templates-post-template-post-template-tsx-6841e77c9633d49b991d.js"],"component---src-templates-tag-template-tag-template-tsx":["/component---src-templates-tag-template-tag-template-tsx-88bf2b1430994922970d.js"],"component---src-templates-tags-template-tags-template-tsx":["/component---src-templates-tags-template-tags-template-tsx-c4ce294cbd69fb69c08d.js"]};/*]]>*/</script><script src="/polyfill-aab30dc51de6f1efbb72.js" nomodule=""></script><script src="/app-940d16ea065640f0430c.js" async=""></script><script src="/framework-745d5d28c0250a1a333b.js" async=""></script><script src="/webpack-runtime-4461658cdff64aa12885.js" async=""></script></body></html>
