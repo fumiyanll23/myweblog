@@ -1,4 +1,83 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[MyWeblog]]></title><description><![CDATA[MyWeblog]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 21 Jan 2024 21:35:18 GMT</lastBuildDate><item><title><![CDATA[TsukuCTF 2023 Writeup]]></title><description><![CDATA[TsukuCTF 2023に1人チームfumyianll23で参加しました．]]></description><link>https://fumiyanll23.com/posts/tsukuctf-2023-writeup</link><guid isPermaLink="false">https://fumiyanll23.com/posts/tsukuctf-2023-writeup</guid><pubDate>Mon, 11 Dec 2023 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;はじめに&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&quot; aria-label=&quot;はじめに permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;はじめに&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[MyWeblog]]></title><description><![CDATA[MyWeblog]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 31 Jan 2024 17:51:54 GMT</lastBuildDate><item><title><![CDATA[2024年の目標を設定する話]]></title><description><![CDATA[「一年の計は元旦にあり」ということで(?)，(1月も終わりましたが)2024年の目標を設定したいと思います．]]></description><link>https://fumiyanll23.com/posts/set-goals-of-2024</link><guid isPermaLink="false">https://fumiyanll23.com/posts/set-goals-of-2024</guid><pubDate>Wed, 31 Jan 2024 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;はじめに&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&quot; aria-label=&quot;はじめに permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;はじめに&lt;/h2&gt;
+&lt;p&gt;「一年の計は元旦にあり」ということで(?)，(1月も終わりましたが)2024年の目標を設定したいと思います．
+昨年 (2023年) まではTwitter (現X) で目標宣言および簡単な反省を済ませていた (&lt;a href=&quot;https://x.com/fumiyanll23/status/1609564983771426818&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;2023年の目標およびその反省ツイート&lt;/a&gt;) のですが，せっかく個人ブログという発信の場があるのだからそっちでやろうと思い，筆を執るに至りました．&lt;/p&gt;
+&lt;h2 id=&quot;目標設定の手法&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E7%9B%AE%E6%A8%99%E8%A8%AD%E5%AE%9A%E3%81%AE%E6%89%8B%E6%B3%95&quot; aria-label=&quot;目標設定の手法 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;目標設定の手法&lt;/h2&gt;
+&lt;p&gt;最近視聴した動画 (&lt;a href=&quot;https://youtu.be/XkNvhQVW6ZY?t=1935&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;エンジニアのための目標設定の技術 - Forkwell Library#41&lt;/a&gt;) で紹介されていた「ABC目標」という手法で目標設定したいと思います．
+詳しい紹介は動画や，動画で紹介されている書籍に譲るとして…．
+簡単に説明すると，1つの目標に対して&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A目標: すべて理想通りに進んだ場合の目標 (MAY)&lt;/li&gt;
+&lt;li&gt;B目標: 自分が適切だと思う目標 (SHOULD)&lt;/li&gt;
+&lt;li&gt;C目標: 想定できる最悪の事態が起きた場合の目標 (MUST)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;という3段階の目標を設定するというものです．
+括弧内はお馴染みの(?)RFCで使用されている，要件定義において要求の程度を表す語です&lt;sup id=&quot;fnref-1&quot;&gt;&lt;a href=&quot;#fn-1&quot; class=&quot;footnote-ref&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;．
+個人的に似ているなと思ったので併記しています(完全に主観であり，個人の解釈です)．&lt;/p&gt;
+&lt;h2 id=&quot;仕事について&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E4%BB%95%E4%BA%8B%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6&quot; aria-label=&quot;仕事について permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;仕事について&lt;/h2&gt;
+&lt;h3 id=&quot;資格を取得する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E8%B3%87%E6%A0%BC%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B&quot; aria-label=&quot;資格を取得する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;資格を取得する&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;A目標: LPIC-1または統計検定2級に合格する
+&lt;ul&gt;
+&lt;li&gt;LPIC-1: 業務でよく触るため&lt;/li&gt;
+&lt;li&gt;統計検定2級: 業務でデータ分析をする機会が(ぼちぼちの頻度で)あり，学生時代に学習した内容を忘れない内に取得してしまいたい&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;B目標: AP (応用情報技術者試験) に合格する&lt;/li&gt;
+&lt;li&gt;C目標: FE (基本情報技術者試験) に合格する
+&lt;ul&gt;
+&lt;li&gt;昨年断続的に勉強した結果，ある年の過去問で合格水準を達成した (午前8割，午後7割) ので既に合格しているといっても過言ではない&lt;sup id=&quot;fnref-2&quot;&gt;&lt;a href=&quot;#fn-2&quot; class=&quot;footnote-ref&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;技術書を読む&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E6%8A%80%E8%A1%93%E6%9B%B8%E3%82%92%E8%AA%AD%E3%82%80&quot; aria-label=&quot;技術書を読む permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;技術書を読む&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;A目標: &lt;a href=&quot;https://link.springer.com/book/10.1007/978-3-030-33836-7&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;“Database Design and Implementation”&lt;/a&gt;を読み始める
+&lt;ul&gt;
+&lt;li&gt;業務でDBに触れることが多くなる(と予想される)ため&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;B目標: &lt;a href=&quot;https://nostarch.com/androidmalwarehandbook&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;“The Android Malware Handbook”&lt;/a&gt;の第1, 2, 11章を翻訳しつつ読む
+&lt;ul&gt;
+&lt;li&gt;(有志で翻訳したものを公開できたらな～とか思っています．興味のある方は連絡ください)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;C目標: “The Android Malware Handbook”の第3, 4章を翻訳しつつ読む&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;私生活について&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E7%A7%81%E7%94%9F%E6%B4%BB%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6&quot; aria-label=&quot;私生活について permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;私生活について&lt;/h2&gt;
+&lt;h3 id=&quot;個人ブログの記事を書く&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E5%80%8B%E4%BA%BA%E3%83%96%E3%83%AD%E3%82%B0%E3%81%AE%E8%A8%98%E4%BA%8B%E3%82%92%E6%9B%B8%E3%81%8F&quot; aria-label=&quot;個人ブログの記事を書く permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;個人ブログの記事を書く&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;A目標: 10本 (全ての資格取得，全てのCTFのwriteup，(あれば)個人開発)&lt;/li&gt;
+&lt;li&gt;B目標: 6本 (全ての資格取得，一部のCTFのwriteup)&lt;/li&gt;
+&lt;li&gt;C目標: 2本 (この記事と2024年を反省する記事)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;ctfへ参加する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#ctf%E3%81%B8%E5%8F%82%E5%8A%A0%E3%81%99%E3%82%8B&quot; aria-label=&quot;ctfへ参加する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;CTFへ参加する&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;A目標: 12個 (月一ペース)&lt;/li&gt;
+&lt;li&gt;B目標: 5個 (LINE CTF, WaniCTF, SECCON Beginners CTF, Crypto CTF, Google Capture The Flag)&lt;/li&gt;
+&lt;li&gt;C目標: 1個 (TsukuCTF)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;雀力を向上させる&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E9%9B%80%E5%8A%9B%E3%82%92%E5%90%91%E4%B8%8A%E3%81%95%E3%81%9B%E3%82%8B&quot; aria-label=&quot;雀力を向上させる permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;雀力を向上させる&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;A目標: 雀魂で雀聖1になる (2024/01/22時点で雀豪2 (2531/3200))&lt;/li&gt;
+&lt;li&gt;B目標: 雀魂で雀豪3になる&lt;/li&gt;
+&lt;li&gt;C目標: アマチュアが参加可能なタイトル戦に参加する
+&lt;ul&gt;
+&lt;li&gt;先日，&lt;a href=&quot;https://npm2001.com/game/japan-open/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;日本オープン&lt;/a&gt; (日本プロ麻雀協会主催のプロアマ混合タイトル) の名古屋予選に参加しました&lt;sup id=&quot;fnref-3&quot;&gt;&lt;a href=&quot;#fn-3&quot; class=&quot;footnote-ref&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;おわりに&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB&quot; aria-label=&quot;おわりに permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;おわりに&lt;/h2&gt;
+&lt;p&gt;ざっくりと今年の目標を設定していきました．
+1年後，これらの目標のうちいくつを達成できているのかが楽しみでもあり，怖くもあります．
+何はともあれ，充実した1年にしたいと思います．&lt;/p&gt;
+&lt;div class=&quot;footnotes&quot;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&quot;fn-1&quot;&gt;&lt;a href=&quot;https://datatracker.ietf.org/doc/rfc2119/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;RFC2119 Key words for use in RFCs to Indicate Requirement Levels&lt;/a&gt;で定義されています&lt;a href=&quot;#fnref-1&quot; class=&quot;footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;fn-2&quot;&gt;過言です&lt;a href=&quot;#fnref-2&quot; class=&quot;footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;fn-3&quot;&gt;惜しくも(?)予選敗退でした…&lt;a href=&quot;#fnref-3&quot; class=&quot;footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</content:encoded></item><item><title><![CDATA[TsukuCTF 2023 Writeup]]></title><description><![CDATA[TsukuCTF 2023に1人チームfumyianll23で参加しました．]]></description><link>https://fumiyanll23.com/posts/tsukuctf-2023-writeup</link><guid isPermaLink="false">https://fumiyanll23.com/posts/tsukuctf-2023-writeup</guid><pubDate>Mon, 11 Dec 2023 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;はじめに&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&quot; aria-label=&quot;はじめに permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;はじめに&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&quot;https://tsukuctf.sechack365.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;TsukuCTF 2023&lt;/a&gt;に1人チーム“fumyianll23”で参加しました．
 著者にとっては1年ぶりのCTFでした．
 ほとんど全ての問題について，writeupを書き残したいと思います．&lt;/p&gt;
