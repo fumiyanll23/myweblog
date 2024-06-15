@@ -1,0 +1,353 @@
+<!DOCTYPE html><html lang="ja"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 4.25.6"/><meta name="description" content="床に転がっていたRaspberry Pi 4 (ラズパイ) を使ってテレビ視聴サーバを構築しました．" data-gatsby-head="true"/><meta name="twitter:card" content="summary_large_image" data-gatsby-head="true"/><meta name="twitter:title" content="テレビ視聴サーバを構築した話 - MyWeblog" data-gatsby-head="true"/><meta name="twitter:description" content="床に転がっていたRaspberry Pi 4 (ラズパイ) を使ってテレビ視聴サーバを構築しました．" data-gatsby-head="true"/><meta name="og:title" content="テレビ視聴サーバを構築した話 - MyWeblog" data-gatsby-head="true"/><meta name="og:type" content="website" data-gatsby-head="true"/><meta name="og:description" content="床に転がっていたRaspberry Pi 4 (ラズパイ) を使ってテレビ視聴サーバを構築しました．" data-gatsby-head="true"/><meta name="theme-color" content="hsl(31, 92%, 62%)"/><style data-href="/styles.0d19eddfc18f13549d76.css" data-identity="gatsby-global-css">:after,:before,:root{--color-white:#fff;--color-primary:#5c92ff;--color-secondary:#f7a145;--color-prism-background:#eaeaeb;--color-typographic-base-font:#242933;--color-typographic-link-p-font:#5c92ff;--color-typographic-link-s-font:#f7a145;--color-page-border:#eaeaeb;--color-page-background:#fff;--color-sidebar-border:#eaeaeb;--color-sidebar-border-fade:#fff;--color-contacts-border:#eaeaeb;--color-button-border:#eaeaeb;--color-button-color:#242933;--color-theme-switcher:#3f485a;--color-theme-switcher-hover:#5c92ff}.dark :after,.dark :before,:root.dark{--color-white:#fff;--color-primary:#5c92ff;--color-secondary:#f7a145;--color-prism-background:#191d24;--color-typographic-base-font:#fff;--color-typographic-link-p-font:#5c92ff;--color-typographic-link-s-font:#f7a145;--color-page-border:#3f485a;--color-page-background:#242933;--color-sidebar-border:#3f485a;--color-sidebar-border-fade:#242933;--color-contacts-border:#3f485a;--color-button-border:#3f485a;--color-button-color:#fff;--color-theme-switcher:#eaeaeb;--color-theme-switcher-hover:#5c92ff}html{font-size:100}body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;background:var(--color-page-background);color:var(--color-typographic-base-font);font-size:16px;line-height:1.625;margin:0 0 0 calc(100vw - 100%);text-rendering:optimizelegibility}body,h1,h2,h3,h4,h5,h6{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif}h1,h2,h3,h4,h5,h6{font-weight:600}h1{font-size:40px;line-height:52px;margin-bottom:26px;margin-top:104px}h2{font-size:27px;line-height:39px}h2,h3{margin-bottom:13px;margin-top:52px}h3{font-size:22px;line-height:26px}h4{font-size:19.2px;margin-top:39px}h4,h5{line-height:26px;margin-bottom:13px}h5,h6{font-size:16px;margin-top:65px}h6{line-height:26px;margin-bottom:13px}img{max-width:100%}hr,img{border:0;display:block}hr{background-image:linear-gradient(180deg,transparent 1px,transparent 11px,#242933 0,#242933 15px,transparent 0,transparent 26px);background-size:100% 26px;color:var(--color-typographic-base-font);height:26px;margin:52px auto;width:100px}a{color:var(--color-typographic-link-p-font);text-decoration:none}a:active,a:focus,a:hover{color:var(--color-typographic-link-s-font)}b,strong{font-weight:600}ul{list-style:square;margin-bottom:26px}ul li{margin-bottom:10px;padding:0 5px}p{line-height:26px;margin-bottom:26px}blockquote{font-style:italic;padding:0;text-align:center}figure{display:block;height:auto;width:100%}figcaption{color:var(--color-typographic-base-font);font-size:14px;font-style:italic;line-height:19.5px;margin-bottom:0;margin-top:6.5px;text-align:center}@media screen and (min-width:685px){figure.float-left,figure.float-right{max-width:310px;padding:0 26px}.float-right{float:right}.float-left{float:left}}code[class*=language-],pre[class*=language-]{word-wrap:normal;color:#657b83;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;hyphens:none;line-height:1.5;-o-tab-size:4;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{border-radius:.3em;margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background-color:var(--color-prism-background)}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em}code[class*=language-] ::selection,code[class*=language-]::selection,pre[class*=language-] ::selection,pre[class*=language-]::selection{background:#073642}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#93a1a1}.token.punctuation{color:#586e75}.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#268bd2}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string,.token.url{color:#2aa198}.token.entity{background:#eee8d5;color:#657b83;cursor:help}.token.atrule,.token.attr-value,.token.keyword{color:#859900}.token.class-name,.token.function{color:#b58900}.token.important,.token.regex,.token.variable{color:#cb4b16}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.Feed-module--feed--a6204 .Feed-module--item--c7a63{margin-bottom:32.5px}.Feed-module--feed--a6204 .Feed-module--item--c7a63:last-child{margin-bottom:13px}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--title--f252f{font-size:27px;line-height:39px;margin-bottom:13px;margin-top:0}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--title--f252f .Feed-module--link--6123b{color:var(--color-typographic-base-font)}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--title--f252f .Feed-module--link--6123b:focus,.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--title--f252f .Feed-module--link--6123b:hover{border-bottom:1px solid #242933;color:var(--color-typographic-base-font)}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--description--57348{font-size:16px;line-height:26px;margin-bottom:19.5px}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--meta--250c2 .Feed-module--time--72864{color:var(--color-typographic-base-font);font-size:14px;font-weight:600;text-transform:uppercase}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--meta--250c2 .Feed-module--divider--81a18{margin:0 13px}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--more--51a4e{color:var(--color-primary);font-size:16px}.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--more--51a4e:focus,.Feed-module--feed--a6204 .Feed-module--item--c7a63 .Feed-module--more--51a4e:hover{border-bottom:1px solid #5c92ff;color:var(--color-primary)}.Layout-module--layout--2c933{margin-left:auto;margin-right:auto;max-width:1070px}.Layout-module--layout--2c933:before{content:"";display:table}.Layout-module--layout--2c933:after{clear:both;content:"";display:table}.Page-module--page--24e03{margin-bottom:52px}.Page-module--page--24e03 .Page-module--inner--4b31d{padding:26px 19.5px 0}.Page-module--page--24e03 .Page-module--title--90338{font-size:40px;font-weight:600;line-height:52px;margin-bottom:37.7px;margin-top:0}.Page-module--page--24e03 .Page-module--body--561c4{font-size:16px;line-height:26px;margin:0 0 26px}@media screen and (min-width:685px){.Page-module--page--24e03{width:calc(58.275% - 12.5px)}.Page-module--page--24e03:nth-child(1n){clear:none;float:left;margin-right:30px}.Page-module--page--24e03:last-child{margin-right:0}.Page-module--page--24e03:nth-child(12n){float:right;margin-right:0}.Page-module--page--24e03:nth-child(12n+1){clear:both}.Page-module--page--24e03 .Page-module--inner--4b31d{padding:32.5px 19.5px 0}}@media screen and (min-width:960px){.Page-module--page--24e03{width:calc(66.6% - 10px)}.Page-module--page--24e03:nth-child(1n){clear:none;float:left;margin-right:30px}.Page-module--page--24e03:last-child{margin-right:0}.Page-module--page--24e03:nth-child(3n){float:right;margin-right:0}.Page-module--page--24e03:nth-child(3n+1){clear:both}.Page-module--page--24e03 .Page-module--inner--4b31d{padding:39px 26px 0}}.Pagination-module--pagination--d61cb{display:flex;margin-top:52px}.Pagination-module--pagination--d61cb .Pagination-module--previous--4a76b{text-align:left;width:50%}.Pagination-module--pagination--d61cb .Pagination-module--previous--4a76b .Pagination-module--previousLink--5590d{color:var(--color-secondary);font-size:26px;font-weight:700}.Pagination-module--pagination--d61cb .Pagination-module--previous--4a76b .Pagination-module--previousLink--5590d:focus,.Pagination-module--pagination--d61cb .Pagination-module--previous--4a76b .Pagination-module--previousLink--5590d:hover{color:var(--color-primary)}.Pagination-module--pagination--d61cb .Pagination-module--previous--4a76b .Pagination-module--previousLink--5590d.Pagination-module--disable--7e105{color:#3f485a;pointer-events:none}.Pagination-module--pagination--d61cb .Pagination-module--next--1cab8{text-align:right;width:50%}.Pagination-module--pagination--d61cb .Pagination-module--next--1cab8 .Pagination-module--nextLink--532ff{color:var(--color-secondary);font-size:26px;font-weight:700}.Pagination-module--pagination--d61cb .Pagination-module--next--1cab8 .Pagination-module--nextLink--532ff:focus,.Pagination-module--pagination--d61cb .Pagination-module--next--1cab8 .Pagination-module--nextLink--532ff:hover{color:var(--color-primary)}.Pagination-module--pagination--d61cb .Pagination-module--next--1cab8 .Pagination-module--nextLink--532ff.Pagination-module--disable--7e105{color:#3f485a;pointer-events:none}.Button-module--button--b1113{border:1px solid var(--color-button-border);border-radius:20px;color:var(--color-button-color);display:inline-block;font-size:16px;font-weight:400;height:40px;line-height:40px;margin-left:auto;margin-right:auto;padding:0 26px;text-align:center;text-decoration:none}.Button-module--button--b1113:focus,.Button-module--button--b1113:hover{color:#5c92ff}.ThemeSwitcher-module--themeSwitcher--8a77f{--color:var(--color-theme-switcher)}.ThemeSwitcher-module--themeSwitcher--8a77f .ThemeSwitcher-module--button--7cb7b{align-items:center;background:transparent;border:0;cursor:pointer;display:flex;justify-content:center;outline:0}.ThemeSwitcher-module--themeSwitcher--8a77f .ThemeSwitcher-module--button--7cb7b svg{stroke:var(--color);pointer-events:none;transition:stroke .4s}.ThemeSwitcher-module--themeSwitcher--8a77f .ThemeSwitcher-module--button--7cb7b:hover{--color:var(--color-theme-switcher-hover)}.ThemeSwitcher-module--themeSwitcher--8a77f .ThemeSwitcher-module--moon--10537{stroke-dasharray:0 1px;opacity:0;transition:stroke-dasharray .2s ease-in,opacity .4s ease-in}.ThemeSwitcher-module--themeSwitcher--8a77f .ThemeSwitcher-module--sun--2163a{stroke-dasharray:1px 1px;opacity:1;transition:stroke-dasharray .2s ease-in,opacity .4s ease-in}.ThemeSwitcher-module--themeSwitcher--8a77f.ThemeSwitcher-module--dark--6db0c .ThemeSwitcher-module--moon--10537{stroke-dasharray:1px 1px;opacity:1}.ThemeSwitcher-module--themeSwitcher--8a77f.ThemeSwitcher-module--dark--6db0c .ThemeSwitcher-module--sun--2163a{stroke-dasharray:0 1px;opacity:0}.Author-module--author--cbd31 .Author-module--photo--9787b{background-clip:padding-box;border-radius:50%;display:inline-block;height:75px;margin-bottom:0;width:75px}.Author-module--author--cbd31 .Author-module--photo--9787b img{border-radius:50%}.Author-module--author--cbd31 .Author-module--title--cf7e5{font-size:18px;font-weight:600;line-height:29.25px;margin:0}.Author-module--author--cbd31 .Author-module--title--cf7e5 .Author-module--link--09c17,.Author-module--author--cbd31 .Author-module--title--cf7e5 .Author-module--link--09c17:focus,.Author-module--author--cbd31 .Author-module--title--cf7e5 .Author-module--link--09c17:hover{color:var(--color-typographic-base-font)}.Author-module--author--cbd31 .Author-module--subtitle--86ec5{color:#7f8ba4;line-height:26px;margin-bottom:26px}.Author-module--author--cbd31 .Author-module--titleContainer--4f576{align-items:center;display:flex;justify-content:space-between;margin:13px 0}.Icon-module--icon--1d7da{fill:currentcolor;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;speak:none;stroke:currentcolor;stroke-width:0;display:inline-block;font-style:normal;font-variant:normal;font-weight:400;height:1em;line-height:1em;text-align:center;text-transform:none;width:1em}.Contacts-module--contacts--09178{margin-bottom:26px}.Contacts-module--contacts--09178 .Contacts-module--list--9670b{display:flex;flex-flow:row wrap;flex-grow:0;flex-shrink:0;list-style:none;margin:13px 0;max-width:165px;padding:0}.Contacts-module--contacts--09178 .Contacts-module--list--9670b .Contacts-module--item--f9cb0{align-content:center;align-items:center;border:1px solid var(--color-contacts-border);border-radius:50%;display:flex;height:40px;justify-content:center;line-height:40px;margin:6.5px;padding:0;text-align:center;width:40px}.Contacts-module--contacts--09178 .Contacts-module--list--9670b .Contacts-module--item--f9cb0:nth-child(3n+1){margin-left:0}.Contacts-module--contacts--09178 .Contacts-module--list--9670b .Contacts-module--item--f9cb0 .Contacts-module--link--de1e0{border:0;color:var(--color-typographic-base-font);cursor:pointer;display:flex}.Contacts-module--contacts--09178 .Contacts-module--list--9670b .Contacts-module--item--f9cb0 .Contacts-module--link--de1e0:focus,.Contacts-module--contacts--09178 .Contacts-module--list--9670b .Contacts-module--item--f9cb0 .Contacts-module--link--de1e0:hover{color:var(--color-typographic-link-p-font)}.Copyright-module--copyright--2c602{color:#7f8ba4;font-size:14px}.Menu-module--menu--113a9{margin-bottom:26px}.Menu-module--menu--113a9 .Menu-module--list--e1ae3{list-style:none;margin:0;padding:0}.Menu-module--menu--113a9 .Menu-module--list--e1ae3 .Menu-module--item--8b679{margin:13px 0;padding:0}.Menu-module--menu--113a9 .Menu-module--list--e1ae3 .Menu-module--item--8b679 .Menu-module--link--a6f02{border:0;color:var(--color-typographic-base-font);font-size:16px;font-weight:400}.Menu-module--menu--113a9 .Menu-module--list--e1ae3 .Menu-module--item--8b679 .Menu-module--link--a6f02:focus,.Menu-module--menu--113a9 .Menu-module--list--e1ae3 .Menu-module--item--8b679 .Menu-module--link--a6f02:hover{border-bottom:1px solid #5c92ff;color:#5c92ff}.Menu-module--menu--113a9 .Menu-module--list--e1ae3 .Menu-module--item--8b679 .Menu-module--link--a6f02.Menu-module--active--6cb74{border-bottom:1px solid var(--color-typographic-base-font);color:var(--color-typographic-base-font)}.Sidebar-module--sidebar--1bfa1{width:100%}.Sidebar-module--sidebar--1bfa1 .Sidebar-module--inner--344d0{padding:26px 19.5px 0;position:relative}.Sidebar-module--sidebar--1bfa1 .Sidebar-module--inner--344d0:after{background:var(--color-sidebar-border);background:linear-gradient(to bottom,var(--color-sidebar-border) 0,var(--color-sidebar-border) 48%,var(--color-sidebar-border-fade) 100%)}@media screen and (min-width:685px){.Sidebar-module--sidebar--1bfa1{width:calc(41.625% - 17.5px)}.Sidebar-module--sidebar--1bfa1:nth-child(1n){clear:none;float:left;margin-right:30px}.Sidebar-module--sidebar--1bfa1:last-child{margin-right:0}.Sidebar-module--sidebar--1bfa1:nth-child(12n){float:right;margin-right:0}.Sidebar-module--sidebar--1bfa1:nth-child(12n+1){clear:both}.Sidebar-module--sidebar--1bfa1 .Sidebar-module--inner--344d0{padding:32.5px 19.5px 0}.Sidebar-module--sidebar--1bfa1 .Sidebar-module--inner--344d0:after{bottom:0;content:"";height:540px;position:absolute;right:-10px;top:30px;width:1px}}@media screen and (min-width:960px){.Sidebar-module--sidebar--1bfa1{width:calc(33.3% - 20px)}.Sidebar-module--sidebar--1bfa1:nth-child(1n){clear:none;float:left;margin-right:30px}.Sidebar-module--sidebar--1bfa1:last-child{margin-right:0}.Sidebar-module--sidebar--1bfa1:nth-child(3n){float:right;margin-right:0}.Sidebar-module--sidebar--1bfa1:nth-child(3n+1){clear:both}.Sidebar-module--sidebar--1bfa1 .Sidebar-module--inner--344d0{padding:39px}}.Author-module--author--1c58d{border-top:1px solid var(--color-page-border);line-height:26px;margin-bottom:52px;margin-top:26px;max-width:640px;padding-top:26px}.Author-module--author--1c58d .Author-module--bio--08950 .Author-module--twitter--90647{display:block;text-decoration:underline}.Author-module--author--1c58d .Author-module--bio--08950 .Author-module--twitter--90647:focus,.Author-module--author--1c58d .Author-module--bio--08950 .Author-module--twitter--90647:hover{color:var(--color-typographic-link-s-font)}@media screen and (min-width:685px){.Author-module--author--1c58d{margin-left:auto;margin-right:auto}}.Content-module--content--80d58{margin:0 auto;max-width:945px;padding:0 13px}.Content-module--content--80d58 .Content-module--title--09504{font-size:32px;font-weight:600;line-height:42.9px;margin:26px auto 0;max-width:640px;text-align:center}.Content-module--content--80d58 .Content-module--body--726c2 figure{margin-bottom:26px}.Content-module--content--80d58 .Content-module--body--726c2 figure blockquote{font-style:italic;margin-top:0;padding:26px 0;text-align:center}.Content-module--content--80d58 .Content-module--body--726c2 figure blockquote p{font-size:26.9072px;line-height:39px;margin-bottom:26px;margin-top:0;max-width:640px}.Content-module--content--80d58 .Content-module--body--726c2 a{text-decoration:underline}.Content-module--content--80d58 .Content-module--body--726c2 *{margin-left:auto;margin-right:auto;max-width:640px}.Content-module--content--80d58 .Content-module--body--726c2 h2>a{visibility:hidden}.Content-module--content--80d58 .Content-module--body--726c2 h2>a>svg{fill:var(--color-typographic-base-font)}.Content-module--content--80d58 .Content-module--body--726c2 img{max-width:100%}@media screen and (min-width:960px){.Content-module--content--80d58{padding:0}.Content-module--content--80d58 .Content-module--title--09504{font-size:48px;line-height:58.5px;margin-bottom:39px;margin-top:58.5px}.Content-module--content--80d58 .Content-module--body--726c2,.Content-module--content--80d58 .Content-module--body--726c2 p{font-size:18px;line-height:29.25px;margin-bottom:29.25px}.Content-module--content--80d58 .Content-module--body--726c2 h2>a{padding-right:13px;visibility:unset}}.Meta-module--meta--dae0a .Meta-module--date--4d30d{font-style:italic}.Tags-module--tags--18589{margin-bottom:13px}.Tags-module--tags--18589 .Tags-module--list--82ae6{list-style:none;padding:0}.Tags-module--tags--18589 .Tags-module--list--82ae6 .Tags-module--item--52015{display:inline-block;margin:6.5px 0}@media screen and (min-width:685px){.Tags-module--tags--18589 .Tags-module--list--82ae6 .Tags-module--item--52015:first-child{margin-left:0;padding-left:0}}.Post-module--post--3a994 .Post-module--content--3c6e5{margin:0 auto}.Post-module--post--3a994 .Post-module--comments--d3b99,.Post-module--post--3a994 .Post-module--footer--f8705{margin:0 auto;max-width:640px;padding:0 13px}.Post-module--post--3a994 .Post-module--buttons--2972d{align-items:center;display:flex;justify-content:center;margin:26px 0 0;text-align:center}.Post-module--post--3a994 .Post-module--buttons--2972d .Post-module--buttonArticles--d793a{margin:0 13px 0 0}@media screen and (min-width:960px){.Post-module--post--3a994 .Post-module--comments--d3b99,.Post-module--post--3a994 .Post-module--footer--f8705{padding:0}.Post-module--post--3a994 .Post-module--buttons--2972d{left:30px;margin:0 13px 0 0;max-width:none;position:fixed;top:30px}}</style><title data-gatsby-head="true">テレビ視聴サーバを構築した話 - MyWeblog</title><link rel="alternate" type="application/rss+xml" title="MyWeblog" href="/rss.xml"/><style type="text/css">
+    .anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .anchor.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .anchor svg,
+    h2 .anchor svg,
+    h3 .anchor svg,
+    h4 .anchor svg,
+    h5 .anchor svg,
+    h6 .anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor svg,
+    h2:hover .anchor svg,
+    h3:hover .anchor svg,
+    h4:hover .anchor svg,
+    h5:hover .anchor svg,
+    h6:hover .anchor svg,
+    h1 .anchor:focus svg,
+    h2 .anchor:focus svg,
+    h3 .anchor:focus svg,
+    h4 .anchor:focus svg,
+    h5 .anchor:focus svg,
+    h6 .anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><link rel="preconnect" href="https://www.googletagmanager.com"/><link rel="dns-prefetch" href="https://www.googletagmanager.com"/><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-HPJZC3YDQQ"></script><script>
+      
+      
+      if(true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){window.dataLayer && window.dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-HPJZC3YDQQ', {"send_page_view":false});
+      }
+      </script><link rel="sitemap" type="application/xml" href="/sitemap/sitemap-index.xml"/><link rel="icon" href="/favicon-32x32.png?v=c12c945b50f2d123047d7c501add6845" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=c12c945b50f2d123047d7c501add6845"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=c12c945b50f2d123047d7c501add6845"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=c12c945b50f2d123047d7c501add6845"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=c12c945b50f2d123047d7c501add6845"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=c12c945b50f2d123047d7c501add6845"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=c12c945b50f2d123047d7c501add6845"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=c12c945b50f2d123047d7c501add6845"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=c12c945b50f2d123047d7c501add6845"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script></head><body><script>
+          void function() {
+            var cachedMode;
+
+            try {
+              var preferredTheme = JSON.parse(localStorage.getItem('diesel:theme-atom'));
+
+              if (preferredTheme && preferredTheme.mode) {
+                cachedMode = preferredTheme.mode;
+              }
+            } catch (err) { }
+
+            function setTheme(newTheme) {
+              document.documentElement.className = newTheme;
+            }
+
+            var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+            setTheme(cachedMode || (darkQuery.matches ? 'dark' : 'light'));
+          }()
+        </script><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="Layout-module--layout--2c933"><div class="Post-module--post--3a994"><div class="Post-module--buttons--2972d"><a class="Button-module--button--b1113 Post-module--buttonArticles--d793a" href="/">All Articles</a></div><div class="Post-module--content--3c6e5"><div class="Content-module--content--80d58"><h1 class="Content-module--title--09504">テレビ視聴サーバを構築した話</h1><div class="Content-module--body--726c2"><h2 id="はじめに" style="position:relative;"><a href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB" aria-label="はじめに permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>はじめに</h2>
+<p>床に転がっていたRaspberry Pi 4 (ラズパイ) を使って，テレビ視聴サーバを構築しました．
+職場の上司との雑談で，テレビ録画鯖の存在を知ったことがきっかけです．<sup id="fnref-1"><a href="#fn-1" class="footnote-ref">1</a></sup></p>
+<h2 id="環境など" style="position:relative;"><a href="#%E7%92%B0%E5%A2%83%E3%81%AA%E3%81%A9" aria-label="環境など permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>環境など</h2>
+<ul>
+<li>ホストOS: Windows11</li>
+<li>ラズパイ: <a href="https://www.amazon.co.jp/gp/product/B0CD5FZ7B6/" target="_blank" rel="nofollow noopener noreferrer">Marstudy ラズパイ4 Model B Starterキット(8GB RAM)</a>
+<ul>
+<li>※購入した当時は4GB RAMのモデルでした</li>
+<li>Raspberry Pi 4 Model B
+<ul>
+<li>CPUアーキテクチャ: AArch64</li>
+<li>メモリ: 4GB</li>
+</ul>
+</li>
+<li>MicroSDカード (32GB)</li>
+</ul>
+</li>
+<li>テレビチューナ: <a href="https://www.amazon.co.jp/gp/product/B079YD3QT3/" target="_blank" rel="nofollow noopener noreferrer">PX-Q1UD</a></li>
+<li>B-CASカードリーダ: <a href="https://www.amazon.co.jp/gp/product/B0085H4YZC/" target="_blank" rel="nofollow noopener noreferrer">SCR3310</a></li>
+</ul>
+<h2 id="構築手順" style="position:relative;"><a href="#%E6%A7%8B%E7%AF%89%E6%89%8B%E9%A0%86" aria-label="構築手順 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>構築手順</h2>
+<h3 id="1-raspberry-pi-os-lite版-をインストールする" style="position:relative;"><a href="#1-raspberry-pi-os-lite%E7%89%88-%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B" aria-label="1 raspberry pi os lite版 をインストールする permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. Raspberry Pi OS (Lite版) をインストールする</h3>
+<h4 id="osイメージを入手する" style="position:relative;"><a href="#os%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E3%82%92%E5%85%A5%E6%89%8B%E3%81%99%E3%82%8B" aria-label="osイメージを入手する permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>OSイメージを入手する</h4>
+<p><a href="https://www.raspberrypi.com/software/operating-systems/#raspberry-pi-os-64-bit" target="_blank" rel="nofollow noopener noreferrer">Operating system images#Raspberry Pi OS (64-bit)</a>からOSイメージをダウンロードします．
+僕のときは<code class="language-text">2024-03-15-raspios-bookworm-arm64.img.xz</code>がダウンロードされました．
+Lite版にはデスクトップ環境が入っていないことに注意してください．</p>
+<h4 id="ラズパイへインストールする" style="position:relative;"><a href="#%E3%83%A9%E3%82%BA%E3%83%91%E3%82%A4%E3%81%B8%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B" aria-label="ラズパイへインストールする permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ラズパイへインストールする</h4>
+<p><a href="https://etcher.balena.io/" target="_blank" rel="nofollow noopener noreferrer">Etcher</a>などでMicroSDカードへOSイメージを書き込みます．
+書き込んだMicroSDカードをラズパイへ挿入してOSをインストールします．
+ラズパイを起動する前にチューナなどを接続することに注意してください．</p>
+<p>※以降の手順はsshするなどして，ラズパイ上で操作します．</p>
+<h3 id="2-ラズパイの設定をする" style="position:relative;"><a href="#2-%E3%83%A9%E3%82%BA%E3%83%91%E3%82%A4%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%82%92%E3%81%99%E3%82%8B" aria-label="2 ラズパイの設定をする permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. ラズパイの設定をする</h3>
+<p>ダウンロードページにはRaspberry Pi OS (Lite版) と書いてありましたが，実体はDebianらしいです．</p>
+<div class="gatsby-highlight" data-language="sh"><pre class="language-sh"><code class="language-sh">$ <span class="token function">cat</span> /etc/os-release
+<span class="token assign-left variable">PRETTY_NAME</span><span class="token operator">=</span><span class="token string">"Debian GNU/Linux 12 (bookworm)"</span>
+<span class="token assign-left variable">NAME</span><span class="token operator">=</span><span class="token string">"Debian GNU/Linux"</span>
+<span class="token assign-left variable">VERSION_ID</span><span class="token operator">=</span><span class="token string">"12"</span>
+<span class="token assign-left variable">VERSION</span><span class="token operator">=</span><span class="token string">"12 (bookworm)"</span>
+<span class="token assign-left variable">VERSION_CODENAME</span><span class="token operator">=</span>bookworm
+<span class="token assign-left variable">ID</span><span class="token operator">=</span>debian
+<span class="token assign-left variable">HOME_URL</span><span class="token operator">=</span><span class="token string">"https://www.debian.org/"</span>
+<span class="token assign-left variable">SUPPORT_URL</span><span class="token operator">=</span><span class="token string">"https://www.debian.org/support"</span>
+<span class="token assign-left variable">BUG_REPORT_URL</span><span class="token operator">=</span><span class="token string">"https://bugs.debian.org/"</span></code></pre></div>
+<h4 id="パッケージを更新する" style="position:relative;"><a href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%82%92%E6%9B%B4%E6%96%B0%E3%81%99%E3%82%8B" aria-label="パッケージを更新する permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>パッケージを更新する</h4>
+<div class="gatsby-highlight" data-language="sh"><pre class="language-sh"><code class="language-sh"><span class="token function">sudo</span> <span class="token function">apt</span> update
+<span class="token function">sudo</span> <span class="token function">apt</span> <span class="token parameter variable">-y</span> upgrade
+<span class="token function">sudo</span> <span class="token function">apt</span> <span class="token parameter variable">-y</span> autoremove</code></pre></div>
+<p>更新中にエラーが発生したが，<a href="https://qiita.com/yukari-n/items/d1b17bd37036f120153c" target="_blank" rel="nofollow noopener noreferrer">こちらの記事</a>に記載されている通りに対応したら解消しました．</p>
+<h4 id="日本語ロケールの有効化" style="position:relative;"><a href="#%E6%97%A5%E6%9C%AC%E8%AA%9E%E3%83%AD%E3%82%B1%E3%83%BC%E3%83%AB%E3%81%AE%E6%9C%89%E5%8A%B9%E5%8C%96" aria-label="日本語ロケールの有効化 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>日本語ロケールの有効化</h4>
+<div class="gatsby-highlight" data-language="sh"><pre class="language-sh"><code class="language-sh"><span class="token function">sudo</span> raspi-config
+<span class="token operator">></span> <span class="token number">5</span> Location Options
+<span class="token operator">></span> L1 Locale
+<span class="token operator">></span> All locales
+<span class="token operator">></span> en_US.UTF-8</code></pre></div>
+<p>上記4行目の<code class="language-text">> All Locales</code> (有効にするロケールの選択画面) のみ，スペースキーで選択することに注意します．</p>
+<h4 id="option-好きなツールをインストールする" style="position:relative;"><a href="#option-%E5%A5%BD%E3%81%8D%E3%81%AA%E3%83%84%E3%83%BC%E3%83%AB%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B" aria-label="option 好きなツールをインストールする permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[Option] 好きなツールをインストールする</h4>
+<div class="gatsby-highlight" data-language="sh"><pre class="language-sh"><code class="language-sh"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token parameter variable">-y</span> <span class="token function">install</span> <span class="token function">vim</span> neovim</code></pre></div>
+<h3 id="3-dockerをインストールする" style="position:relative;"><a href="#3-docker%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B" aria-label="3 dockerをインストールする permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. Dockerをインストールする</h3>
+<p><a href="https://github.com/docker/docker-install" target="_blank" rel="nofollow noopener noreferrer">docker/docker-install</a>のREADMEに従って，Dockerをインストールします．</p>
+<div class="gatsby-highlight" data-language="sh"><pre class="language-sh"><code class="language-sh">$ <span class="token function">curl</span> <span class="token parameter variable">-fsSL</span> https://get.docker.com <span class="token parameter variable">-o</span> get-docker.sh
+$ <span class="token function">sh</span> get-docker.sh
+<span class="token comment">### インストールできたことを確認する</span>
+$ <span class="token function">sudo</span> <span class="token function">docker</span> <span class="token parameter variable">--version</span>
+Docker version <span class="token number">26.1</span>.4, build 5650f9b
+$ <span class="token function">sudo</span> <span class="token function">docker</span> compose version
+Docker Compose version v2.27.1</code></pre></div>
+<p>Dockerのインストールが完了したら，一度ラズパイを再起動します．</p>
+<div class="gatsby-highlight" data-language="sh"><pre class="language-sh"><code class="language-sh"><span class="token function">sudo</span> <span class="token function">reboot</span></code></pre></div>
+<h3 id="4-テレビチューナのドライバをインストールする" style="position:relative;"><a href="#4-%E3%83%86%E3%83%AC%E3%83%93%E3%83%81%E3%83%A5%E3%83%BC%E3%83%8A%E3%81%AE%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B" aria-label="4 テレビチューナのドライバをインストールする permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4. テレビチューナのドライバをインストールする</h3>
+<p>PX-Q1UDは1チャンネル版のPX-S1UDと同じドライバで動作します (cf. <a href="https://www.plex-net.co.jp/download/" target="_blank" rel="nofollow noopener noreferrer">PLEX/ダウンロード</a>)．</p>
+<div class="gatsby-highlight" data-language="sh"><pre class="language-sh"><code class="language-sh"><span class="token function">wget</span> http://plex-net.co.jp/plex/px-s1ud/PX-S1UD_driver_Ver.1.0.1.zip
+<span class="token function">unzip</span> PX-S1UD_driver_Ver.1.0.1.zip
+<span class="token function">sudo</span> <span class="token function">cp</span> PX-S1UD_driver_Ver.1.0.1/x64/amd64/isdbt_rio.inp /lib/firmware/</code></pre></div>
+<p>ドライバが認識されているのかを確認します．
+PX-Q1UDは4チャンネル対応なので，PX-S1UDが4個認識されていればOKです．</p>
+<div class="gatsby-highlight" data-language="sh"><pre class="language-sh"><code class="language-sh">$ <span class="token function">dmesg</span> <span class="token operator">|</span> <span class="token function">grep</span> PX-S1UD
+<span class="token punctuation">[</span>    <span class="token number">3.056587</span><span class="token punctuation">]</span> usb <span class="token number">1</span>-1.3.1: Product: PX-S1UD Digital テレビ Tuner
+<span class="token punctuation">[</span>    <span class="token number">3.244081</span><span class="token punctuation">]</span> usb <span class="token number">1</span>-1.3.2: Product: PX-S1UD Digital テレビ Tuner
+<span class="token punctuation">[</span>    <span class="token number">3.428095</span><span class="token punctuation">]</span> usb <span class="token number">1</span>-1.3.3: Product: PX-S1UD Digital テレビ Tuner
+<span class="token punctuation">[</span>    <span class="token number">3.616023</span><span class="token punctuation">]</span> usb <span class="token number">1</span>-1.3.4: Product: PX-S1UD Digital テレビ Tuner</code></pre></div>
+<h3 id="5-mirakurun-epgstation-docker版-をインストールする" style="position:relative;"><a href="#5-mirakurun-epgstation-docker%E7%89%88-%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B" aria-label="5 mirakurun epgstation docker版 をインストールする permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5. Mirakurun, EPGStation (Docker版) をインストールする</h3>
+<p><a href="https://github.com/l3tnun/docker-mirakurun-epgstation" target="_blank" rel="nofollow noopener noreferrer">l3tnun/docker-mirakurun-epgstation</a>のREADMEに従って，Mirakurun (テレビチャンネルチューナ) とEPGStation (録画予約管理ソフトウェア) をインストールします．</p>
+<div class="gatsby-highlight" data-language="sh"><pre class="language-sh"><code class="language-sh"><span class="token function">curl</span> <span class="token parameter variable">-sf</span> https://raw.githubusercontent.com/l3tnun/docker-mirakurun-epgstation/v2/setup.sh <span class="token operator">|</span> <span class="token function">sh</span> <span class="token parameter variable">-s</span></code></pre></div>
+<h3 id="6-mirakurunepgstationの設定をする" style="position:relative;"><a href="#6-mirakurunepgstation%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%82%92%E3%81%99%E3%82%8B" aria-label="6 mirakurunepgstationの設定をする permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>6. Mirakurun，EPGStationの設定をする</h3>
+<p>インストール時に生成されたディレクトリにあるcomposeファイル (<code class="language-text">docker-mirakurun-epgstation/docker-compose.yml</code>) を下記のように変更します．</p>
+<h4 id="dbのイメージをarm64対応のものに変更する" style="position:relative;"><a href="#db%E3%81%AE%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E3%82%92arm64%E5%AF%BE%E5%BF%9C%E3%81%AE%E3%82%82%E3%81%AE%E3%81%AB%E5%A4%89%E6%9B%B4%E3%81%99%E3%82%8B" aria-label="dbのイメージをarm64対応のものに変更する permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>DBのイメージをarm64対応のものに変更する</h4>
+<div class="gatsby-highlight" data-language="diff:docker-mirakurun-epgstation/docker-compose.yml"><pre class="language-diff:docker-mirakurun-epgstation/docker-compose.yml"><code class="language-diff:docker-mirakurun-epgstation/docker-compose.yml">- image: mariadb:10.5
++ image: yobasystems/alpine-mariadb
++ # image: mariadb:10.5</code></pre></div>
+<h4 id="option-コンテナに適当な名前を付ける" style="position:relative;"><a href="#option-%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%81%AB%E9%81%A9%E5%BD%93%E3%81%AA%E5%90%8D%E5%89%8D%E3%82%92%E4%BB%98%E3%81%91%E3%82%8B" aria-label="option コンテナに適当な名前を付ける permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[Option] コンテナに適当な名前を付ける</h4>
+<p>cf. <a href="https://docs.docker.jp/compose/compose-file/#container-name" target="_blank" rel="nofollow noopener noreferrer">Compose Specification（仕様）#container-name</a></p>
+<div class="gatsby-highlight" data-language="diff:docker-mirakurun-epgstation/docker-compose.yml"><pre class="language-diff:docker-mirakurun-epgstation/docker-compose.yml"><code class="language-diff:docker-mirakurun-epgstation/docker-compose.yml">### mirakurun
++ container_name: tv_mirakurun
+### mysql
++ container_name: tv_mysql
+### epgstation
++ container_name: tv_epgstation</code></pre></div>
+<p>設定が完了したら，コンテナを起動します．</p>
+<div class="gatsby-highlight" data-language="sh"><pre class="language-sh"><code class="language-sh">$ <span class="token builtin class-name">cd</span> <span class="token variable">${<span class="token operator">/</span>path<span class="token operator">/</span>to<span class="token operator">/</span>docker-mirakurun-epgstation}</span>
+$ <span class="token function">sudo</span> <span class="token function">docker</span> compose up <span class="token parameter variable">-d</span>
+<span class="token comment">### コンテナが無事に起動したことを確認する</span>
+$ <span class="token function">sudo</span> <span class="token function">docker</span> compose <span class="token function">ps</span>
+NAME            IMAGE                                    COMMAND                  SERVICE      CREATED       STATUS      PORTS
+tv_epgstation   docker-mirakurun-epgstation-epgstation   <span class="token string">"npm start"</span>              epgstation   <span class="token number">11</span> days ago   Up <span class="token number">6</span> days   <span class="token number">0.0</span>.0.0:8888-8889-<span class="token operator">></span><span class="token number">8888</span>-8889/tcp, :::8888-8889-<span class="token operator">></span><span class="token number">8888</span>-8889/tcp
+tv_mirakurun    chinachu/mirakurun                       <span class="token string">"docker-entrypoint.s…"</span>   mirakurun    <span class="token number">11</span> days ago   Up <span class="token number">6</span> days   <span class="token number">0.0</span>.0.0:9229-<span class="token operator">></span><span class="token number">9229</span>/tcp, :::9229-<span class="token operator">></span><span class="token number">9229</span>/tcp, <span class="token number">0.0</span>.0.0:40772-<span class="token operator">></span><span class="token number">40772</span>/tcp, :::40772-<span class="token operator">></span><span class="token number">40772</span>/tcp
+tv_mysql        yobasystems/alpine-mariadb               <span class="token string">"/scripts/run.sh --c…"</span>   mysql        <span class="token number">11</span> days ago   Up <span class="token number">6</span> days   <span class="token number">3306</span>/tcp</code></pre></div>
+<h3 id="7-チャンネルをスキャンする" style="position:relative;"><a href="#7-%E3%83%81%E3%83%A3%E3%83%B3%E3%83%8D%E3%83%AB%E3%82%92%E3%82%B9%E3%82%AD%E3%83%A3%E3%83%B3%E3%81%99%E3%82%8B" aria-label="7 チャンネルをスキャンする permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>7. チャンネルをスキャンする</h3>
+<p>チャンネルをスキャンします．</p>
+<div class="gatsby-highlight" data-language="sh"><pre class="language-sh"><code class="language-sh"><span class="token function">curl</span> <span class="token parameter variable">-X</span> PUT <span class="token string">"http://localhost:40772/api/config/channels/scan"</span></code></pre></div>
+<p>上記コマンドでは取得漏れが発生することがあるらしいので，適宜<a href="https://www.maspro.co.jp/wp-content/themes/maspro/file/reference/tv-channel-list.pdf" target="_blank" rel="nofollow noopener noreferrer">地上デジタル放送 チャンネル表</a>を参考に手動でチャンネルを設定します．
+スキャン完了後，一度コンテナを再起動します．</p>
+<div class="gatsby-highlight" data-language="sh"><pre class="language-sh"><code class="language-sh"><span class="token function">sudo</span> <span class="token function">docker</span> compose stop <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> <span class="token function">docker</span> compose up <span class="token parameter variable">-d</span></code></pre></div>
+<h3 id="8-テレビ視聴" style="position:relative;"><a href="#8-%E3%83%86%E3%83%AC%E3%83%93%E8%A6%96%E8%81%B4" aria-label="8 テレビ視聴 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>8. テレビ視聴</h3>
+<p>まずはMirakurunへアクセスしてみます．
+お好きなブラウザで<code class="language-text">http://${RASPBERRY_PI_IP_ADDR}:40772</code>へアクセスします．
+チャンネルスキャンに成功していると，“Services”に視聴可能なチャンネルが表示されます．
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/e9fefbe06782c8c48dab8eebd320e349/c72f7/mirakurun.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 23.75%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAA7ElEQVQY02WQS27DMBBDfZba+lkaS7b8iZM0DZIsuih6/9u8QkoWBbIiQRAkZ5rz+cJ+upDzSggJ6wTXyxu+80CaFvbtxLZdWfYL27rR3G53xvlMkAnjEq0SWhXo9ECnpeJTe/F/2kfn0S5hXMS6iDKRxvYjzk/Eca8occGHjDaxGkuolxkvGWWE4i+FBdN0wPRjHVJKlBloJK5VsDLRmsAQV0JcaF14GcuJCRkWlI1o+1xSSoa0IX7GurGG1cC8nug6T7jeWR/fWC3oOLP8/JLiitLCeHwwH76wr5f0IdNLrkuP6ZO+n2pxCfwDXKKYxUT8ALUAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/e9fefbe06782c8c48dab8eebd320e349/8ac56/mirakurun.webp 240w,
+/static/e9fefbe06782c8c48dab8eebd320e349/d3be9/mirakurun.webp 480w,
+/static/e9fefbe06782c8c48dab8eebd320e349/e46b2/mirakurun.webp 960w,
+/static/e9fefbe06782c8c48dab8eebd320e349/f992d/mirakurun.webp 1440w,
+/static/e9fefbe06782c8c48dab8eebd320e349/8e90b/mirakurun.webp 1915w"
+              sizes="(max-width: 960px) 100vw, 960px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/e9fefbe06782c8c48dab8eebd320e349/8ff5a/mirakurun.png 240w,
+/static/e9fefbe06782c8c48dab8eebd320e349/e85cb/mirakurun.png 480w,
+/static/e9fefbe06782c8c48dab8eebd320e349/d9199/mirakurun.png 960w,
+/static/e9fefbe06782c8c48dab8eebd320e349/07a9c/mirakurun.png 1440w,
+/static/e9fefbe06782c8c48dab8eebd320e349/c72f7/mirakurun.png 1915w"
+            sizes="(max-width: 960px) 100vw, 960px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/e9fefbe06782c8c48dab8eebd320e349/d9199/mirakurun.png"
+            alt="mirakurun"
+            title="mirakurun"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p>お次はEPGStationです．
+ブラウザで<code class="language-text">http://${RASPBERRY_PI_IP_ADDR}:8888</code>へアクセスすると，ダッシュボードが見られます．
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/0e94d4033db190438e7c2ba1d37eecf9/df88b/epgstation_dashboard.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 32.916666666666664%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAoklEQVQoz62QsQqFIABF/QSTWspoaMjSHOLlUwy36P+/6IYO4eM1RcPh4kEOIjmOAyEEWGuxbRuWZYHWGtM0JYQQGMfxOud+njWc+WL9OKzWw5oVZN93GGMwDAO6rkPbtuCcp43kPqfv+7R106BJ1GmJcw5KKZRliaIowBj7oaqqPxeJ9+888d5DSglK6SVj+Ckk/l0M3r3uCSmopHo5qN4LnkrJt3l1Y7jvAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/0e94d4033db190438e7c2ba1d37eecf9/8ac56/epgstation_dashboard.webp 240w,
+/static/0e94d4033db190438e7c2ba1d37eecf9/d3be9/epgstation_dashboard.webp 480w,
+/static/0e94d4033db190438e7c2ba1d37eecf9/e46b2/epgstation_dashboard.webp 960w,
+/static/0e94d4033db190438e7c2ba1d37eecf9/f992d/epgstation_dashboard.webp 1440w,
+/static/0e94d4033db190438e7c2ba1d37eecf9/d1098/epgstation_dashboard.webp 1906w"
+              sizes="(max-width: 960px) 100vw, 960px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/0e94d4033db190438e7c2ba1d37eecf9/8ff5a/epgstation_dashboard.png 240w,
+/static/0e94d4033db190438e7c2ba1d37eecf9/e85cb/epgstation_dashboard.png 480w,
+/static/0e94d4033db190438e7c2ba1d37eecf9/d9199/epgstation_dashboard.png 960w,
+/static/0e94d4033db190438e7c2ba1d37eecf9/07a9c/epgstation_dashboard.png 1440w,
+/static/0e94d4033db190438e7c2ba1d37eecf9/df88b/epgstation_dashboard.png 1906w"
+            sizes="(max-width: 960px) 100vw, 960px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/0e94d4033db190438e7c2ba1d37eecf9/d9199/epgstation_dashboard.png"
+            alt="epgstation_dashboard"
+            title="epgstation_dashboard"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span>
+「放映中」のタブからは現在放送中の番組を確認でき，ここから番組を視聴できます．
+おめでとうございます!
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/c46724d0f4847b035747eb57b5e987bd/ec09f/epgstation_onair.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 35.833333333333336%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAA7DAAAOwwHHb6hkAAABNElEQVQoz3WR626CMBiGuQPBH5MSEwq2pRyk5RCByTbxEMxmvP+7eRcaZ0x0P570S5r3yfe21nk847A/oGkaQ57nyLLMIEWEKIoQx/GN5GGOkWYZSq2hdQVdVih0Dut6veJ4PBoRIQSe590JEo5YSgSUwvcpaMjg+z7oBKVYLpdwCTE5QlwQ4sG6/FzQb7cQQmA2m8FxHMM0q75Fv9ujqDdI1wpJmmGdK6wYA+MCC9eFbdv3zIQ1DAPatjXC6XI+nxsc28FQ9ag2LbhMzXaUBqBBeD9d1zWSv8zE/0LHQdG8Y/vxhbqukSsFxjk4FxAigowTI3zMGOE4jui6Z+E0f56+sTucoIsSudJQukCarU1dEUnzdk/CruvM777akAmJRJUQqQKTKULGEa4Y/Fvlt8XiqfIvVpzGM5grixQAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/c46724d0f4847b035747eb57b5e987bd/8ac56/epgstation_onair.webp 240w,
+/static/c46724d0f4847b035747eb57b5e987bd/d3be9/epgstation_onair.webp 480w,
+/static/c46724d0f4847b035747eb57b5e987bd/e46b2/epgstation_onair.webp 960w,
+/static/c46724d0f4847b035747eb57b5e987bd/f992d/epgstation_onair.webp 1440w,
+/static/c46724d0f4847b035747eb57b5e987bd/3d7de/epgstation_onair.webp 1916w"
+              sizes="(max-width: 960px) 100vw, 960px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/c46724d0f4847b035747eb57b5e987bd/8ff5a/epgstation_onair.png 240w,
+/static/c46724d0f4847b035747eb57b5e987bd/e85cb/epgstation_onair.png 480w,
+/static/c46724d0f4847b035747eb57b5e987bd/d9199/epgstation_onair.png 960w,
+/static/c46724d0f4847b035747eb57b5e987bd/07a9c/epgstation_onair.png 1440w,
+/static/c46724d0f4847b035747eb57b5e987bd/ec09f/epgstation_onair.png 1916w"
+            sizes="(max-width: 960px) 100vw, 960px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/c46724d0f4847b035747eb57b5e987bd/d9199/epgstation_onair.png"
+            alt="epgstation_onair"
+            title="epgstation_onair"
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<h2 id="おわりに" style="position:relative;"><a href="#%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB" aria-label="おわりに permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>おわりに</h2>
+<p>こうして記事にまとめてみると，必要なソフトウェアがDocker化されているので，簡単に構築できそうですね．
+ただ，今の環境では(インターネット回線が弱すぎるからか)十分満足に視聴できないので，これを機に回線を見直そうかなあ…．</p>
+<h2 id="参考文献" style="position:relative;"><a href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE" aria-label="参考文献 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>参考文献</h2>
+<ul>
+<li><a href="https://raspida.com/docker-tv-server-rpi4/" target="_blank" rel="nofollow noopener noreferrer">地デジ視聴＆録画サーバーをラズパイ公式OSで構築する</a></li>
+<li><a href="https://www.digital-den.jp/simplelife/archives/7655/2023%E5%B9%B48%E6%9C%88%E7%89%88-45%E5%88%86%E3%81%A7%E4%BD%9C%E3%82%8C%E3%82%8B%E8%87%AA%E5%AE%85%E9%8C%B2%E7%94%BB%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%EF%BC%88ubuntu-22-04-3lts/" target="_blank" rel="nofollow noopener noreferrer">2023年8月版 45分で作れる自宅録画サーバー（Ubuntu 22.04.3LTS)</a></li>
+</ul>
+<div class="footnotes">
+<hr>
+<ol>
+<li id="fn-1">その話を聞いてすぐにチューナなどを買ったのはいいものの，実際に構築したのが1年後であることはここだけの秘密です<a href="#fnref-1" class="footnote-backref">↩</a></li>
+</ol>
+</div></div></div></div><div class="Post-module--footer--f8705"><div class="Meta-module--meta--dae0a"><p class="Meta-module--date--4d30d">Published<!-- --> <!-- -->2024/06/15</p></div><div class="Tags-module--tags--18589"><ul class="Tags-module--list--82ae6"><li class="Tags-module--item--52015"><a class="Button-module--button--b1113" href="/tag/tech/">Tech</a></li><li class="Tags-module--item--52015"><a class="Button-module--button--b1113" href="/tag/server/">Server</a></li><li class="Tags-module--item--52015"><a class="Button-module--button--b1113" href="/tag/raspberry-pi/">Raspberry Pi</a></li></ul></div><div class="Author-module--author--1c58d"><p class="Author-module--bio--08950">Hello, world! I am a &quot;deadline-driven developer&quot; based in Japan. I am interested in tech, math and mahjong.<a class="Author-module--twitter--90647" href="https://www.twitter.com/fumiyanll23" rel="noopener noreferrer" target="_blank"><strong>Fumiyan</strong> on Twitter</a></p></div></div><div class="Post-module--comments--d3b99"></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/posts/build-tv-server";window.___webpackCompilationHash="477f2fbfcf980279b2db";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-326b46df038855cf2808.js"],"app":["/app-e4693fa4251843cd697a.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-0c915c7b1bdb5eac4fdf.js"],"component---src-templates-index-template-index-template-tsx":["/component---src-templates-index-template-index-template-tsx-a6a7b76ba659225118a4.js"],"component---src-templates-not-found-template-not-found-template-tsx":["/component---src-templates-not-found-template-not-found-template-tsx-58d9df92bf9aeaeac079.js"],"component---src-templates-page-template-page-template-tsx":["/component---src-templates-page-template-page-template-tsx-c2d1d9bb749983c1d3ce.js"],"component---src-templates-post-template-post-template-tsx":["/component---src-templates-post-template-post-template-tsx-6841e77c9633d49b991d.js"],"component---src-templates-tag-template-tag-template-tsx":["/component---src-templates-tag-template-tag-template-tsx-88bf2b1430994922970d.js"],"component---src-templates-tags-template-tags-template-tsx":["/component---src-templates-tags-template-tags-template-tsx-c4ce294cbd69fb69c08d.js"]};/*]]>*/</script><script src="/polyfill-326b46df038855cf2808.js" nomodule=""></script><script src="/app-e4693fa4251843cd697a.js" async=""></script><script src="/framework-745d5d28c0250a1a333b.js" async=""></script><script src="/webpack-runtime-4461658cdff64aa12885.js" async=""></script></body></html>

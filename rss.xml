@@ -1,4 +1,276 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[MyWeblog]]></title><description><![CDATA[MyWeblog]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 31 Jan 2024 17:51:54 GMT</lastBuildDate><item><title><![CDATA[2024年の目標を設定する話]]></title><description><![CDATA[「一年の計は元旦にあり」ということで(?)，(1月も終わりましたが)2024年の目標を設定したいと思います．]]></description><link>https://fumiyanll23.com/posts/set-goals-of-2024</link><guid isPermaLink="false">https://fumiyanll23.com/posts/set-goals-of-2024</guid><pubDate>Wed, 31 Jan 2024 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;はじめに&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&quot; aria-label=&quot;はじめに permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;はじめに&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[MyWeblog]]></title><description><![CDATA[MyWeblog]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 15 Jun 2024 09:57:29 GMT</lastBuildDate><item><title><![CDATA[テレビ視聴サーバを構築した話]]></title><description><![CDATA[床に転がっていたRaspberry Pi 4 (ラズパイ) を使ってテレビ視聴サーバを構築しました．]]></description><link>https://fumiyanll23.com/posts/build-tv-server</link><guid isPermaLink="false">https://fumiyanll23.com/posts/build-tv-server</guid><pubDate>Fri, 14 Jun 2024 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;はじめに&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&quot; aria-label=&quot;はじめに permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;はじめに&lt;/h2&gt;
+&lt;p&gt;床に転がっていたRaspberry Pi 4 (ラズパイ) を使って，テレビ視聴サーバを構築しました．
+職場の上司との雑談で，テレビ録画鯖の存在を知ったことがきっかけです．&lt;sup id=&quot;fnref-1&quot;&gt;&lt;a href=&quot;#fn-1&quot; class=&quot;footnote-ref&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;h2 id=&quot;環境など&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E7%92%B0%E5%A2%83%E3%81%AA%E3%81%A9&quot; aria-label=&quot;環境など permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;環境など&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;ホストOS: Windows11&lt;/li&gt;
+&lt;li&gt;ラズパイ: &lt;a href=&quot;https://www.amazon.co.jp/gp/product/B0CD5FZ7B6/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Marstudy ラズパイ4 Model B Starterキット(8GB RAM)&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;※購入した当時は4GB RAMのモデルでした&lt;/li&gt;
+&lt;li&gt;Raspberry Pi 4 Model B
+&lt;ul&gt;
+&lt;li&gt;CPUアーキテクチャ: AArch64&lt;/li&gt;
+&lt;li&gt;メモリ: 4GB&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;MicroSDカード (32GB)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;テレビチューナ: &lt;a href=&quot;https://www.amazon.co.jp/gp/product/B079YD3QT3/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;PX-Q1UD&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;B-CASカードリーダ: &lt;a href=&quot;https://www.amazon.co.jp/gp/product/B0085H4YZC/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;SCR3310&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;構築手順&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E6%A7%8B%E7%AF%89%E6%89%8B%E9%A0%86&quot; aria-label=&quot;構築手順 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;構築手順&lt;/h2&gt;
+&lt;h3 id=&quot;1-raspberry-pi-os-lite版-をインストールする&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-raspberry-pi-os-lite%E7%89%88-%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B&quot; aria-label=&quot;1 raspberry pi os lite版 をインストールする permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. Raspberry Pi OS (Lite版) をインストールする&lt;/h3&gt;
+&lt;h4 id=&quot;osイメージを入手する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#os%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E3%82%92%E5%85%A5%E6%89%8B%E3%81%99%E3%82%8B&quot; aria-label=&quot;osイメージを入手する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;OSイメージを入手する&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.raspberrypi.com/software/operating-systems/#raspberry-pi-os-64-bit&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Operating system images#Raspberry Pi OS (64-bit)&lt;/a&gt;からOSイメージをダウンロードします．
+僕のときは&lt;code class=&quot;language-text&quot;&gt;2024-03-15-raspios-bookworm-arm64.img.xz&lt;/code&gt;がダウンロードされました．
+Lite版にはデスクトップ環境が入っていないことに注意してください．&lt;/p&gt;
+&lt;h4 id=&quot;ラズパイへインストールする&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%A9%E3%82%BA%E3%83%91%E3%82%A4%E3%81%B8%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B&quot; aria-label=&quot;ラズパイへインストールする permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;ラズパイへインストールする&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;https://etcher.balena.io/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Etcher&lt;/a&gt;などでMicroSDカードへOSイメージを書き込みます．
+書き込んだMicroSDカードをラズパイへ挿入してOSをインストールします．
+ラズパイを起動する前にチューナなどを接続することに注意してください．&lt;/p&gt;
+&lt;p&gt;※以降の手順はsshするなどして，ラズパイ上で操作します．&lt;/p&gt;
+&lt;h3 id=&quot;2-ラズパイの設定をする&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-%E3%83%A9%E3%82%BA%E3%83%91%E3%82%A4%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%82%92%E3%81%99%E3%82%8B&quot; aria-label=&quot;2 ラズパイの設定をする permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. ラズパイの設定をする&lt;/h3&gt;
+&lt;p&gt;ダウンロードページにはRaspberry Pi OS (Lite版) と書いてありましたが，実体はDebianらしいです．&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;cat&lt;/span&gt; /etc/os-release
+&lt;span class=&quot;token assign-left variable&quot;&gt;PRETTY_NAME&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Debian GNU/Linux 12 (bookworm)&quot;&lt;/span&gt;
+&lt;span class=&quot;token assign-left variable&quot;&gt;NAME&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Debian GNU/Linux&quot;&lt;/span&gt;
+&lt;span class=&quot;token assign-left variable&quot;&gt;VERSION_ID&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;12&quot;&lt;/span&gt;
+&lt;span class=&quot;token assign-left variable&quot;&gt;VERSION&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;12 (bookworm)&quot;&lt;/span&gt;
+&lt;span class=&quot;token assign-left variable&quot;&gt;VERSION_CODENAME&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;bookworm
+&lt;span class=&quot;token assign-left variable&quot;&gt;ID&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;debian
+&lt;span class=&quot;token assign-left variable&quot;&gt;HOME_URL&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;https://www.debian.org/&quot;&lt;/span&gt;
+&lt;span class=&quot;token assign-left variable&quot;&gt;SUPPORT_URL&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;https://www.debian.org/support&quot;&lt;/span&gt;
+&lt;span class=&quot;token assign-left variable&quot;&gt;BUG_REPORT_URL&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;https://bugs.debian.org/&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&quot;パッケージを更新する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%82%92%E6%9B%B4%E6%96%B0%E3%81%99%E3%82%8B&quot; aria-label=&quot;パッケージを更新する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;パッケージを更新する&lt;/h4&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; update
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-y&lt;/span&gt; upgrade
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-y&lt;/span&gt; autoremove&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;更新中にエラーが発生したが，&lt;a href=&quot;https://qiita.com/yukari-n/items/d1b17bd37036f120153c&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;こちらの記事&lt;/a&gt;に記載されている通りに対応したら解消しました．&lt;/p&gt;
+&lt;h4 id=&quot;日本語ロケールの有効化&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E6%97%A5%E6%9C%AC%E8%AA%9E%E3%83%AD%E3%82%B1%E3%83%BC%E3%83%AB%E3%81%AE%E6%9C%89%E5%8A%B9%E5%8C%96&quot; aria-label=&quot;日本語ロケールの有効化 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;日本語ロケールの有効化&lt;/h4&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; raspi-config
+&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt; Location Options
+&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; L1 Locale
+&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; All locales
+&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; en_US.UTF-8&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;上記4行目の&lt;code class=&quot;language-text&quot;&gt;&gt; All Locales&lt;/code&gt; (有効にするロケールの選択画面) のみ，スペースキーで選択することに注意します．&lt;/p&gt;
+&lt;h4 id=&quot;option-好きなツールをインストールする&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#option-%E5%A5%BD%E3%81%8D%E3%81%AA%E3%83%84%E3%83%BC%E3%83%AB%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B&quot; aria-label=&quot;option 好きなツールをインストールする permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[Option] 好きなツールをインストールする&lt;/h4&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-y&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;vim&lt;/span&gt; neovim&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;3-dockerをインストールする&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#3-docker%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B&quot; aria-label=&quot;3 dockerをインストールする permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;3. Dockerをインストールする&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/docker/docker-install&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;docker/docker-install&lt;/a&gt;のREADMEに従って，Dockerをインストールします．&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;curl&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-fsSL&lt;/span&gt; https://get.docker.com &lt;span class=&quot;token parameter variable&quot;&gt;-o&lt;/span&gt; get-docker.sh
+$ &lt;span class=&quot;token function&quot;&gt;sh&lt;/span&gt; get-docker.sh
+&lt;span class=&quot;token comment&quot;&gt;### インストールできたことを確認する&lt;/span&gt;
+$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;--version&lt;/span&gt;
+Docker version &lt;span class=&quot;token number&quot;&gt;26.1&lt;/span&gt;.4, build 5650f9b
+$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; compose version
+Docker Compose version v2.27.1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Dockerのインストールが完了したら，一度ラズパイを再起動します．&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;reboot&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;4-テレビチューナのドライバをインストールする&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#4-%E3%83%86%E3%83%AC%E3%83%93%E3%83%81%E3%83%A5%E3%83%BC%E3%83%8A%E3%81%AE%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B&quot; aria-label=&quot;4 テレビチューナのドライバをインストールする permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;4. テレビチューナのドライバをインストールする&lt;/h3&gt;
+&lt;p&gt;PX-Q1UDは1チャンネル版のPX-S1UDと同じドライバで動作します (cf. &lt;a href=&quot;https://www.plex-net.co.jp/download/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;PLEX/ダウンロード&lt;/a&gt;)．&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;&lt;span class=&quot;token function&quot;&gt;wget&lt;/span&gt; http://plex-net.co.jp/plex/px-s1ud/PX-S1UD_driver_Ver.1.0.1.zip
+&lt;span class=&quot;token function&quot;&gt;unzip&lt;/span&gt; PX-S1UD_driver_Ver.1.0.1.zip
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;cp&lt;/span&gt; PX-S1UD_driver_Ver.1.0.1/x64/amd64/isdbt_rio.inp /lib/firmware/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;ドライバが認識されているのかを確認します．
+PX-Q1UDは4チャンネル対応なので，PX-S1UDが4個認識されていればOKです．&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;dmesg&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;grep&lt;/span&gt; PX-S1UD
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;    &lt;span class=&quot;token number&quot;&gt;3.056587&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; usb &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;-1.3.1: Product: PX-S1UD Digital テレビ Tuner
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;    &lt;span class=&quot;token number&quot;&gt;3.244081&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; usb &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;-1.3.2: Product: PX-S1UD Digital テレビ Tuner
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;    &lt;span class=&quot;token number&quot;&gt;3.428095&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; usb &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;-1.3.3: Product: PX-S1UD Digital テレビ Tuner
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;    &lt;span class=&quot;token number&quot;&gt;3.616023&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; usb &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;-1.3.4: Product: PX-S1UD Digital テレビ Tuner&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;5-mirakurun-epgstation-docker版-をインストールする&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#5-mirakurun-epgstation-docker%E7%89%88-%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B&quot; aria-label=&quot;5 mirakurun epgstation docker版 をインストールする permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;5. Mirakurun, EPGStation (Docker版) をインストールする&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/l3tnun/docker-mirakurun-epgstation&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;l3tnun/docker-mirakurun-epgstation&lt;/a&gt;のREADMEに従って，Mirakurun (テレビチャンネルチューナ) とEPGStation (録画予約管理ソフトウェア) をインストールします．&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;&lt;span class=&quot;token function&quot;&gt;curl&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-sf&lt;/span&gt; https://raw.githubusercontent.com/l3tnun/docker-mirakurun-epgstation/v2/setup.sh &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;sh&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-s&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;6-mirakurunepgstationの設定をする&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#6-mirakurunepgstation%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%82%92%E3%81%99%E3%82%8B&quot; aria-label=&quot;6 mirakurunepgstationの設定をする permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;6. Mirakurun，EPGStationの設定をする&lt;/h3&gt;
+&lt;p&gt;インストール時に生成されたディレクトリにあるcomposeファイル (&lt;code class=&quot;language-text&quot;&gt;docker-mirakurun-epgstation/docker-compose.yml&lt;/code&gt;) を下記のように変更します．&lt;/p&gt;
+&lt;h4 id=&quot;dbのイメージをarm64対応のものに変更する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#db%E3%81%AE%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E3%82%92arm64%E5%AF%BE%E5%BF%9C%E3%81%AE%E3%82%82%E3%81%AE%E3%81%AB%E5%A4%89%E6%9B%B4%E3%81%99%E3%82%8B&quot; aria-label=&quot;dbのイメージをarm64対応のものに変更する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;DBのイメージをarm64対応のものに変更する&lt;/h4&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;diff:docker-mirakurun-epgstation/docker-compose.yml&quot;&gt;&lt;pre class=&quot;language-diff:docker-mirakurun-epgstation/docker-compose.yml&quot;&gt;&lt;code class=&quot;language-diff:docker-mirakurun-epgstation/docker-compose.yml&quot;&gt;- image: mariadb:10.5
++ image: yobasystems/alpine-mariadb
++ # image: mariadb:10.5&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&quot;option-コンテナに適当な名前を付ける&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#option-%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%81%AB%E9%81%A9%E5%BD%93%E3%81%AA%E5%90%8D%E5%89%8D%E3%82%92%E4%BB%98%E3%81%91%E3%82%8B&quot; aria-label=&quot;option コンテナに適当な名前を付ける permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;[Option] コンテナに適当な名前を付ける&lt;/h4&gt;
+&lt;p&gt;cf. &lt;a href=&quot;https://docs.docker.jp/compose/compose-file/#container-name&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Compose Specification（仕様）#container-name&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;diff:docker-mirakurun-epgstation/docker-compose.yml&quot;&gt;&lt;pre class=&quot;language-diff:docker-mirakurun-epgstation/docker-compose.yml&quot;&gt;&lt;code class=&quot;language-diff:docker-mirakurun-epgstation/docker-compose.yml&quot;&gt;### mirakurun
++ container_name: tv_mirakurun
+### mysql
++ container_name: tv_mysql
+### epgstation
++ container_name: tv_epgstation&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;設定が完了したら，コンテナを起動します．&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;$ &lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;${&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;path&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;to&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;docker-mirakurun-epgstation}&lt;/span&gt;
+$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; compose up &lt;span class=&quot;token parameter variable&quot;&gt;-d&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;### コンテナが無事に起動したことを確認する&lt;/span&gt;
+$ &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; compose &lt;span class=&quot;token function&quot;&gt;ps&lt;/span&gt;
+NAME            IMAGE                                    COMMAND                  SERVICE      CREATED       STATUS      PORTS
+tv_epgstation   docker-mirakurun-epgstation-epgstation   &lt;span class=&quot;token string&quot;&gt;&quot;npm start&quot;&lt;/span&gt;              epgstation   &lt;span class=&quot;token number&quot;&gt;11&lt;/span&gt; days ago   Up &lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt; days   &lt;span class=&quot;token number&quot;&gt;0.0&lt;/span&gt;.0.0:8888-8889-&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;8888&lt;/span&gt;-8889/tcp, :::8888-8889-&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;8888&lt;/span&gt;-8889/tcp
+tv_mirakurun    chinachu/mirakurun                       &lt;span class=&quot;token string&quot;&gt;&quot;docker-entrypoint.s…&quot;&lt;/span&gt;   mirakurun    &lt;span class=&quot;token number&quot;&gt;11&lt;/span&gt; days ago   Up &lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt; days   &lt;span class=&quot;token number&quot;&gt;0.0&lt;/span&gt;.0.0:9229-&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;9229&lt;/span&gt;/tcp, :::9229-&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;9229&lt;/span&gt;/tcp, &lt;span class=&quot;token number&quot;&gt;0.0&lt;/span&gt;.0.0:40772-&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;40772&lt;/span&gt;/tcp, :::40772-&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;40772&lt;/span&gt;/tcp
+tv_mysql        yobasystems/alpine-mariadb               &lt;span class=&quot;token string&quot;&gt;&quot;/scripts/run.sh --c…&quot;&lt;/span&gt;   mysql        &lt;span class=&quot;token number&quot;&gt;11&lt;/span&gt; days ago   Up &lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt; days   &lt;span class=&quot;token number&quot;&gt;3306&lt;/span&gt;/tcp&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;7-チャンネルをスキャンする&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#7-%E3%83%81%E3%83%A3%E3%83%B3%E3%83%8D%E3%83%AB%E3%82%92%E3%82%B9%E3%82%AD%E3%83%A3%E3%83%B3%E3%81%99%E3%82%8B&quot; aria-label=&quot;7 チャンネルをスキャンする permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;7. チャンネルをスキャンする&lt;/h3&gt;
+&lt;p&gt;チャンネルをスキャンします．&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;&lt;span class=&quot;token function&quot;&gt;curl&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-X&lt;/span&gt; PUT &lt;span class=&quot;token string&quot;&gt;&quot;http://localhost:40772/api/config/channels/scan&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;上記コマンドでは取得漏れが発生することがあるらしいので，適宜&lt;a href=&quot;https://www.maspro.co.jp/wp-content/themes/maspro/file/reference/tv-channel-list.pdf&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;地上デジタル放送 チャンネル表&lt;/a&gt;を参考に手動でチャンネルを設定します．
+スキャン完了後，一度コンテナを再起動します．&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;sh&quot;&gt;&lt;pre class=&quot;language-sh&quot;&gt;&lt;code class=&quot;language-sh&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; compose stop &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; compose up &lt;span class=&quot;token parameter variable&quot;&gt;-d&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;8-テレビ視聴&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#8-%E3%83%86%E3%83%AC%E3%83%93%E8%A6%96%E8%81%B4&quot; aria-label=&quot;8 テレビ視聴 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;8. テレビ視聴&lt;/h3&gt;
+&lt;p&gt;まずはMirakurunへアクセスしてみます．
+お好きなブラウザで&lt;code class=&quot;language-text&quot;&gt;http://${RASPBERRY_PI_IP_ADDR}:40772&lt;/code&gt;へアクセスします．
+チャンネルスキャンに成功していると，“Services”に視聴可能なチャンネルが表示されます．
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/e9fefbe06782c8c48dab8eebd320e349/c72f7/mirakurun.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 23.75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAA7ElEQVQY02WQS27DMBBDfZba+lkaS7b8iZM0DZIsuih6/9u8QkoWBbIiQRAkZ5rz+cJ+upDzSggJ6wTXyxu+80CaFvbtxLZdWfYL27rR3G53xvlMkAnjEq0SWhXo9ECnpeJTe/F/2kfn0S5hXMS6iDKRxvYjzk/Eca8occGHjDaxGkuolxkvGWWE4i+FBdN0wPRjHVJKlBloJK5VsDLRmsAQV0JcaF14GcuJCRkWlI1o+1xSSoa0IX7GurGG1cC8nug6T7jeWR/fWC3oOLP8/JLiitLCeHwwH76wr5f0IdNLrkuP6ZO+n2pxCfwDXKKYxUT8ALUAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/e9fefbe06782c8c48dab8eebd320e349/8ac56/mirakurun.webp 240w,
+/static/e9fefbe06782c8c48dab8eebd320e349/d3be9/mirakurun.webp 480w,
+/static/e9fefbe06782c8c48dab8eebd320e349/e46b2/mirakurun.webp 960w,
+/static/e9fefbe06782c8c48dab8eebd320e349/f992d/mirakurun.webp 1440w,
+/static/e9fefbe06782c8c48dab8eebd320e349/8e90b/mirakurun.webp 1915w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/e9fefbe06782c8c48dab8eebd320e349/8ff5a/mirakurun.png 240w,
+/static/e9fefbe06782c8c48dab8eebd320e349/e85cb/mirakurun.png 480w,
+/static/e9fefbe06782c8c48dab8eebd320e349/d9199/mirakurun.png 960w,
+/static/e9fefbe06782c8c48dab8eebd320e349/07a9c/mirakurun.png 1440w,
+/static/e9fefbe06782c8c48dab8eebd320e349/c72f7/mirakurun.png 1915w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/e9fefbe06782c8c48dab8eebd320e349/d9199/mirakurun.png&quot;
+            alt=&quot;mirakurun&quot;
+            title=&quot;mirakurun&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;お次はEPGStationです．
+ブラウザで&lt;code class=&quot;language-text&quot;&gt;http://${RASPBERRY_PI_IP_ADDR}:8888&lt;/code&gt;へアクセスすると，ダッシュボードが見られます．
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/0e94d4033db190438e7c2ba1d37eecf9/df88b/epgstation_dashboard.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 32.916666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAoklEQVQoz62QsQqFIABF/QSTWspoaMjSHOLlUwy36P+/6IYO4eM1RcPh4kEOIjmOAyEEWGuxbRuWZYHWGtM0JYQQGMfxOud+njWc+WL9OKzWw5oVZN93GGMwDAO6rkPbtuCcp43kPqfv+7R106BJ1GmJcw5KKZRliaIowBj7oaqqPxeJ9+888d5DSglK6SVj+Ckk/l0M3r3uCSmopHo5qN4LnkrJt3l1Y7jvAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/0e94d4033db190438e7c2ba1d37eecf9/8ac56/epgstation_dashboard.webp 240w,
+/static/0e94d4033db190438e7c2ba1d37eecf9/d3be9/epgstation_dashboard.webp 480w,
+/static/0e94d4033db190438e7c2ba1d37eecf9/e46b2/epgstation_dashboard.webp 960w,
+/static/0e94d4033db190438e7c2ba1d37eecf9/f992d/epgstation_dashboard.webp 1440w,
+/static/0e94d4033db190438e7c2ba1d37eecf9/d1098/epgstation_dashboard.webp 1906w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/0e94d4033db190438e7c2ba1d37eecf9/8ff5a/epgstation_dashboard.png 240w,
+/static/0e94d4033db190438e7c2ba1d37eecf9/e85cb/epgstation_dashboard.png 480w,
+/static/0e94d4033db190438e7c2ba1d37eecf9/d9199/epgstation_dashboard.png 960w,
+/static/0e94d4033db190438e7c2ba1d37eecf9/07a9c/epgstation_dashboard.png 1440w,
+/static/0e94d4033db190438e7c2ba1d37eecf9/df88b/epgstation_dashboard.png 1906w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/0e94d4033db190438e7c2ba1d37eecf9/d9199/epgstation_dashboard.png&quot;
+            alt=&quot;epgstation_dashboard&quot;
+            title=&quot;epgstation_dashboard&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+「放映中」のタブからは現在放送中の番組を確認でき，ここから番組を視聴できます．
+おめでとうございます!
+&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/c46724d0f4847b035747eb57b5e987bd/ec09f/epgstation_onair.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 35.833333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAA7DAAAOwwHHb6hkAAABNElEQVQoz3WR626CMBiGuQPBH5MSEwq2pRyk5RCByTbxEMxmvP+7eRcaZ0x0P570S5r3yfe21nk847A/oGkaQ57nyLLMIEWEKIoQx/GN5GGOkWYZSq2hdQVdVih0Dut6veJ4PBoRIQSe590JEo5YSgSUwvcpaMjg+z7oBKVYLpdwCTE5QlwQ4sG6/FzQb7cQQmA2m8FxHMM0q75Fv9ujqDdI1wpJmmGdK6wYA+MCC9eFbdv3zIQ1DAPatjXC6XI+nxsc28FQ9ag2LbhMzXaUBqBBeD9d1zWSv8zE/0LHQdG8Y/vxhbqukSsFxjk4FxAigowTI3zMGOE4jui6Z+E0f56+sTucoIsSudJQukCarU1dEUnzdk/CruvM777akAmJRJUQqQKTKULGEa4Y/Fvlt8XiqfIvVpzGM5grixQAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/c46724d0f4847b035747eb57b5e987bd/8ac56/epgstation_onair.webp 240w,
+/static/c46724d0f4847b035747eb57b5e987bd/d3be9/epgstation_onair.webp 480w,
+/static/c46724d0f4847b035747eb57b5e987bd/e46b2/epgstation_onair.webp 960w,
+/static/c46724d0f4847b035747eb57b5e987bd/f992d/epgstation_onair.webp 1440w,
+/static/c46724d0f4847b035747eb57b5e987bd/3d7de/epgstation_onair.webp 1916w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/c46724d0f4847b035747eb57b5e987bd/8ff5a/epgstation_onair.png 240w,
+/static/c46724d0f4847b035747eb57b5e987bd/e85cb/epgstation_onair.png 480w,
+/static/c46724d0f4847b035747eb57b5e987bd/d9199/epgstation_onair.png 960w,
+/static/c46724d0f4847b035747eb57b5e987bd/07a9c/epgstation_onair.png 1440w,
+/static/c46724d0f4847b035747eb57b5e987bd/ec09f/epgstation_onair.png 1916w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/c46724d0f4847b035747eb57b5e987bd/d9199/epgstation_onair.png&quot;
+            alt=&quot;epgstation_onair&quot;
+            title=&quot;epgstation_onair&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&quot;おわりに&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB&quot; aria-label=&quot;おわりに permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;おわりに&lt;/h2&gt;
+&lt;p&gt;こうして記事にまとめてみると，必要なソフトウェアがDocker化されているので，簡単に構築できそうですね．
+ただ，今の環境では(インターネット回線が弱すぎるからか)十分満足に視聴できないので，これを機に回線を見直そうかなあ…．&lt;/p&gt;
+&lt;h2 id=&quot;参考文献&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE&quot; aria-label=&quot;参考文献 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;参考文献&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://raspida.com/docker-tv-server-rpi4/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;地デジ視聴＆録画サーバーをラズパイ公式OSで構築する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.digital-den.jp/simplelife/archives/7655/2023%E5%B9%B48%E6%9C%88%E7%89%88-45%E5%88%86%E3%81%A7%E4%BD%9C%E3%82%8C%E3%82%8B%E8%87%AA%E5%AE%85%E9%8C%B2%E7%94%BB%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%EF%BC%88ubuntu-22-04-3lts/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;2023年8月版 45分で作れる自宅録画サーバー（Ubuntu 22.04.3LTS)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;footnotes&quot;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&quot;fn-1&quot;&gt;その話を聞いてすぐにチューナなどを買ったのはいいものの，実際に構築したのが1年後であることはここだけの秘密です&lt;a href=&quot;#fnref-1&quot; class=&quot;footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</content:encoded></item><item><title><![CDATA[2024年の目標を設定する話]]></title><description><![CDATA[「一年の計は元旦にあり」ということで(?)，(1月も終わりましたが)2024年の目標を設定したいと思います．]]></description><link>https://fumiyanll23.com/posts/set-goals-of-2024</link><guid isPermaLink="false">https://fumiyanll23.com/posts/set-goals-of-2024</guid><pubDate>Wed, 31 Jan 2024 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;はじめに&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&quot; aria-label=&quot;はじめに permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;はじめに&lt;/h2&gt;
 &lt;p&gt;「一年の計は元旦にあり」ということで(?)，(1月も終わりましたが)2024年の目標を設定したいと思います．
 昨年 (2023年) まではTwitter (現X) で目標宣言および簡単な反省を済ませていた (&lt;a href=&quot;https://x.com/fumiyanll23/status/1609564983771426818&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;2023年の目標およびその反省ツイート&lt;/a&gt;) のですが，せっかく個人ブログという発信の場があるのだからそっちでやろうと思い，筆を執るに至りました．&lt;/p&gt;
 &lt;h2 id=&quot;目標設定の手法&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E7%9B%AE%E6%A8%99%E8%A8%AD%E5%AE%9A%E3%81%AE%E6%89%8B%E6%B3%95&quot; aria-label=&quot;目標設定の手法 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;目標設定の手法&lt;/h2&gt;
