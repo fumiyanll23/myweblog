@@ -1,4 +1,118 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[MyWeblog]]></title><description><![CDATA[MyWeblog]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 13 Aug 2024 10:38:49 GMT</lastBuildDate><item><title><![CDATA[テレビ視聴サーバを構築した話]]></title><description><![CDATA[床に転がっていたRaspberry Pi 4 (ラズパイ) を使ってテレビ視聴サーバを構築しました．]]></description><link>https://fumiyanll23.com/posts/build-tv-server</link><guid isPermaLink="false">https://fumiyanll23.com/posts/build-tv-server</guid><pubDate>Fri, 14 Jun 2024 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;はじめに&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&quot; aria-label=&quot;はじめに permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;はじめに&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[MyWeblog]]></title><description><![CDATA[MyWeblog]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 14 Aug 2024 06:37:44 GMT</lastBuildDate><item><title><![CDATA[基本情報技術者試験に合格した話]]></title><description><![CDATA[2024/06に基本情報技術者試験 (FE) に合格しました!]]></description><link>https://fumiyanll23.com/posts/pass-fundamental-information-technology-engineer-examination</link><guid isPermaLink="false">https://fumiyanll23.com/posts/pass-fundamental-information-technology-engineer-examination</guid><pubDate>Tue, 13 Aug 2024 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;はじめに&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&quot; aria-label=&quot;はじめに permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;はじめに&lt;/h2&gt;
+&lt;p&gt;2024/06に基本情報技術者試験 (FE) に合格しました!
+自身の振り返りのために合格記を書いていきます．&lt;sup id=&quot;fnref-1&quot;&gt;&lt;a href=&quot;#fn-1&quot; class=&quot;footnote-ref&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;h2 id=&quot;基本情報技術者試験とは&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E5%9F%BA%E6%9C%AC%E6%83%85%E5%A0%B1%E6%8A%80%E8%A1%93%E8%80%85%E8%A9%A6%E9%A8%93%E3%81%A8%E3%81%AF&quot; aria-label=&quot;基本情報技術者試験とは permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;基本情報技術者試験とは&lt;/h2&gt;
+&lt;p&gt;IPA (情報処理推進機構) が実施している情報技術者向けの試験の一つで，基本的な知識・技能を問う試験です．
+出題形式を含めた詳細な情報は，&lt;a href=&quot;https://www.ipa.go.jp/shiken/kubun/fe.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;IPAの紹介ページ&lt;/a&gt;をご覧ください．&lt;/p&gt;
+&lt;h2 id=&quot;受験結果&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E5%8F%97%E9%A8%93%E7%B5%90%E6%9E%9C&quot; aria-label=&quot;受験結果 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;受験結果&lt;/h2&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/a693a90431b02f04e1c86783e970f4a4/cb425/evaluation.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 18.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAAB2HAAAdhwGP5fFlAAAAg0lEQVQY05XOPQvCMBgE4Pz/v6WLSgXRpZAS7VTzRUszJG+S98RMOlmHh+OW48T0nEA5A8xgZtRaGy6l9X8J7z2cc40xBpfrDfe+x7rfIS4LqBQQ0WZCa403ay2klDgcT1BKYXUemfLX61/aw8/BYRjQdWc8xhF+nhFCQEoJMcaWW7wAS9Y1TRn77rYAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/a693a90431b02f04e1c86783e970f4a4/8ac56/evaluation.webp 240w,
+/static/a693a90431b02f04e1c86783e970f4a4/d3be9/evaluation.webp 480w,
+/static/a693a90431b02f04e1c86783e970f4a4/e46b2/evaluation.webp 960w,
+/static/a693a90431b02f04e1c86783e970f4a4/f992d/evaluation.webp 1440w,
+/static/a693a90431b02f04e1c86783e970f4a4/a8f5c/evaluation.webp 1678w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/a693a90431b02f04e1c86783e970f4a4/8ff5a/evaluation.png 240w,
+/static/a693a90431b02f04e1c86783e970f4a4/e85cb/evaluation.png 480w,
+/static/a693a90431b02f04e1c86783e970f4a4/d9199/evaluation.png 960w,
+/static/a693a90431b02f04e1c86783e970f4a4/07a9c/evaluation.png 1440w,
+/static/a693a90431b02f04e1c86783e970f4a4/cb425/evaluation.png 1678w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/a693a90431b02f04e1c86783e970f4a4/d9199/evaluation.png&quot;
+            alt=&quot;評価点&quot;
+            title=&quot;評価点&quot;
+            loading=&quot;lazy&quot;
+            decoding=&quot;async&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;評価点は両科目とも1000点満点です．&lt;sup id=&quot;fnref-2&quot;&gt;&lt;a href=&quot;#fn-2&quot; class=&quot;footnote-ref&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;
+また，合格基準はそれぞれの科目で600点以上を得点することです．&lt;/p&gt;
+&lt;h2 id=&quot;使用した教材とその勉強時間&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E6%95%99%E6%9D%90%E3%81%A8%E3%81%9D%E3%81%AE%E5%8B%89%E5%BC%B7%E6%99%82%E9%96%93&quot; aria-label=&quot;使用した教材とその勉強時間 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;使用した教材とその勉強時間&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.amazon.co.jp/dp/4300104417/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;ニュースペックテキスト基本情報技術者2023年度 (TAC出版)&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;試験範囲の知識が網羅されている，教科書的なテキスト&lt;/li&gt;
+&lt;li&gt;勉強時間は12時間36分 (2023/04-2024/04)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.fe-siken.com/fekakomon.php&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;基本情報技術者試験過去問道場&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;いわずと知れたFEの強い味方．主に科目Aの演習に利用した&lt;/li&gt;
+&lt;li&gt;勉強時間は5時間30分 (2023/07-2024/05)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;(実務経験)
+&lt;ul&gt;
+&lt;li&gt;PHPやGolangでWebバックエンド開発をしている&lt;/li&gt;
+&lt;li&gt;2024/04以降 (受験時点では2年目)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;(&lt;a href=&quot;https://atcoder.jp/users/fumiyanll23/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;AtCoder&lt;/a&gt;)
+&lt;ul&gt;
+&lt;li&gt;使用言語はPython．最終レートは521で茶色 (2020/09-2021/07)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;受験した感想&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E5%8F%97%E9%A8%93%E3%81%97%E3%81%9F%E6%84%9F%E6%83%B3&quot; aria-label=&quot;受験した感想 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;受験した感想&lt;/h2&gt;
+&lt;h3 id=&quot;科目a-旧午前試験&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E7%A7%91%E7%9B%AEa-%E6%97%A7%E5%8D%88%E5%89%8D%E8%A9%A6%E9%A8%93&quot; aria-label=&quot;科目a 旧午前試験 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;科目A (旧・午前試験)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;ふつーにギリギリ落ちるかと思った&lt;/li&gt;
+&lt;li&gt;見直しまで含めると，試験時間ギリギリだった&lt;/li&gt;
+&lt;li&gt;基本的には知識ゲーなので事前の勉強が大事(それはそう)．ただし，計算問題や消去法で対応するなど，初見で解ける問題も一定数ある
+&lt;ul&gt;
+&lt;li&gt;特に計算問題は丁寧に単位が明記されているものもあるので，公式 (解法?) を覚えてなくとも解けることがあります&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;科目b-旧午後試験&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E7%A7%91%E7%9B%AEb-%E6%97%A7%E5%8D%88%E5%BE%8C%E8%A9%A6%E9%A8%93&quot; aria-label=&quot;科目b 旧午後試験 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;科目B (旧・午後試験)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;ほとんど満点だと思った&lt;/li&gt;
+&lt;li&gt;科目A同様，見直しまで含めると試験時間ギリギリだった&lt;/li&gt;
+&lt;li&gt;アルゴリズム: 基本的には記載されている擬似言語のプログラムに従って愚直に実行していくだけ．AtCoderでの精進 (特に早解き) がめちゃくちゃ効いた
+&lt;ul&gt;
+&lt;li&gt;試験中はA4のメモ用紙が使用可能なため，実際に手を動かして各変数の状態を書き出しながら解きました&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;セキュリティ: 一般的なセキュリティリテラシー (情報リテラシー?) と少しの国語力があれば十分解ける&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;おわりに&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB&quot; aria-label=&quot;おわりに permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;おわりに&lt;/h2&gt;
+&lt;p&gt;資格試験なのでもちろん試験勉強は大事なのですが，あまり勉強していないのも相まって，日々の実務経験(と過去のAtCoderでの経験)の重要性を実感しました．
+これからも業務などで未知の概念に出くわしたら，可能な限りある程度の時間をかけて周辺分野まで調べる，ということを続けていきたいなと思いました．&lt;/p&gt;
+&lt;p&gt;また，この記事を書いている今はLPIC-1の勉強をしています．
+今月末に102を，来月末に101を順次受験する予定(予定は未定)で，こちらも実際にLinuxマシンで遊びながら，一発合格できるよう引き続き頑張っていきます．&lt;/p&gt;
+&lt;div class=&quot;footnotes&quot;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&quot;fn-1&quot;&gt;合格発表から2ヶ月経って筆を執ったので，今更感が否めないのですが…&lt;a href=&quot;#fnref-1&quot; class=&quot;footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&quot;fn-2&quot;&gt;つまり，科目Bは満点でした^^&lt;a href=&quot;#fnref-2&quot; class=&quot;footnote-backref&quot;&gt;↩&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</content:encoded></item><item><title><![CDATA[テレビ視聴サーバを構築した話]]></title><description><![CDATA[床に転がっていたRaspberry Pi 4 (ラズパイ) を使ってテレビ視聴サーバを構築しました．]]></description><link>https://fumiyanll23.com/posts/build-tv-server</link><guid isPermaLink="false">https://fumiyanll23.com/posts/build-tv-server</guid><pubDate>Fri, 14 Jun 2024 15:00:00 GMT</pubDate><content:encoded>&lt;h2 id=&quot;はじめに&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB&quot; aria-label=&quot;はじめに permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;はじめに&lt;/h2&gt;
 &lt;p&gt;床に転がっていたRaspberry Pi 4 (ラズパイ) を使って，テレビ視聴サーバを構築しました．
 職場の上司との雑談で，テレビ録画鯖の存在を知ったことがきっかけです．&lt;sup id=&quot;fnref-1&quot;&gt;&lt;a href=&quot;#fn-1&quot; class=&quot;footnote-ref&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 &lt;h2 id=&quot;環境など&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E7%92%B0%E5%A2%83%E3%81%AA%E3%81%A9&quot; aria-label=&quot;環境など permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;環境など&lt;/h2&gt;
